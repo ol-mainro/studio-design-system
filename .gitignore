@@ -1,0 +1,5 @@
+# Cache de déploiement Firebase
+.firebase/
+
+# macOS
+.DS_Store

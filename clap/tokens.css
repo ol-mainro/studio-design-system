@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Clap ! Studio — Design Tokens
+   Dossier autonome : aucune dépendance à un autre thème ou dossier.
+
+   Deux couches :
+     1. Primitives de marque  (--clap-*)  : les couleurs brutes, jamais
+        consommées directement par un composant.
+     2. Tokens sémantiques    (--surface, --accent, …) : ce que lisent les
+        composants dans components.css.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Avenir Heavy';
+  src: url('./assets/fonts/avenir-heavy.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   1. PRIMITIVES — marque Clap ! Studio
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --clap-navy: #0D1B2E;
+  --clap-navy-light: #162235;
+  --clap-yellow: #FFD100;
+  --clap-yellow-hover: #FFE033;
+  --clap-white: #FFFFFF;
+  --clap-black: #1A1A1A;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   2. TOKENS SÉMANTIQUES — la surface de thématisation
+
+   Le système est CLAIR par défaut : le fond principal est blanc. Le navy
+   n'est pas un fond, c'est une couleur de contenu — texte, titres, boutons
+   pleins — et le fond d'UNE bande de rupture par page (`.cl-section-invert`),
+   jamais celui de la page entière.
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Couleur principale ── */
+  --primary: var(--clap-navy);          /* titres, texte, boutons pleins */
+  --primary-hover: #17293F;
+  --on-primary: var(--clap-white);      /* posé SUR le primary */
+
+  /* ── Surfaces (claires) ── */
+  --surface: var(--clap-white);         /* fond principal de la page */
+  --surface-raised: #F6F7F9;            /* cartes, playlist, pills */
+  --surface-sunken: #F0F2F5;            /* champs de saisie */
+  --surface-invert: var(--clap-navy);   /* LA bande de rupture sombre */
+  --surface-invert-raised: var(--clap-navy-light);
+
+  /* ── Accent : tout ce qui est cliquable ou actif ── */
+  --accent: var(--clap-yellow);
+  --accent-hover: var(--clap-yellow-hover);
+  --on-accent: var(--clap-black);           /* texte/icône posé SUR l'accent */
+  --on-accent-muted: rgba(0, 0, 0, 0.55);
+  --on-accent-faint: rgba(0, 0, 0, 0.45);
+  --accent-soft: rgba(255, 209, 0, 0.18);   /* fond de rangée active */
+  --accent-ring: rgba(255, 209, 0, 0.35);   /* halo de focus */
+  --accent-glow: rgba(255, 209, 0, 0.3);
+  --accent-glow-lg: rgba(255, 209, 0, 0.35);
+  --accent-faint: rgba(255, 209, 0, 0.55);  /* bordure au survol */
+  --accent-ink: #7A6000;                    /* accent en TEXTE (6.0:1 sur blanc) */
+
+  /* ── Rampe de texte, relative à la surface courante ──
+     Quatre paliers, pas davantage. Ils basculent en bloc dans une zone
+     .cl-invert : les composants n'ont donc rien à savoir du fond. */
+  --text-1: var(--primary);             /* titres, libellés forts — 16:1 */
+  --text-2: rgba(13, 27, 46, 0.78);     /* corps de texte, descriptions — 10:1 */
+  --text-3: rgba(13, 27, 46, 0.64);     /* tags, légendes — plancher AA */
+  --text-4: rgba(13, 27, 46, 0.47);     /* 3:1 — information redondante SEULEMENT */
+
+  /* ── Bordures & voiles, relatifs à la surface courante ── */
+  --border-subtle: rgba(13, 27, 46, 0.12);
+  --border-hairline: rgba(13, 27, 46, 0.07);
+  --border-strong: rgba(13, 27, 46, 0.25);
+  --overlay-hover: rgba(13, 27, 46, 0.04);
+  --chip-bg: rgba(13, 27, 46, 0.06);
+  --chip-border: rgba(13, 27, 46, 0.1);
+
+  /* ── Typographie ── */
+  --font-body: 'Lexend', sans-serif;
+  --font-heading: 'Gaegu', cursive;                       /* registre enfant */
+  --font-display: 'Avenir Heavy', 'Lexend', sans-serif;   /* registre pro */
+  --heading-lh: 1.15;
+  --heading-ls: -0.02em;
+  --heading-weight: 800;   /* 800 = titres gras ; 400 = police à graisse unique, pas de faux gras */
+
+  /* ── Séparateur de section ──
+     --divider-repeat = largeur d'UN motif. 50% => deux motifs sur la largeur. */
+  --divider-shape: var(--shape-drips);
+  --divider-repeat: 50%;
+  --divider-repeat-mobile: 66.66%;
+
+  /* ── Couleurs d'état ── */
+  --danger: #D92D20;
+  --success: #067647;
+  --success-bg: rgba(6, 118, 71, 0.1);
+  --success-border: rgba(6, 118, 71, 0.25);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   2 bis. ZONE INVERSÉE
+   Une seule déclaration de tokens fait basculer tout un sous-arbre sur
+   fond sombre. Aucun composant n'est dupliqué ni modifié.
+   ══════════════════════════════════════════════════════════════════════ */
+.cl-invert,
+.cl-section-invert,
+.cl-section-dark {
+  --surface: var(--surface-invert);
+  --surface-raised: var(--surface-invert-raised);
+  --surface-sunken: var(--surface-invert);
+
+  --text-1: #FFFFFF;
+  --text-2: rgba(255, 255, 255, 0.78);
+  --text-3: rgba(255, 255, 255, 0.50);   /* plancher AA sur fond sombre */
+  --text-4: rgba(255, 255, 255, 0.34);   /* 3:1 — redondant seulement */
+
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-hairline: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --overlay-hover: rgba(255, 255, 255, 0.05);
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --chip-border: rgba(255, 255, 255, 0.14);
+
+  /* sur fond sombre, l'accent redevient lisible en texte tel quel */
+  --accent-ink: var(--accent);
+  --accent-soft: rgba(255, 209, 0, 0.12);
+
+  --primary: #FFFFFF;
+  --on-primary: var(--clap-navy);
+
+  --danger: #F87171;
+  --success: #34D399;
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --success-border: rgba(16, 185, 129, 0.3);
+
+  background: var(--surface);
+  color: var(--text-1);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   3. FORME DU SÉPARATEUR — coulures de peinture, signature Clap ! Studio
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --shape-drips: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 100 1920 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1920 288.326c-110.231-4.798-134.428-121.68-301.124-121.68s-190.894 116.883-301.124 121.68h-15.779c-132.623-3.764-163.287-72.283-366.071-72.283s-233.445 68.519-366.071 72.283h-8.154C384.543 282.678 408.027 100 281.156 100c-123.98 0-102.173 182.678-274.845 188.326H0V300h1920v-11.674z' fill='%23000'/%3E%3C/svg%3E");
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   4. TOKENS STRUCTURELS
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Tailles de police ── */
+  --fs-xs: 0.72rem;
+  --fs-sm: 0.8rem;
+  --fs-base: 0.95rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.2rem;
+  --fs-xl: 1.4rem;
+  --fs-title-fun: clamp(2rem, 5vw, 3.5rem);
+  --fs-title-pro: clamp(1.8rem, 5vw, 2.8rem);
+  --fs-title-section: clamp(1.8rem, 4.5vw, 2.8rem);
+
+  --lh-tight: 1.15;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.7;
+  --lh-loose: 1.8;
+
+  --ls-tight: -0.02em;
+  --ls-label: 2px;
+  --ls-chip: 1.5px;
+
+  /* ── Espacement ── */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;  --sp-4: 1rem;
+  --sp-5: 1.25rem;  --sp-6: 1.5rem;   --sp-8: 2rem;     --sp-10: 2.5rem;
+  --sp-12: 3rem;    --sp-14: 3.5rem;  --sp-16: 4rem;
+
+  /* ── Rayons ── */
+  --r-xs: 4px;   --r-sm: 5px;    --r-md: 14px;  --r-lg: 16px;
+  --r-xl: 20px;  --r-2xl: 24px;  --r-pill: 50px; --r-round: 50%;
+
+  /* ── Ombres ── */
+  /* Sur fond clair, une ombre forte salit : elles sont volontairement basses. */
+  --shadow-card: 0 1px 2px rgba(13, 27, 46, 0.06), 0 8px 24px rgba(13, 27, 46, 0.06);
+  --shadow-modal: 0 2px 4px rgba(13, 27, 46, 0.06), 0 16px 48px rgba(13, 27, 46, 0.12);
+  --shadow-cover: 0 8px 28px rgba(13, 27, 46, 0.18);
+  --shadow-player: 0 4px 24px rgba(13, 27, 46, 0.18);
+  --shadow-accent: 0 4px 16px var(--accent-glow);
+  --shadow-accent-lg: 0 8px 24px var(--accent-glow-lg);
+  --ring-focus: 0 0 0 3px var(--accent-ring);
+
+  /* ── Transitions ── */
+  --t-fast: 0.15s ease;
+  --t-base: 0.2s ease;
+
+  /* ── Layout ── */
+  --content-max: 820px;
+  --prose-max: 620px;
+  --card-max: 520px;
+  --player-max: 760px;
+  --player-h: 100px;
+  --wave-h: 75px;
+  --wave-h-mobile: 50px;
+
+  /* Breakpoint unique : @media (max-width: 600px) */
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   5. ALIAS DE COMPATIBILITÉ
+   Pour le code existant (conjugarium-minisite) qui lit --navy / --yellow.
+   Ne pas utiliser dans du code neuf : passer par la couche sémantique.
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --navy: var(--clap-navy);
+  --navy-light: var(--clap-navy-light);
+  --yellow: var(--clap-yellow);
+  --yellow-hover: var(--clap-yellow-hover);
+  --white: var(--clap-white);
+  --black: var(--clap-black);
+  --surface-alt: var(--surface);        /* ancien nom du fond clair */
+  --ink: var(--text-1);
+  --ink-heading: var(--text-1);
+  --ink-55: var(--on-accent-muted);
+  --ink-45: var(--on-accent-faint);
+  --text-on-dark: var(--text-1);
+  --text-on-dark-70: var(--text-2);
+  --text-on-dark-65: var(--text-2);
+  --text-on-dark-55: var(--text-3);
+  --text-on-dark-40: var(--text-4);
+  --text-on-dark-30: var(--text-4);
+}

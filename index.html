@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<script>
+  // Le thème est décidé par l'URL, avant tout rendu :
+  //   /             → Clap ! Studio      /conjugarium → Conjugarium
+  (function () {
+    var slug = location.pathname.replace(/\/+$/, '').split('/').pop().toLowerCase();
+    // ?theme= sert de repli quand il n'y a pas de serveur (ouverture en file://)
+    var q = (location.search.match(/[?&]theme=([^&]+)/) || [])[1];
+    var theme = (q || slug) === 'conjugarium' ? 'conjugarium' : 'clap';
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.page = theme;
+  })();
+</script>
+<title>Clap ! Studio — Design System</title>
+<meta name="description" content="Design system Clap ! Studio : couleurs, typographie et composants réutilisables pour les minisites et pages du studio." />
+<link rel="canonical" href="https://clap-design-system.web.app/clap" />
+
+<!-- Open Graph / partage (Facebook, Slack, iMessage…) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Clap ! Studio" />
+<meta property="og:title" content="Clap ! Studio — Design System" />
+<meta property="og:description" content="Couleurs, typographie et composants réutilisables pour les minisites et pages du studio." />
+<meta property="og:url" content="https://clap-design-system.web.app/clap" />
+<meta property="og:image" content="https://clap-design-system.web.app/assets/clap-logo.png" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Clap ! Studio — Design System" />
+<meta name="twitter:description" content="Couleurs, typographie et composants réutilisables pour les minisites et pages du studio." />
+<meta name="twitter:image" content="https://clap-design-system.web.app/assets/clap-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Gaegu:wght@700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./tokens.css" />
+<link rel="stylesheet" href="./components.css" />
+<link rel="stylesheet" href="./themes/conjugarium.css" />
+<style>
+  /* Chrome de la page de styleguide — hors design system */
+  body { background: #f6f7f9; }
+  .sg-nav {
+    position: sticky; top: 0; z-index: 200;
+    background: #0D1B2E; color: #fff;
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .sg-nav strong { font-family: 'Avenir Heavy','Lexend',sans-serif; letter-spacing: -0.02em; }
+  .sg-nav a { color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem; }
+  .sg-nav a:hover { color: #FFD100; }
+  .sg-wrap { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+  .sg-sec { margin-bottom: 3.5rem; }
+  .sg-sec > h2 {
+    font-family: 'Avenir Heavy','Lexend',sans-serif; font-size: 1.4rem; color: #0D1B2E;
+    letter-spacing: -0.02em; margin-bottom: .35rem;
+  }
+  .sg-sec > p.sg-note { font-size: .875rem; color: #5b6472; margin-bottom: 1.25rem; line-height: 1.6; }
+  .sg-demo {
+    background: var(--surface); border: 1px solid var(--border-subtle);
+    border-radius: 20px; padding: 2rem; margin-bottom: .75rem;
+  }
+  /* la bande sombre : .cl-invert pose ses propres tokens */
+  .sg-demo--invert { border-color: transparent; }
+  .sg-demo--light { background: var(--surface); border: 1px solid var(--border-subtle); }
+  .sg-demo--yellow { background: var(--accent); }
+  .sg-demo--flow { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .sg-demo--pad0 { padding: 0; overflow: hidden; }
+  .sg-code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .78rem; background: #10182a; color: #c9d4e6;
+    padding: .9rem 1.1rem; border-radius: 12px; overflow-x: auto;
+    white-space: pre; margin-bottom: 1.5rem;
+  }
+  .sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .sg-swatch { border: 1px solid #e3e6ea; border-radius: 12px; overflow: hidden; background: #fff; }
+  .sg-swatch__chip { height: 72px; }
+  .sg-swatch__body { padding: .6rem .75rem; }
+  .sg-swatch__name { font-size: .78rem; font-weight: 600; color: #0D1B2E; }
+  .sg-swatch__val { font-size: .72rem; color: #7a8595; font-family: ui-monospace, monospace; }
+  .sg-scale-row { display: flex; align-items: baseline; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid #e9ecf1; }
+  .sg-scale-row code { font-size: .72rem; color: #7a8595; width: 170px; flex-shrink: 0; font-family: ui-monospace, monospace; }
+  .sg-bar { height: 22px; background: var(--accent); border-radius: 4px; }
+  .sg-theme { margin-left: auto; display: flex; gap: .35rem; background: rgba(255,255,255,.08); padding: 3px; border-radius: 50px; }
+  .sg-theme__btn {
+    border: none; background: transparent; color: rgba(255,255,255,.65);
+    font: inherit; font-size: .75rem; padding: .3rem .8rem; border-radius: 50px;
+    cursor: pointer; text-decoration: none; display: inline-block;
+  }
+  .sg-nav .sg-theme__btn--on { background: #fff; color: #0D1B2E; font-weight: 600; }
+  @media (max-width: 600px) { .sg-demo { padding: 1.25rem; } .sg-theme { margin-left: 0; } }
+</style>
+</head>
+<body>
+
+<nav class="sg-nav">
+  <strong>Clap ! Design System</strong>
+  <a href="#couleurs">Couleurs</a>
+  <a href="#typo">Typo</a>
+  <a href="#espacement">Espacement</a>
+  <a href="#boutons">Boutons</a>
+  <a href="#badges">Badges</a>
+  <a href="#cartes">Cartes</a>
+  <a href="#formulaires">Formulaires</a>
+  <a href="#playlist">Playlist</a>
+  <a href="#player">Lecteur</a>
+  <a href="#wave">Séparateurs</a>
+  <a href="#invert">Inversé</a>
+  <a href="#pages">Pages</a>
+  <a href="#themes">Thèmes</a>
+  <div class="sg-theme">
+    <a class="sg-theme__btn" href="/clap" data-page-link="clap">Clap ! Studio</a>
+    <a class="sg-theme__btn" href="/conjugarium" data-page-link="conjugarium">Conjugarium</a>
+    <a class="sg-theme__btn" href="/surhumains" data-page-link="surhumains">Surhumains</a>
+  </div>
+</nav>
+
+<div class="sg-wrap">
+
+<!-- ══════════ COULEURS ══════════ -->
+<section class="sg-sec" id="couleurs">
+  <h2>Couleurs</h2>
+  <p class="sg-note">Le système est <strong>clair par défaut</strong> : le fond principal est blanc ou très pâle, et c'est lui qui domine. Le navy est une couleur de <strong>contenu</strong> — <code>--primary</code>, pour les titres, le texte et les boutons pleins — et le fond d'<strong>une seule</strong> bande de rupture par page, jamais celui de la page entière. L'<strong>accent</strong> marque ce qui est cliquable ou en cours de lecture ; il ne sert jamais de fond à du texte long.</p>
+  <div class="sg-swatches" id="sg-swatches"></div>
+</section>
+
+<!-- ══════════ TYPOGRAPHIE ══════════ -->
+<section class="sg-sec" id="typo">
+  <h2>Typographie</h2>
+  <p class="sg-note">Deux familles de titres selon le registre : <code>--font-heading</code> pour les pages publiques destinées aux enfants, <code>--font-display</code> pour les pages pro / à accès protégé. Chez Clap ! Studio, Gaegu et Avenir Heavy ; au Conjugarium, Simply Olive tient les deux rôles. <strong>Lexend</strong> reste le corps de texte dans tous les thèmes — choisie pour sa lisibilité chez les lecteurs débutants, elle n'est jamais remplacée.</p>
+  <div class="sg-demo">
+    <h1 class="cl-title-fun">Le Conjugarium</h1>
+    <p class="cl-desc" style="margin-top:.5rem"><span data-font-of=".cl-title-fun">—</span> · <code>--fs-title-fun</code> · <code>.cl-title-fun</code></p>
+  </div>
+  <div class="sg-demo">
+    <h1 class="cl-title-pro">Pack pédagogique</h1>
+    <p class="cl-desc" style="margin-top:.5rem"><span data-font-of=".cl-title-pro">—</span> · <code>--fs-title-pro</code> · <code>.cl-title-pro</code></p>
+  </div>
+  <div class="sg-demo sg-demo--light">
+    <h2 class="cl-section-title">Une histoire <span class="cl-section-title__accent">qui se chante</span></h2>
+    <p class="cl-text"><span data-font-of=".cl-text">—</span>, interligne <code>--lh-loose</code> (1.8). Corps de texte long sur fond clair, centré, largeur limitée à <code>--prose-max</code> pour garder une longueur de ligne confortable.</p>
+  </div>
+  <div class="sg-code">&lt;h1 class="cl-title-fun"&gt;Le Conjugarium&lt;/h1&gt;
+&lt;h2 class="cl-section-title"&gt;Une histoire &lt;span class="cl-section-title__accent"&gt;qui se chante&lt;/span&gt;&lt;/h2&gt;</div>
+</section>
+
+<!-- ══════════ ESPACEMENT & RAYONS ══════════ -->
+<section class="sg-sec" id="espacement">
+  <h2>Espacement &amp; rayons</h2>
+  <p class="sg-note">Échelle en rem, multiples de 0.25rem. Les rayons suivent la taille de l'objet : plus la surface est grande, plus le rayon est doux. Tout ce qui est interactif et compact est en pill.</p>
+  <div class="sg-demo sg-demo--light" id="sg-scale"></div>
+  <div class="sg-demo sg-demo--flow sg-demo--light">
+    <div style="width:80px;height:56px;background:var(--surface);border-radius:var(--r-md)"></div>
+    <div style="width:80px;height:56px;background:var(--surface);border-radius:var(--r-lg)"></div>
+    <div style="width:80px;height:56px;background:var(--surface);border-radius:var(--r-xl)"></div>
+    <div style="width:80px;height:56px;background:var(--surface);border-radius:var(--r-2xl)"></div>
+    <div style="width:120px;height:56px;background:var(--surface);border-radius:var(--r-pill)"></div>
+    <div style="width:56px;height:56px;background:var(--surface);border-radius:var(--r-round)"></div>
+  </div>
+</section>
+
+<!-- ══════════ BOUTONS ══════════ -->
+<section class="sg-sec" id="boutons">
+  <h2>Boutons</h2>
+  <p class="sg-note">Un seul bouton plein par zone visible. Le jaune est réservé à l'action principale ; tout le reste est en ghost. Le hover est toujours un léger <code>scale</code> + éclaircissement, jamais un changement de teinte.</p>
+  <div class="sg-demo sg-demo--flow sg-demo--light">
+    <button class="cl-btn">Télécharger</button>
+    <button class="cl-btn cl-btn--lg">Télécharger le pack</button>
+    <button class="cl-btn cl-btn--ghost">Se déconnecter</button>
+    <button class="cl-icon-btn" aria-label="Lecture">▶</button>
+    <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+  </div>
+  <div class="sg-demo"><button class="cl-btn cl-btn--block">Accéder au pack</button></div>
+  <div class="sg-code">&lt;button class="cl-btn"&gt;Télécharger&lt;/button&gt;
+&lt;button class="cl-btn cl-btn--lg"&gt;…&lt;/button&gt;      &lt;!-- bannière --&gt;
+&lt;button class="cl-btn cl-btn--block"&gt;…&lt;/button&gt;   &lt;!-- formulaire --&gt;
+&lt;button class="cl-btn cl-btn--ghost"&gt;…&lt;/button&gt;   &lt;!-- action destructive / secondaire --&gt;</div>
+</section>
+
+<!-- ══════════ BADGES ══════════ -->
+<section class="sg-sec" id="badges">
+  <h2>Badges &amp; pills</h2>
+  <p class="sg-note">Le badge jaune qualifie le contenu (type d'œuvre). Le badge ghost qualifie une ressource secondaire. Le badge success confirme un état. Les pills de filtre basculent en jaune plein quand actives.</p>
+  <div class="sg-demo sg-demo--flow sg-demo--light">
+    <span class="cl-badge">Fiction audio</span>
+    <span class="cl-badge cl-badge--ghost">Ressources</span>
+    <span class="cl-badge cl-badge--success">✓ Accès vérifié</span>
+    <span class="cl-meta">9 épisodes</span>
+  </div>
+  <div class="sg-demo">
+    <div class="cl-pills">
+      <button class="cl-pill cl-pill--active">Tout</button>
+      <button class="cl-pill">Épisodes</button>
+      <button class="cl-pill">Chansons</button>
+      <button class="cl-pill">Bonus</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CARTES ══════════ -->
+<section class="sg-sec" id="cartes">
+  <h2>Cartes</h2>
+  <p class="sg-note">Toutes les cartes sont posées sur le navy et remontent d'un cran en <code>--navy-light</code>. La bordure jaune (<code>--accent</code>) est réservée à une seule carte par page : l'action qu'on veut voir en premier.</p>
+
+  <div class="sg-demo">
+    <div class="cl-card cl-card--accent cl-banner" style="margin-bottom:1.5rem">
+      <div class="cl-banner__left">
+        <div class="cl-banner__icon">⬇</div>
+        <div>
+          <div class="cl-banner__title">Pack complet</div>
+          <div class="cl-banner__subtitle">Tous les audios + les affichettes · 240 Mo</div>
+        </div>
+      </div>
+      <a class="cl-btn cl-btn--lg" href="#">Télécharger le ZIP</a>
+    </div>
+
+    <div class="cl-card" style="display:flex;align-items:center;gap:2rem">
+      <div style="width:70px;height:90px;background:var(--accent);border-radius:5px;flex-shrink:0"></div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <span class="cl-badge cl-badge--ghost">PDF</span>
+        <div class="cl-banner__title" style="font-size:var(--fs-lg)">Affichettes à imprimer</div>
+        <p class="cl-desc" style="font-size:.85rem">Format A3, prêtes pour l'affichage en classe.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sg-code">&lt;div class="cl-card cl-card--accent cl-banner"&gt;
+  &lt;div class="cl-banner__left"&gt;
+    &lt;div class="cl-banner__icon"&gt;&lt;!-- icône --&gt;&lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="cl-banner__title"&gt;Pack complet&lt;/div&gt;
+      &lt;div class="cl-banner__subtitle"&gt;…&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a class="cl-btn cl-btn--lg"&gt;Télécharger&lt;/a&gt;
+&lt;/div&gt;</div>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Hero projet</h3>
+  <div class="sg-demo">
+    <div class="cl-hero" style="margin-bottom:0">
+      <div class="cl-hero__cover" style="background:linear-gradient(135deg,var(--accent),#ff9d00)"></div>
+      <div class="cl-hero__info">
+        <div class="cl-hero__badges">
+          <span class="cl-badge">Fiction audio</span>
+          <span class="cl-badge cl-badge--success">✓ Accès vérifié</span>
+          <button class="cl-btn cl-btn--ghost">Se déconnecter</button>
+        </div>
+        <h1 class="cl-title-pro">Le Conjugarium</h1>
+        <p class="cl-desc">Avec Bertille, Nono et Ali, découvrez un monde fascinant où la conjugaison est une affaire de musique !</p>
+        <span class="cl-meta">9 épisodes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FORMULAIRES ══════════ -->
+<section class="sg-sec" id="formulaires">
+  <h2>Formulaires</h2>
+  <p class="sg-note">Champs toujours sur le navy le plus sombre, en creux par rapport à la carte qui les contient. Le focus se signale par la bordure jaune + un halo de 3px — jamais par l'outline du navigateur.</p>
+  <div class="sg-demo sg-demo--pad0" style="background:transparent">
+    <div class="cl-card cl-card--auth" style="margin:0 auto">
+      <div style="width:76px;height:76px;margin:0 auto 1.5rem;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-yellow-lg);font-size:1.5rem">🔑</div>
+      <h2 class="cl-title-pro" style="margin:.75rem 0">Espace enseignants</h2>
+      <p class="cl-desc" style="font-size:.95rem;margin-bottom:2.25rem">Saisissez le code fourni dans votre pack pour accéder aux ressources.</p>
+      <form class="cl-form" onsubmit="return false">
+        <div class="cl-field">
+          <span class="cl-field__icon">🔒</span>
+          <input class="cl-input" type="password" placeholder="Code d'accès" />
+        </div>
+        <p class="cl-error">Code incorrect. Vérifiez la casse.</p>
+        <button class="cl-btn cl-btn--block" type="submit">Accéder</button>
+      </form>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Barre de contrôles</h3>
+  <div class="sg-demo">
+    <div class="cl-controls" style="margin-bottom:0">
+      <div class="cl-search">
+        <span class="cl-search__icon">🔍</span>
+        <input class="cl-search__input" type="search" placeholder="Rechercher une piste…" />
+      </div>
+      <div class="cl-pills">
+        <button class="cl-pill cl-pill--active">Tout</button>
+        <button class="cl-pill">Épisodes</button>
+        <button class="cl-pill">Chansons</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PLAYLIST ══════════ -->
+<section class="sg-sec" id="playlist">
+  <h2>Playlist</h2>
+  <p class="sg-note">Le composant central du studio. Les lignes sont collées (pas d'espace, un filet de séparation) et le bloc entier est masqué en <code>--r-lg</code>. La ligne en lecture vire au jaune sur trois signaux à la fois : numéro, titre, fond.</p>
+  <div class="sg-demo">
+    <ul class="cl-playlist" style="margin-bottom:0">
+      <li class="cl-row">
+        <span class="cl-row__num">1</span>
+        <div class="cl-row__info">
+          <div class="cl-row__titleline">
+            <span class="cl-row__title">Introduction</span>
+            <span class="cl-row__tag">3:12</span>
+          </div>
+          <span class="cl-row__desc">Bertille découvre la porte du Conjugarium.</span>
+        </div>
+        <div class="cl-row__actions">
+          <button class="cl-icon-btn" aria-label="Lecture">▶</button>
+          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+        </div>
+      </li>
+      <li class="cl-row cl-row--active">
+        <span class="cl-row__num cl-pulse">♫</span>
+        <div class="cl-row__info">
+          <div class="cl-row__titleline">
+            <span class="cl-row__title">Mme Javel</span>
+            <span class="cl-row__tag">5:48</span>
+          </div>
+          <span class="cl-row__desc">Le présent de l'indicatif, en chanson.</span>
+        </div>
+        <div class="cl-row__actions">
+          <button class="cl-icon-btn" aria-label="Pause">❚❚</button>
+          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+        </div>
+      </li>
+      <li class="cl-row">
+        <span class="cl-row__num">3</span>
+        <div class="cl-row__info">
+          <div class="cl-row__titleline">
+            <span class="cl-row__title">Justin Chandelle</span>
+            <span class="cl-row__tag">4:05</span>
+          </div>
+          <span class="cl-row__desc">Imparfait et souvenirs qui s'étirent.</span>
+        </div>
+        <div class="cl-row__actions">
+          <button class="cl-icon-btn" aria-label="Lecture">▶</button>
+          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="sg-code">&lt;li class="cl-row cl-row--active"&gt;
+  &lt;span class="cl-row__num cl-pulse"&gt;&lt;!-- icône note --&gt;&lt;/span&gt;
+  &lt;div class="cl-row__info"&gt;
+    &lt;div class="cl-row__titleline"&gt;
+      &lt;span class="cl-row__title"&gt;Mme Javel&lt;/span&gt;
+      &lt;span class="cl-row__tag"&gt;5:48&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="cl-row__desc"&gt;…&lt;/span&gt;   &lt;!-- masqué &lt; 600px --&gt;
+  &lt;/div&gt;
+  &lt;div class="cl-row__actions"&gt;…&lt;/div&gt;
+&lt;/li&gt;</div>
+</section>
+
+<!-- ══════════ LECTEUR ══════════ -->
+<section class="sg-sec" id="player">
+  <h2>Lecteur flottant</h2>
+  <p class="sg-note">Seule zone jaune pleine du produit, posée en <code>position:fixed</code> au-dessus du contenu. Sur mobile il perd sa forme pill (rayon <code>--r-2xl</code>) et ses contrôles secondaires. Prévoir <code>.cl-player-spacer</code> en fin de page pour que le dernier élément ne passe pas dessous.</p>
+  <div class="sg-demo sg-demo--light">
+    <div class="cl-player" style="position:static;transform:none;width:100%">
+      <div class="cl-player__inner">
+        <button class="cl-player__play" aria-label="Pause">❚❚</button>
+        <div class="cl-player__meta">
+          <div class="cl-player__title">Mme Javel — Le Conjugarium</div>
+          <div class="cl-player__progress">
+            <span class="cl-player__time">2:14</span>
+            <input class="cl-range" type="range" value="38" aria-label="Progression" />
+            <span class="cl-player__time">5:48</span>
+          </div>
+        </div>
+        <div class="cl-player__side">
+          <button class="cl-player__iconbtn" aria-label="Volume">🔊</button>
+          <input class="cl-range cl-range--volume" type="range" value="70" aria-label="Volume" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COULURES ══════════ -->
+<section class="sg-sec" id="wave">
+  <h2>Séparateurs de section</h2>
+  <p class="sg-note">La signature visuelle : jamais de bord droit entre deux sections de couleurs différentes. La <strong>forme</strong> vient du thème (<code>--divider-shape</code>) — coulures de peinture chez Clap ! Studio, nuages au Conjugarium. Elle est appliquée en <code>mask-image</code>, donc les <strong>couleurs</strong> se posent par instance, en CSS pur : plus aucun JavaScript n'est nécessaire.</p>
+  <div class="sg-demo sg-demo--pad0 sg-demo--light">
+    <div style="background:var(--surface);height:48px"></div>
+    <div class="cl-wave" style="--wave-from:var(--surface); --wave-to:var(--surface-invert)"></div>
+    <div style="background:var(--surface-invert);height:56px"></div>
+    <div class="cl-wave" style="--wave-from:var(--surface-invert); --wave-to:var(--accent)"></div>
+    <div style="background:var(--accent);height:48px"></div>
+  </div>
+  <div class="sg-code">&lt;!-- --wave-from = section qui précède, --wave-to = section qui suit --&gt;
+&lt;div class="cl-wave" style="--wave-from:var(--surface); --wave-to:var(--surface-invert)"&gt;&lt;/div&gt;
+
+/* La forme est portée par le thème, jamais par le composant */
+:root                        { --divider-shape: var(--shape-drips); }
+[data-theme="conjugarium"]   { --divider-shape: var(--shape-clouds); }</div>
+  <p class="sg-note">La densité du motif est réglable par thème, via <code>--divider-repeat</code> : c'est la largeur d'<em>un</em> motif, donc <code>50%</code> en donne deux sur la largeur. Les coulures gardent <code>50%</code> ; les nuages, plus larges par nature, passent à <code>70%</code> pour retrouver la densité du site d'origine. Les deux formes partagent la même convention : un SVG de 1920 unités de large, calé sur son bord bas.</p>
+</section>
+
+<!-- ══════════ PAGES ══════════ -->
+<section class="sg-sec" id="pages">
+  <h2>Deux gabarits de page</h2>
+  <p class="sg-note">Le système couvre deux registres. La <strong>page publique</strong> alterne surface claire, surface sombre et accent, séparés par des <code>.cl-wave</code>, titres en <code>--font-heading</code>. La <strong>page protégée</strong> reste en surface sombre pleine du haut en bas, sans entête ni pied de page, titres en <code>--font-display</code> — c'est le registre « ressources pro ».</p>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Page publique</h3>
+  <div class="sg-demo sg-demo--pad0 sg-demo--light">
+    <header class="cl-header" style="padding-bottom:1rem;background:var(--surface)">
+      <img src="./assets/clap-logo.png" alt="Clap !" width="72" height="72" />
+      <p class="cl-tagline">Aventures audio &amp; podcasts<br /><span class="cl-tagline__accent">pour les enfants</span></p>
+    </header>
+    <div class="cl-wave" style="--wave-from:var(--surface); --wave-to:var(--surface-invert)"></div>
+    <div class="cl-section-invert cl-invert" style="padding-bottom:2rem">
+      <div class="cl-container">
+        <div class="cl-hero" style="margin-bottom:1.5rem">
+          <div class="cl-hero__cover" style="width:120px;height:120px;background:linear-gradient(135deg,var(--accent),#ff9d00)"></div>
+          <div class="cl-hero__info">
+            <span class="cl-badge">Fiction audio</span>
+            <h1 class="cl-title-fun" style="font-size:2rem">Le Conjugarium</h1>
+            <span class="cl-meta">9 épisodes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cl-wave" style="--wave-from:var(--surface-invert); --wave-to:var(--surface)"></div>
+    <section class="cl-section-light" style="padding:2rem 1.5rem">
+      <div class="cl-prose">
+        <h2 class="cl-section-title" style="font-size:1.5rem;margin-bottom:1rem">À propos <span class="cl-section-title__accent">du studio</span></h2>
+        <p class="cl-text" style="font-size:.9rem">Clap ! Studio écrit et produit des fictions audio pour les enfants.</p>
+      </div>
+    </section>
+    <footer class="cl-footer" style="padding:1.5rem 1rem">
+      <p class="cl-footer__tagline">Une création Clap ! Studio</p>
+      <a class="cl-footer__link" href="#">contact@clapstudio.fr</a>
+      <p class="cl-footer__legal">© 2026 Clap ! Studio — Tous droits réservés</p>
+    </footer>
+  </div>
+  <div class="sg-code">&lt;div class="cl-page"&gt;
+  &lt;header class="cl-header"&gt;…&lt;/header&gt;
+  &lt;div class="cl-wave"&gt;&lt;/div&gt;                  &lt;!-- blanc → navy --&gt;
+  &lt;main class="cl-section-dark"&gt;
+    &lt;div class="cl-container"&gt;…&lt;/div&gt;
+  &lt;/main&gt;
+  &lt;div class="cl-wave"&gt;&lt;/div&gt;                  &lt;!-- navy → blanc --&gt;
+  &lt;section class="cl-section-light"&gt;
+    &lt;div class="cl-prose"&gt;…&lt;/div&gt;
+  &lt;/section&gt;
+  &lt;footer class="cl-footer"&gt;…&lt;/footer&gt;
+  &lt;div class="cl-player-spacer"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Page protégée</h3>
+  <div class="sg-code">&lt;div class="cl-page cl-section-dark"&gt;      &lt;!-- navy plein, pas de header/footer --&gt;
+  &lt;div class="cl-container"&gt;
+    &lt;div class="cl-hero"&gt;…&lt;/div&gt;           &lt;!-- titre en .cl-title-pro --&gt;
+    &lt;div class="cl-card cl-card--accent cl-banner"&gt;…&lt;/div&gt;
+    &lt;div class="cl-card"&gt;…&lt;/div&gt;
+    &lt;div class="cl-controls"&gt;…&lt;/div&gt;
+    &lt;ul class="cl-playlist"&gt;…&lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="cl-player-spacer"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+</section>
+
+<!-- ══════════ BANDE INVERSÉE ══════════ -->
+<section class="sg-sec" id="invert">
+  <h2>Bande inversée</h2>
+  <p class="sg-note">Le navy n'est plus un fond de page, c'est une <strong>rupture</strong> : une bande sombre par page, pour le moment fort — le lecteur intégral, une mise en avant. Poser <code>.cl-invert</code> (ou <code>.cl-section-invert</code>) redéclare la rampe de texte, les bordures et les voiles pour tout le sous-arbre. Les composants à l'intérieur sont <strong>exactement les mêmes</strong> : aucune variante sombre à maintenir.</p>
+
+  <div class="sg-demo sg-demo--invert cl-invert" style="border-radius:20px">
+    <h2 class="cl-title-pro" style="margin-bottom:.75rem">J'écoute le conte intégral</h2>
+    <p class="cl-desc" style="margin-bottom:1.5rem">Même <code>.cl-playlist</code>, mêmes <code>.cl-row</code>, mêmes boutons que sur fond clair.</p>
+    <ul class="cl-playlist" style="margin-bottom:1.5rem">
+      <li class="cl-row cl-row--active">
+        <span class="cl-row__num cl-pulse">♫</span>
+        <div class="cl-row__info">
+          <div class="cl-row__titleline"><span class="cl-row__title">Mme Javel</span><span class="cl-row__tag">5:48</span></div>
+          <span class="cl-row__desc">Le présent de l'indicatif, en chanson.</span>
+        </div>
+        <div class="cl-row__actions"><button class="cl-icon-btn" aria-label="Pause">❚❚</button></div>
+      </li>
+      <li class="cl-row">
+        <span class="cl-row__num">2</span>
+        <div class="cl-row__info">
+          <div class="cl-row__titleline"><span class="cl-row__title">Justin Chandelle</span><span class="cl-row__tag">4:05</span></div>
+          <span class="cl-row__desc">Imparfait et souvenirs qui s'étirent.</span>
+        </div>
+        <div class="cl-row__actions"><button class="cl-icon-btn" aria-label="Lecture">▶</button></div>
+      </li>
+    </ul>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+      <button class="cl-btn">Télécharger</button>
+      <button class="cl-btn cl-btn--primary">Action sobre</button>
+      <button class="cl-btn cl-btn--ghost">Se déconnecter</button>
+      <span class="cl-meta">9 épisodes</span>
+    </div>
+  </div>
+  <div class="sg-code">&lt;section class="cl-section-invert"&gt;   &lt;!-- ou class="cl-invert" sur n'importe quel bloc --&gt;
+  &lt;ul class="cl-playlist"&gt;…&lt;/ul&gt;      &lt;!-- composants inchangés --&gt;
+&lt;/section&gt;</div>
+  <p class="sg-note"><strong>Une seule par page.</strong> Deux bandes sombres et la rupture ne rompt plus rien : le fond clair redevient l'exception, ce que ce système refuse.</p>
+</section>
+
+<!-- ══════════ THÈMES ══════════ -->
+<section class="sg-sec" id="themes">
+  <h2>Thèmes</h2>
+  <p class="sg-note">Les tokens sont en deux couches. Les <strong>primitives</strong> (<code>--clap-*</code>, <code>--cjg-*</code>) portent les couleurs brutes et ne sont jamais lues par un composant. La couche <strong>sémantique</strong> (<code>--surface</code>, <code>--accent</code>, <code>--ink</code>…) est la seule que lisent les composants — et donc la seule qu'un thème redéfinit. Basculer le sélecteur en haut de page rejoue toute la documentation dans l'autre thème : aucune classe ni aucun composant ne change.</p>
+
+  <div class="sg-demo sg-demo--light">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+      <thead>
+        <tr style="text-align:left;border-bottom:2px solid #e3e6ea">
+          <th style="padding:.5rem .5rem .5rem 0">Token</th>
+          <th style="padding:.5rem">Clap ! Studio</th>
+          <th style="padding:.5rem">Conjugarium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--primary</code></td><td style="padding:.45rem"><code>#0D1B2E</code> navy</td><td style="padding:.45rem"><code>#0E172A</code> nuit</td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--surface</code></td><td style="padding:.45rem"><code>#FFFFFF</code> blanc</td><td style="padding:.45rem"><code>#EFEEFA</code> lavande</td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--surface-raised</code></td><td style="padding:.45rem"><code>#F6F7F9</code></td><td style="padding:.45rem"><code>#FFFFFF</code></td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--surface-invert</code></td><td style="padding:.45rem"><code>#0D1B2E</code></td><td style="padding:.45rem"><code>#0E172A</code></td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--accent</code></td><td style="padding:.45rem"><code>#FFD100</code> jaune</td><td style="padding:.45rem"><code>#F4B0CF</code> rose pochette</td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--on-accent</code></td><td style="padding:.45rem"><code>#1A1A1A</code></td><td style="padding:.45rem"><code>#0E172A</code></td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--font-heading</code></td><td style="padding:.45rem">Gaegu</td><td style="padding:.45rem">Simply Olive</td></tr>
+        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--divider-shape</code></td><td style="padding:.45rem">coulures (×2)</td><td style="padding:.45rem">nuages (×1)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sg-note">Le Conjugarium dispose d'un second fond clair, le bleu-lavande <code>#C9C8FB</code> du bandeau principal du site. Il n'a pas d'équivalent chez Clap ! Studio : il est donc exposé comme utilitaire, <code>.cjg-section-periwinkle</code>, plutôt que comme token.</p>
+  <div class="sg-demo sg-demo--pad0 sg-demo--light">
+    <div class="cjg-section-periwinkle" style="padding:2rem 1.5rem;text-align:center">
+      <span style="font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#0E172A;opacity:.6">.cjg-section-periwinkle</span>
+    </div>
+  </div>
+
+  <div class="sg-code">&lt;!-- a) bascule à chaud --&gt;
+&lt;html data-theme="conjugarium"&gt;
+&lt;link rel="stylesheet" href="tokens.css"&gt;
+&lt;link rel="stylesheet" href="components.css"&gt;
+&lt;link rel="stylesheet" href="themes/conjugarium.css"&gt;
+
+&lt;!-- b) écrire un nouveau thème : ne redéfinir que la couche sémantique --&gt;
+[data-theme="mon-projet"] {
+  --primary: #…;  --on-primary: #…;
+  --surface: #…;  --surface-raised: #…;  --surface-invert: #…;
+  --accent: #…;   --accent-hover: #…;    --accent-ink: #…;  --on-accent: #…;
+  --text-1: #…;   --text-2: …;  --text-3: …;  --text-4: …;
+  --font-heading: '…';  --divider-shape: var(--shape-clouds);  --divider-repeat: 100%;
+}</div>
+</section>
+
+</div>
+
+<script>
+// ── Nuancier généré depuis les tokens ──
+const swatches = [
+  ['--primary', 'Principale'], ['--surface', 'Fond principal'],
+  ['--surface-raised', 'Surface remontée'], ['--surface-invert', 'Bande inversée'],
+  ['--accent', 'Accent'], ['--accent-hover', 'Accent survol'],
+  ['--accent-ink', 'Accent texte'], ['--on-accent', 'Sur accent'],
+  ['--danger', 'Erreur'], ['--success', 'Succès'],
+];
+function renderTokens() {
+const cs = getComputedStyle(document.documentElement);
+document.getElementById('sg-swatches').innerHTML = swatches.map(([v, name]) => `
+  <div class="sg-swatch">
+    <div class="sg-swatch__chip" style="background:var(${v});box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)"></div>
+    <div class="sg-swatch__body">
+      <div class="sg-swatch__name">${name}</div>
+      <div class="sg-swatch__val">${v}<br>${cs.getPropertyValue(v).trim()}</div>
+    </div>
+  </div>`).join('');
+
+document.querySelectorAll('[data-font-of]').forEach(el => {
+  const probe = document.querySelector(el.dataset.fontOf);
+  if (probe) el.textContent = getComputedStyle(probe).fontFamily.split(',')[0].replace(/["']/g, '');
+});
+
+const steps = ['--sp-1','--sp-2','--sp-3','--sp-4','--sp-5','--sp-6','--sp-8','--sp-10','--sp-12','--sp-14','--sp-16'];
+document.getElementById('sg-scale').innerHTML = steps.map(v => `
+  <div class="sg-scale-row">
+    <code>${v} · ${cs.getPropertyValue(v).trim()}</code>
+    <div class="sg-bar" style="width:${cs.getPropertyValue(v).trim()}"></div>
+  </div>`).join('');
+}
+renderTokens();
+
+// ── Page courante ──
+(function () {
+  var page = document.documentElement.dataset.page;
+  var link = document.querySelector('[data-page-link="' + page + '"]');
+  if (link) link.classList.add('sg-theme__btn--on');
+  // sans serveur, les chemins absolus ne résolvent pas : pointer vers le fichier voisin
+  if (location.protocol === 'file:') {
+    var files = { clap: 'index.html', conjugarium: 'conjugarium.html', surhumains: 'surhumains.html' };
+    document.querySelectorAll('[data-page-link]').forEach(function (a) {
+      a.setAttribute('href', files[a.dataset.pageLink]);
+    });
+  }
+  if (page === 'conjugarium') {
+    document.title = 'Conjugarium — Design System';
+    document.querySelector('.sg-nav strong').textContent = 'Conjugarium Design System';
+  }
+})();
+
+</script>
+
+</body>
+</html>

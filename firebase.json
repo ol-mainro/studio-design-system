@@ -1,0 +1,99 @@
+{
+  "hosting": {
+    "site": "clap-design-system",
+    "public": ".",
+    "trailingSlash": false,
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "/design.md",
+      "clap/index.html",
+      "conjugarium/index.html",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/clap",
+        "type": 302
+      },
+      {
+        "source": "/clap/",
+        "destination": "/clap",
+        "type": 301
+      },
+      {
+        "source": "/conjugarium/",
+        "destination": "/conjugarium",
+        "type": 301
+      },
+      {
+        "source": "/surhumains/",
+        "destination": "/surhumains",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/clap",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/conjugarium",
+        "destination": "/conjugarium.html"
+      },
+      {
+        "source": "/surhumains",
+        "destination": "/surhumains.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js|html)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/clap",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/conjugarium",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/surhumains",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
+    ]
+  }
+}

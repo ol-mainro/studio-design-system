@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Conjugarium — Design Tokens
+   Dossier autonome, dérivé du design system Clap ! Studio mais sans
+   dépendance à celui-ci : toutes les valeurs sont déclarées ici.
+
+   Deux couches :
+     1. Primitives  (--cjg-*)  : les couleurs brutes, jamais consommées
+        directement par un composant.
+     2. Tokens sémantiques (--surface, --accent, …) : ce que lisent les
+        composants dans components.css. C'est le même contrat de tokens
+        que le système Clap ! Studio — seules les valeurs changent.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Simply Olive';
+  src: url('./assets/fonts/simply-olive.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* ⚠ Police « Simply Olive » (Ali Hamidi) : le fichier fourni est une version
+   DEMO marquée PERSONAL USE ONLY dans ses métadonnées. Voir design.md § 7,
+   Licence des polices, avant toute mise en ligne publique. */
+
+/* ══════════════════════════════════════════════════════════════════════
+   1. PRIMITIVES — palette Conjugarium
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --cjg-navy: #0E172A;        /* nuit — couleur de contenu, pas un fond */
+  --cjg-navy-light: #1B2540;  /* nuit remontée — cartes en zone inversée */
+  --cjg-pink: #F4B0CF;        /* rose pochette — accent interactif */
+  --cjg-pink-hover: #F8C5DC;
+  --cjg-periwinkle: #C9C8FB;  /* bleu-lavande — bandeau du site de référence */
+  --cjg-lavender: #EFEEFA;    /* lavande pâle — fond principal */
+  --cjg-white: #FFFFFF;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   2. TOKENS SÉMANTIQUES — la surface de thématisation
+
+   Le système est CLAIR par défaut : le fond principal est la lavande pâle.
+   La nuit n'est pas un fond, c'est une couleur de contenu — texte, titres,
+   boutons pleins — et le fond d'UNE bande de rupture par page
+   (`.cl-section-invert`), jamais celui de la page entière.
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Couleur principale ── */
+  --primary: var(--cjg-navy);           /* titres, texte, boutons pleins */
+  --primary-hover: #1B2540;
+  --on-primary: var(--cjg-lavender);    /* posé SUR le primary */
+
+  /* ── Surfaces (claires) ── */
+  --surface: var(--cjg-lavender);       /* fond principal de la page */
+  --surface-raised: var(--cjg-white);   /* cartes, playlist, pills */
+  --surface-sunken: var(--cjg-white);   /* champs de saisie */
+  --surface-invert: var(--cjg-navy);    /* LA bande de rupture sombre */
+  --surface-invert-raised: var(--cjg-navy-light);
+
+  /* ── Accent : tout ce qui est cliquable ou actif ── */
+  --accent: var(--cjg-pink);
+  --accent-hover: var(--cjg-pink-hover);
+  --on-accent: var(--cjg-navy);             /* texte/icône posé SUR l'accent */
+  --on-accent-muted: rgba(14, 23, 42, 0.62);
+  --on-accent-faint: rgba(14, 23, 42, 0.48);
+  --accent-soft: rgba(244, 176, 207, 0.3);  /* fond de rangée active */
+  --accent-ring: rgba(244, 176, 207, 0.45); /* halo de focus */
+  --accent-glow: rgba(244, 176, 207, 0.35);
+  --accent-glow-lg: rgba(244, 176, 207, 0.4);
+  --accent-faint: rgba(244, 176, 207, 0.6); /* bordure au survol */
+  --accent-ink: #A62A60;                    /* accent en TEXTE (5.9:1 sur la lavande) */
+
+  /* ── Rampe de texte, relative à la surface courante ──
+     Quatre paliers, pas davantage. Ils basculent en bloc dans une zone
+     .cl-invert : les composants n'ont donc rien à savoir du fond. */
+  --text-1: var(--cjg-navy);               /* titres, libellés forts — ~16:1 */
+  --text-2: rgba(14, 23, 42, 0.78);        /* corps de texte, descriptions — ~10:1 */
+  --text-3: rgba(14, 23, 42, 0.65);        /* tags, légendes — plancher AA */
+  --text-4: rgba(14, 23, 42, 0.47);        /* 3:1 — information redondante SEULEMENT */
+
+  /* ── Bordures & voiles, relatifs à la surface courante ── */
+  --border-subtle: rgba(14, 23, 42, 0.12);
+  --border-hairline: rgba(14, 23, 42, 0.07);
+  --border-strong: rgba(14, 23, 42, 0.25);
+  --overlay-hover: rgba(14, 23, 42, 0.04);
+  --chip-bg: rgba(14, 23, 42, 0.06);
+  --chip-border: rgba(14, 23, 42, 0.1);
+
+  /* ── Typographie ──
+     Simply Olive n'a qu'une graisse : elle tient les deux registres (titres
+     publics et titres pro), là où Clap ! Studio distingue Gaegu / Avenir Heavy. */
+  --font-body: 'Lexend', sans-serif;
+  --font-heading: 'Simply Olive', 'Gaegu', cursive;
+  --font-display: 'Simply Olive', 'Avenir Heavy', 'Lexend', sans-serif;
+  --heading-lh: 1.1;
+  --heading-ls: 0.01em;
+  --heading-weight: 400;   /* 800 = titres gras ; 400 = police à graisse unique, pas de faux gras */
+
+  /* ── Séparateur de section ──
+     Les nuages sont plus larges que les coulures Clap : comprimés à 50 %
+     (la densité de référence) ils rapetissent. 70 % leur rend la largeur
+     du site d'origine. --divider-repeat = largeur d'UN motif. */
+  --divider-shape: var(--shape-clouds);
+  --divider-repeat: 70%;
+  --divider-repeat-mobile: 110%;
+
+  /* ── Couleurs d'état ── */
+  --danger: #D92D20;
+  --success: #067647;
+  --success-bg: rgba(6, 118, 71, 0.1);
+  --success-border: rgba(6, 118, 71, 0.25);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   2 bis. ZONE INVERSÉE
+   Une seule déclaration de tokens fait basculer tout un sous-arbre sur
+   fond sombre. Aucun composant n'est dupliqué ni modifié.
+   ══════════════════════════════════════════════════════════════════════ */
+.cl-invert,
+.cl-section-invert,
+.cl-section-dark {
+  --surface: var(--surface-invert);
+  --surface-raised: var(--surface-invert-raised);
+  --surface-sunken: var(--surface-invert);
+
+  --text-1: #FFFFFF;
+  --text-2: rgba(255, 255, 255, 0.78);
+  --text-3: rgba(255, 255, 255, 0.50);   /* plancher AA sur fond sombre */
+  --text-4: rgba(255, 255, 255, 0.34);   /* 3:1 — redondant seulement */
+
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-hairline: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --overlay-hover: rgba(255, 255, 255, 0.05);
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --chip-border: rgba(255, 255, 255, 0.14);
+
+  /* sur fond sombre, l'accent redevient lisible en texte tel quel */
+  --accent-ink: var(--accent);
+  --accent-soft: rgba(244, 176, 207, 0.16);
+
+  --primary: #FFFFFF;
+  --on-primary: var(--cjg-navy);
+
+  --danger: #F87171;
+  --success: #34D399;
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --success-border: rgba(16, 185, 129, 0.3);
+
+  background: var(--surface);
+  color: var(--text-1);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   3. FORME DU SÉPARATEUR — nuages, signature Conjugarium
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --shape-clouds: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 29.118 1920 270.882' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1920 300V149.767a46.196 46.196 0 0 0-22.039 5.559c-3.507-20.901-19.255-37.64-39.625-42.6a37.338 37.338 0 0 0 2.806-14.23c0-20.684-16.768-37.452-37.452-37.452a37.303 37.303 0 0 0-15.126 3.191c-1.507-11.909-11.667-21.121-23.985-21.121-7.229 0-13.712 3.175-18.144 8.203a72.14 72.14 0 0 0-32.342-7.617c-39.415 0-71.462 31.451-72.469 70.624a73.811 73.811 0 0 0-.479 8.258c0 5.593.646 11.031 1.835 16.268-11.074.021-21.12 4.318-28.656 11.29-10.837-10.438-25.56-16.871-41.797-16.871-16.99 0-32.322 7.036-43.278 18.347-19.886-17.825-46.146-28.672-74.948-28.672-52.004 0-95.739 35.337-108.551 83.303-31.816 1.879-58.862 21.571-71.255 49.274-10.827-10.492-25.576-16.914-41.823-16.914-28.204 0-51.858 19.359-58.431 45.517-10.681-8.075-23.967-12.871-38.405-12.871a63.36 63.36 0 0 0-27.988 6.476c-5.814-8.834-15.805-14.675-27.176-14.675a32.345 32.345 0 0 0-15.601 3.984c-10.175-18.891-30.136-31.724-53.085-31.724-7.031 0-13.766 1.184-20.026 3.418a83.571 83.571 0 0 0-11.326-14.46c-15.149-15.499-36.289-25.113-59.68-25.113-31.148 0-58.329 17.044-72.681 42.346-8.032-3.962-17.066-6.191-26.637-6.191-5.265 0-10.374.679-15.24 1.943-11.036-12.409-27.116-20.231-45.032-20.231-3.273 0-6.481.269-9.609.77-4.016-42.378-39.686-75.529-83.114-75.529-31.062 0-58.141 16.969-72.525 42.131-15.316-17.916-38.066-29.286-63.487-29.286-29.733 0-55.821 15.558-70.614 38.96a59.009 59.009 0 0 0-22.789-4.549c-8.193 0-16 1.669-23.095 4.679-2.568-43.81-38.896-78.549-83.351-78.549-7.451 0-14.67.99-21.545 2.82-2.233-27.293-24.681-48.851-52.354-49.676-1.073-20.113-17.72-36.092-38.1-36.092-17.029 0-31.448 11.158-36.357 26.56-13.147-18.252-34.567-30.147-58.779-30.147-18.747 0-35.824 7.129-48.681 18.819a45.897 45.897 0 0 0-7.07-.548c-25.166 0-45.566 20.401-45.566 45.566 0 7.308 1.73 14.209 4.788 20.331-11.276 10.695-18.32 25.808-18.32 42.576 0 1.979.101 3.934.293 5.863-8.231-7.432-19.131-11.958-31.089-11.958V300h1920z' fill='%23000'/%3E%3C/svg%3E");
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   4. TOKENS STRUCTURELS
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Tailles de police ──
+     Simply Olive porte moins loin que Gaegu à taille égale : titres remontés
+     d'un cran par rapport au système Clap ! Studio. */
+  --fs-xs: 0.72rem;
+  --fs-sm: 0.8rem;
+  --fs-base: 0.95rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.2rem;
+  --fs-xl: 1.4rem;
+  --fs-title-fun: clamp(2.4rem, 6vw, 4.2rem);
+  --fs-title-pro: clamp(2rem, 5.5vw, 3.2rem);
+  --fs-title-section: clamp(2rem, 5vw, 3.2rem);
+
+  --lh-tight: 1.15;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.7;
+  --lh-loose: 1.8;
+
+  --ls-tight: -0.02em;
+  --ls-label: 2px;
+  --ls-chip: 1.5px;
+
+  /* ── Espacement ── */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;  --sp-4: 1rem;
+  --sp-5: 1.25rem;  --sp-6: 1.5rem;   --sp-8: 2rem;     --sp-10: 2.5rem;
+  --sp-12: 3rem;    --sp-14: 3.5rem;  --sp-16: 4rem;
+
+  /* ── Rayons ── */
+  --r-xs: 4px;   --r-sm: 5px;    --r-md: 14px;  --r-lg: 16px;
+  --r-xl: 20px;  --r-2xl: 24px;  --r-pill: 50px; --r-round: 50%;
+
+  /* ── Ombres ──
+     La lavande pardonne encore moins qu'un blanc pur : ombres basses. */
+  --shadow-card: 0 1px 2px rgba(14, 23, 42, 0.05), 0 8px 24px rgba(14, 23, 42, 0.07);
+  --shadow-modal: 0 2px 4px rgba(14, 23, 42, 0.06), 0 16px 48px rgba(14, 23, 42, 0.14);
+  --shadow-cover: 0 8px 28px rgba(14, 23, 42, 0.2);
+  --shadow-player: 0 4px 24px rgba(14, 23, 42, 0.2);
+  --shadow-accent: 0 4px 16px var(--accent-glow);
+  --shadow-accent-lg: 0 8px 24px var(--accent-glow-lg);
+  --ring-focus: 0 0 0 3px var(--accent-ring);
+
+  /* ── Transitions ── */
+  --t-fast: 0.15s ease;
+  --t-base: 0.2s ease;
+
+  /* ── Layout ──
+     Les nuages ont besoin de plus de hauteur que les coulures. */
+  --content-max: 820px;
+  --prose-max: 620px;
+  --card-max: 520px;
+  --player-max: 760px;
+  --player-h: 100px;
+  --wave-h: 90px;
+  --wave-h-mobile: 60px;
+
+  /* Breakpoint unique : @media (max-width: 600px) */
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   5. ALIAS DE COMPATIBILITÉ
+   Pour le code existant (conjugarium-minisite) qui lit --navy / --yellow.
+   Ne pas utiliser dans du code neuf : passer par la couche sémantique.
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --navy: var(--cjg-navy);
+  --navy-light: var(--cjg-navy-light);
+  --yellow: var(--cjg-pink);
+  --yellow-hover: var(--cjg-pink-hover);
+  --white: var(--cjg-lavender);
+  --black: var(--cjg-navy);
+  --surface-alt: var(--surface);        /* ancien nom du fond clair */
+  --ink: var(--text-1);
+  --ink-heading: var(--text-1);
+  --ink-55: var(--on-accent-muted);
+  --ink-45: var(--on-accent-faint);
+  --text-on-dark: var(--text-1);
+  --text-on-dark-70: var(--text-2);
+  --text-on-dark-65: var(--text-2);
+  --text-on-dark-55: var(--text-3);
+  --text-on-dark-40: var(--text-4);
+  --text-on-dark-30: var(--text-4);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   6. UTILITAIRE PROPRE AU CONJUGARIUM
+   Le site de référence alterne DEUX fonds clairs : la lavande pâle et le
+   bleu-lavande plus saturé du bandeau principal. Exposé en utilitaire
+   plutôt qu'en token : il n'a pas d'équivalent générique.
+   ══════════════════════════════════════════════════════════════════════ */
+.cjg-section-periwinkle {
+  background: var(--cjg-periwinkle);
+}
