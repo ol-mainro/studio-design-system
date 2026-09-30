@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <style>
+      .art-title { font-family: 'Avenir Heavy', sans-serif; font-size: 32px; font-weight: 900; fill: #FFFFFF; letter-spacing: 2px; }
+      .art-sub { font-family: 'Lexend', sans-serif; font-size: 13px; font-weight: 500; fill: #FFD100; letter-spacing: 3px; text-transform: uppercase; }
+      .art-credit { font-family: 'Lexend', sans-serif; font-size: 11px; fill: rgba(255,255,255,0.7); }
+    </style>
+    <linearGradient id="artBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="40%" stop-color="#1C2541"/>
+      <stop offset="80%" stop-color="#3A506B"/>
+      <stop offset="100%" stop-color="#5BC0BE"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#FFD100" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#FFD100" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0B132B" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="artGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Illustration Background Canvas -->
+  <rect width="1200" height="800" fill="url(#artBg)"/>
+
+  <g fill="#FFFFFF" opacity="0.8">
+    <circle cx="60" cy="100" r="2"/><circle cx="150" cy="200" r="1.5"/><circle cx="230" cy="80" r="2.5"/><circle cx="90" cy="300" r="2"/><circle cx="300" cy="170" r="1.5"/>
+  </g>
+  <g transform="translate(300,0)">
+  <!-- Celestial Glow / Giant Stylized Moon -->
+  <circle cx="300" cy="280" r="220" fill="url(#moonGlow)"/>
+  <circle cx="300" cy="280" r="140" fill="#FFD100" opacity="0.85" filter="url(#artGlow)"/>
+
+  <!-- Sound Waves & Concentric Circles -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.35">
+    <circle cx="300" cy="280" r="170" stroke-dasharray="4 8"/>
+    <circle cx="300" cy="280" r="200" stroke-dasharray="2 12"/>
+    <circle cx="300" cy="280" r="230"/>
+    <circle cx="300" cy="280" r="260" stroke-dasharray="6 14"/>
+  </g>
+
+  <!-- Constellation of Stars & Notes -->
+  <g fill="#FFFFFF" opacity="0.8">
+    <circle cx="80" cy="120" r="2"/>
+    <circle cx="140" cy="80" r="1.5"/>
+    <circle cx="210" cy="110" r="2.5"/>
+    <circle cx="480" cy="100" r="2"/>
+    <circle cx="530" cy="160" r="1.5"/>
+    <circle cx="420" cy="70" r="2.5"/>
+    <circle cx="110" cy="220" r="2"/>
+    <circle cx="500" cy="240" r="2"/>
+  </g>
+
+  <!-- Stylized Mountain & Studio Skyline Silhouettes -->
+  <path d="M -300,540 L 0,560 Q 150,480 300,530 Q 450,580 600,500 T 1200,520 L 1200,800 L -300,800 Z" fill="#0D1B2E"/>
+  <path d="M -300,600 L 0,620 Q 200,560 400,600 Q 520,620 600,580 T 1200,600 L 1200,800 L -300,800 Z" fill="#060C14"/>
+
+  <!-- Central Hero Silhouettes Looking at the Horizon -->
+  <g transform="translate(230, 430)">
+    <!-- Character 1 (Tall, holding guitar/tablet) -->
+    <path d="M 25,60 C 25,30 55,30 55,60 L 65,130 L 15,130 Z" fill="#060C14"/>
+    <circle cx="40" cy="30" r="14" fill="#060C14"/>
+    <!-- Headphone silhouette with glow -->
+    <path d="M 28,26 Q 40,16 52,26" fill="none" stroke="#FFD100" stroke-width="3"/>
+    
+    <!-- Character 2 (Kid sitting on edge, legs swinging) -->
+    <circle cx="100" cy="50" r="12" fill="#060C14"/>
+    <path d="M 88,62 L 112,62 L 115,105 L 90,105 Z" fill="#060C14"/>
+    <line x1="95" y1="105" x2="95" y2="135" stroke="#060C14" stroke-width="5" stroke-linecap="round"/>
+    <line x1="108" y1="105" x2="112" y2="130" stroke="#060C14" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Small robot / mascot -->
+    <rect x="-15" y="80" width="22" height="22" rx="4" fill="#060C14"/>
+    <circle cx="-10" cy="88" r="2" fill="#FFD100"/>
+    <circle cx="2" cy="88" r="2" fill="#FFD100"/>
+    <line x1="-4" y1="80" x2="-4" y2="70" stroke="#060C14" stroke-width="2.5"/>
+    <circle cx="-4" cy="68" r="2.5" fill="#FFD100"/>
+  </g>
+
+  <!-- Floating Sheet of Notes & Pages into the Sky -->
+  <g fill="rgba(255,255,255,0.85)" stroke="#0D1B2E" stroke-width="1.5">
+    <polygon points="120,380 150,370 160,405 130,415" transform="rotate(-15, 140, 390)"/>
+    <polygon points="180,310 205,295 215,325 190,340" transform="rotate(20, 195, 320)"/>
+    <polygon points="410,340 440,335 445,370 415,375" transform="rotate(-25, 425, 355)"/>
+    <polygon points="460,410 485,395 495,425 470,440" transform="rotate(15, 475, 420)"/>
+  </g>
+
+  <!-- Glowing Musical Staff Spiraling Upwards -->
+  <path d="M 280,560 Q 200,450 260,350 Q 320,250 420,180" fill="none" stroke="#FFD100" stroke-width="2" stroke-linecap="round" filter="url(#artGlow)"/>
+
+  </g>
+  <g fill="#FFFFFF" opacity="0.8">
+    <circle cx="700" cy="90" r="2"/><circle cx="780" cy="150" r="1.5"/><circle cx="880" cy="70" r="2.5"/>
+    <circle cx="960" cy="200" r="2"/><circle cx="1060" cy="110" r="1.5"/><circle cx="1140" cy="180" r="2.5"/>
+    <circle cx="1100" cy="300" r="2"/><circle cx="740" cy="260" r="2"/>
+  </g>
+  <!-- Typography & Poster Title -->
+  <g transform="translate(600, 700)" text-anchor="middle">
+    <text y="0" class="art-sub">CLAP ! STUDIO · ARTWORK OFFICIEL</text>
+    <text y="38" class="art-title">L'ÉVEIL DES MONDES</text>
+    <text y="64" class="art-credit">Illustration originale de concept · Technique mixte numérique</text>
+  </g>
+
+  <!-- Elegant Art Border Frame -->
+  <rect x="20" y="20" width="1160" height="760" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+  <rect x="25" y="25" width="1150" height="750" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+</svg>

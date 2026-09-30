@@ -110,6 +110,7 @@
   <a href="#playlist">Playlist</a>
   <a href="#player">Lecteur</a>
   <a href="#video">Vidéo</a>
+  <a href="#planches">Planches & BD</a>
   <a href="#wave">Séparateurs</a>
   <a href="#invert">Inversé</a>
   <a href="#pages">Pages</a>
@@ -191,8 +192,6 @@
   <div class="sg-demo sg-demo--flow sg-demo--light">
     <span class="cl-badge">Fiction audio</span>
     <span class="cl-badge cl-badge--ghost">Ressources</span>
-    <span class="cl-badge cl-badge--success">✓ Accès vérifié</span>
-    <span class="cl-meta">9 épisodes</span>
   </div>
   <div class="sg-demo">
     <div class="cl-pills">
@@ -248,12 +247,10 @@
       <div class="cl-hero__info">
         <div class="cl-hero__badges">
           <span class="cl-badge">Fiction audio</span>
-          <span class="cl-badge cl-badge--success">✓ Accès vérifié</span>
           <button class="cl-btn cl-btn--ghost">Se déconnecter</button>
         </div>
         <h1 class="cl-title-pro">Le Conjugarium</h1>
         <p class="cl-desc">Avec Bertille, Nono et Ali, découvrez un monde fascinant où la conjugaison est une affaire de musique !</p>
-        <span class="cl-meta">9 épisodes</span>
       </div>
     </div>
   </div>
@@ -508,6 +505,157 @@
 &lt;/a&gt;</div>
 </section>
 
+<!-- ══════════ PLANCHES & ILLUSTRATIONS ══════════ -->
+<section class="sg-sec" id="planches">
+  <h2>Planches de BD &amp; Illustrations</h2>
+  <p class="sg-note">Présentation de planches de bande dessinée, crayonnés, illustrations et roughs. Deux modes d'affichage au choix : en <strong>vignettes</strong> (<code>.cl-board-gallery</code>) ou en <strong>liste</strong> (<code>.cl-board-list</code>). Un clic sur n'importe quelle vignette, titre ou ligne ouvre instantanément le visuel en grand format et en surimpression dans la visionneuse (<code>.cl-lightbox</code>), avec navigation au clavier (&larr; / &rarr; / &Eacute;chap).</p>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Mode Vignettes (Grille)</h3>
+  <p class="sg-note">Le ratio 3:4 portrait respecte le format d'une planche de BD standard (les visuels paysage sont recadrés en vignette, puis affichés en entier dans la visionneuse). Au survol, la carte se soulève, un voile doux apparaît avec une icône loupe, et l'image s'anime d'un léger zoom. Clic pour agrandir.</p>
+  <div class="sg-demo">
+    <div class="cl-board-gallery">
+      <!-- Planche 1 -->
+      <article class="cl-board-card" data-cl-lightbox-item data-src="./assets/planche-bd-1.svg" data-title="Planche 1 : Le Réveil du Studio" data-caption="Scène d'ouverture matinale dans la cabine de son. Encrage traditionnel et colorisation pop." data-author="Dessin : Studio Clap ! · Encrage direct" data-badge="Planche 01">
+        <div class="cl-board-card__thumb">
+          <img src="./assets/planche-bd-1.svg" alt="Planche 1 : Le Réveil du Studio" />
+          <div class="cl-board-card__overlay">
+            <span class="cl-board-card__zoom" aria-label="Agrandir la planche">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </span>
+          </div>
+          <span class="cl-board-card__badge">Planche 01</span>
+        </div>
+        <div class="cl-board-card__body">
+          <span class="cl-board-card__eyebrow">BD Épisode 1</span>
+          <h4 class="cl-board-card__title">Le Réveil du Studio</h4>
+          <p class="cl-board-card__desc">Encrage traditionnel &amp; couleurs vives</p>
+        </div>
+      </article>
+
+      <!-- Planche 2 -->
+      <article class="cl-board-card" data-cl-lightbox-item data-src="./assets/planche-bd-2.svg" data-title="Planche 7 : Alerte Nocturne" data-caption="Chronique de Néopolis : Volt plonge dans le secteur 4. Découpage dynamique et impact sonique." data-author="Scénario &amp; dessin : Équipe BD" data-badge="Planche 07">
+        <div class="cl-board-card__thumb">
+          <img src="./assets/planche-bd-2.svg" alt="Planche 7 : Alerte Nocturne" />
+          <div class="cl-board-card__overlay">
+            <span class="cl-board-card__zoom" aria-label="Agrandir la planche">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </span>
+          </div>
+          <span class="cl-board-card__badge">Planche 07</span>
+        </div>
+        <div class="cl-board-card__body">
+          <span class="cl-board-card__eyebrow">Action / Aventure</span>
+          <h4 class="cl-board-card__title">Alerte Nocturne</h4>
+          <p class="cl-board-card__desc">Découpage comics &amp; effets visuels</p>
+        </div>
+      </article>
+
+      <!-- Illustration -->
+      <article class="cl-board-card" data-cl-lightbox-item data-src="./assets/illustration-1.svg" data-title="Artwork : L'Éveil des Mondes" data-caption="Grande illustration de couverture panoramique. Technique mixte numérique et trames célestes." data-author="Illustration originale de concept" data-badge="Artwork">
+        <div class="cl-board-card__thumb">
+          <img src="./assets/illustration-1.svg" alt="Artwork : L'Éveil des Mondes" />
+          <div class="cl-board-card__overlay">
+            <span class="cl-board-card__zoom" aria-label="Agrandir l'illustration">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </span>
+          </div>
+          <span class="cl-board-card__badge">Illustration</span>
+        </div>
+        <div class="cl-board-card__body">
+          <span class="cl-board-card__eyebrow">Pleine Page</span>
+          <h4 class="cl-board-card__title">L'Éveil des Mondes</h4>
+          <p class="cl-board-card__desc">Affiche &amp; couverture officielle</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Mode Liste (Titre &amp; élément cliquable)</h3>
+  <p class="sg-note">Idéal pour un sommaire d'épisode, un pack pédagogique ou une liste d'archives. Chaque ligne est cliquable (au niveau du titre, de la miniature ou du bouton &laquo; Voir en grand &raquo;) et ouvre directement la surimpression.</p>
+  <div class="sg-demo">
+    <div class="cl-board-list">
+      <div class="cl-board-row" data-cl-lightbox-item data-src="./assets/planche-bd-1.svg" data-title="Planche 1 : Le Réveil du Studio" data-caption="Scène d'ouverture matinale dans la cabine de son. Encrage traditionnel et colorisation pop." data-author="Studio Clap !" data-badge="Planche 01">
+        <span class="cl-board-row__num">01</span>
+        <div class="cl-board-row__thumb">
+          <img src="./assets/planche-bd-1.svg" alt="Miniature Planche 1" />
+        </div>
+        <div class="cl-board-row__info">
+          <h4 class="cl-board-row__title">Planche 1 : Le Réveil du Studio</h4>
+          <p class="cl-board-row__desc">Arrivée au studio d'enregistrement, balances micro et premier décompte</p>
+        </div>
+        <span class="cl-board-row__tag">Planche BD</span>
+        <button type="button" class="cl-board-row__cta" aria-label="Voir en grand la planche 1">
+          <span>Agrandir</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+        </button>
+      </div>
+
+      <div class="cl-board-row" data-cl-lightbox-item data-src="./assets/planche-bd-2.svg" data-title="Planche 7 : Alerte Nocturne" data-caption="Chronique de Néopolis : Volt plonge dans le secteur 4. Découpage dynamique et impact sonique." data-author="Équipe BD" data-badge="Planche 07">
+        <span class="cl-board-row__num">02</span>
+        <div class="cl-board-row__thumb">
+          <img src="./assets/planche-bd-2.svg" alt="Miniature Planche 2" />
+        </div>
+        <div class="cl-board-row__info">
+          <h4 class="cl-board-row__title">Planche 7 : Alerte Nocturne</h4>
+          <p class="cl-board-row__desc">Poursuite sur les toits de la ville et confrontation dans la centrale</p>
+        </div>
+        <span class="cl-board-row__tag">Action / Comics</span>
+        <button type="button" class="cl-board-row__cta" aria-label="Voir en grand la planche 7">
+          <span>Agrandir</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+        </button>
+      </div>
+
+      <div class="cl-board-row" data-cl-lightbox-item data-src="./assets/illustration-1.svg" data-title="Artwork : L'Éveil des Mondes" data-caption="Grande illustration de couverture panoramique. Technique mixte numérique et trames célestes." data-author="Illustration originale" data-badge="Artwork">
+        <span class="cl-board-row__num">03</span>
+        <div class="cl-board-row__thumb">
+          <img src="./assets/illustration-1.svg" alt="Miniature Illustration" />
+        </div>
+        <div class="cl-board-row__info">
+          <h4 class="cl-board-row__title">Artwork : L'Éveil des Mondes</h4>
+          <p class="cl-board-row__desc">Poster pleine page pour le lancement du projet audio-dessiné</p>
+        </div>
+        <span class="cl-board-row__tag">Illustration</span>
+        <button type="button" class="cl-board-row__cta" aria-label="Voir en grand l'artwork">
+          <span>Agrandir</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-code">&lt;!-- Grille de vignettes --&gt;
+&lt;div class="cl-board-gallery"&gt;
+  &lt;article class="cl-board-card" data-src="planche-01.jpg" data-title="Titre de la planche" data-caption="Description optionnelle"&gt;
+    &lt;div class="cl-board-card__thumb"&gt;
+      &lt;img src="planche-01.jpg" alt="Aperçu" /&gt;
+      &lt;div class="cl-board-card__overlay"&gt;
+        &lt;span class="cl-board-card__zoom"&gt;🔍&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class="cl-board-card__badge"&gt;Planche 01&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="cl-board-card__body"&gt;
+      &lt;span class="cl-board-card__eyebrow"&gt;Chapitre 1&lt;/span&gt;
+      &lt;h4 class="cl-board-card__title"&gt;Le Réveil du Studio&lt;/h4&gt;
+      &lt;p class="cl-board-card__desc"&gt;Encrage traditionnel &amp; couleurs vives&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;
+
+&lt;!-- Liste d'éléments cliquables --&gt;
+&lt;div class="cl-board-list"&gt;
+  &lt;div class="cl-board-row" data-src="planche-01.jpg" data-title="Planche 1 : Le Réveil du Studio"&gt;
+    &lt;span class="cl-board-row__num"&gt;01&lt;/span&gt;
+    &lt;div class="cl-board-row__thumb"&gt;&lt;img src="thumb-01.jpg" alt="" /&gt;&lt;/div&gt;
+    &lt;div class="cl-board-row__info"&gt;
+      &lt;h4 class="cl-board-row__title"&gt;Planche 1 : Le Réveil du Studio&lt;/h4&gt;
+      &lt;p class="cl-board-row__desc"&gt;Arrivée au studio d'enregistrement&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class="cl-board-row__cta"&gt;Agrandir →&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+</section>
+
 <!-- ══════════ COULURES ══════════ -->
 <section class="sg-sec" id="wave">
   <h2>Séparateurs de section</h2>
@@ -547,7 +695,6 @@
           <div class="cl-hero__info">
             <span class="cl-badge">Fiction audio</span>
             <h1 class="cl-title-fun" style="font-size:2rem">Le Conjugarium</h1>
-            <span class="cl-meta">9 épisodes</span>
           </div>
         </div>
       </div>
@@ -622,7 +769,6 @@
       <button class="cl-btn">Télécharger</button>
       <button class="cl-btn cl-btn--primary">Action sobre</button>
       <button class="cl-btn cl-btn--ghost">Se déconnecter</button>
-      <span class="cl-meta">9 épisodes</span>
     </div>
   </div>
   <div class="sg-code">&lt;section class="cl-section-invert"&gt;   &lt;!-- ou class="cl-invert" sur n'importe quel bloc --&gt;
@@ -740,6 +886,7 @@ renderTokens();
 })();
 
 </script>
+<script src="./components.js"></script>
 
 </body>
 </html>

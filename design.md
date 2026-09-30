@@ -14,13 +14,16 @@ défaut) et Conjugarium. Voir § 7.
 | `design.md` | Ce document : principes, tokens, anatomie des composants, règles d'usage |
 | `tokens.css` | Variables CSS — **source de vérité** des valeurs de design |
 | `components.css` | Composants prêts à l'emploi, préfixés `.cl-`, dépend de `tokens.css` |
+| `components.js` | Contrôleur JavaScript léger (visionneuse en surimpression / lightbox accessible) |
 | `themes/conjugarium.css` | Thème Conjugarium — ne redéfinit que la couche sémantique |
 | `themes/surhumains.css` | Thème Surhumains — ne redéfinit que la couche sémantique |
+| `themes/observatoire.css` | Thème Observatoire — ne redéfinit que la couche sémantique |
 | `index.html` | Styleguide, thème Clap ! Studio — sert `/clap` |
 | `conjugarium.html` | Styleguide, thème Conjugarium — sert `/conjugarium`, ses propres meta de partage |
 | `surhumains.html` | Styleguide, thème Surhumains — sert `/surhumains`, ses propres meta de partage |
+| `observatoire.html` | Styleguide, thème Observatoire — sert `/observatoire`, ses propres meta de partage |
 | `assets/fonts/` | `avenir-heavy.woff2`, `simply-olive.woff2` |
-| `assets/` | `clap-logo.png`, `conjugarium-cover.jpg`, `surhumains-cover.jpg` |
+| `assets/` | `clap-logo.png`, `conjugarium-cover.jpg`, `surhumains-cover.jpg`, planches SVG |
 
 ## Démarrage
 
@@ -382,6 +385,39 @@ rayon 100px. Structure : `.cl-player__play` (rond noir 48px, icône jaune) ·
 tactile. Sous 600px : rayon `--r-2xl` et `.cl-player__side` masqué.
 
 **Toujours** ajouter `.cl-player-spacer` en fin de page quand le lecteur est monté.
+
+### Vidéo
+
+Le pendant vidéo de la playlist audio. Trois briques thématisées :
+- `.cl-vgallery` : conteneur de cartes vidéo `.cl-vcard` (vignette 16:9, durée, eyebrow, titre et CTA).
+- `.cl-video` : lecteur avec frame au ratio 16:9 (`.cl-video__frame`).
+- `.cl-vswitcher` : grille responsive de sélecteurs (`.cl-vchip`, pastille numéro et titre).
+
+### Planches de BD &amp; Illustrations
+
+Composants dédiés à la présentation d'œuvres visuelles, planches de bande dessinée, roughs,
+crayonnés et illustrations d'art.
+
+Deux modes de présentation au choix :
+- **Mode vignettes (grille)** : `.cl-board-gallery` dispose des cartes `.cl-board-card` en grille
+  responsive (`minmax(220px, 1fr)`). La vignette `.cl-board-card__thumb` est au ratio portrait **3:4**
+  (format standard de planche BD). Au survol, la carte se soulève, un voile doux apparaît avec une
+  icône loupe et l'image s'anime d'un micro-zoom (1.03).
+- **Mode liste** : `.cl-board-list` aligne des rangées `.cl-board-row` comportant un badge numéro,
+  une miniature optionnelle, le titre, la description/technique et un bouton d'action « Agrandir ».
+
+**Visionneuse en surimpression (`.cl-lightbox`)** :
+Un clic sur n'importe quelle vignette (`.cl-board-card`), titre ou rangée de liste (`.cl-board-row`)
+ouvre instantanément le visuel en grand format dans une boîte modale au fond obscurci et flouté
+(`backdrop-filter: blur(8px)`).
+
+- **Navigation groupée** : Les planches d'une même galerie ou liste forment un ensemble navigable
+  via les flèches latérales (`.cl-lightbox__nav--prev` / `.cl-lightbox__nav--next`) ou en cliquant sur l'image.
+- **Raccourcis clavier** : Touche `Échap` pour fermer, flèches `←` et `→` pour feuilleter les planches.
+- **Accessibilité &amp; focus** : Focus capturé dans la modale à l'ouverture, défilement arrière-plan
+  verrouillé (`overflow: hidden` sur `<body>`), et restitution du focus sur l'élément déclencheur à la fermeture.
+- **Zéro dépendance** : Le script `components.js` gère automatiquement la liaison DOM via les classes
+  `.cl-board-card` / `.cl-board-row` ou les attributs `data-cl-lightbox-item` / `data-src` / `data-title` / `data-caption`.
 
 ---
 
