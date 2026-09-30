@@ -32,6 +32,11 @@
         "source": "/surhumains/",
         "destination": "/surhumains",
         "type": 301
+      },
+      {
+        "source": "/observatoire/",
+        "destination": "/observatoire",
+        "type": 301
       }
     ],
     "rewrites": [
@@ -46,6 +51,10 @@
       {
         "source": "/surhumains",
         "destination": "/surhumains.html"
+      },
+      {
+        "source": "/observatoire",
+        "destination": "/observatoire.html"
       }
     ],
     "headers": [
@@ -87,6 +96,15 @@
       },
       {
         "source": "/surhumains",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/observatoire",
         "headers": [
           {
             "key": "Cache-Control",

@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Thème — L'Observatoire des Mots
+   Dérivé de clapeditions.fr/observatoire-des-mots.
+   Hérite de _base.css pour les dérivations automatiques (text ramp,
+   borders, shadows, accent-soft/ring/glow). Ne déclare que les tokens
+   propres au thème.
+
+   Deux façons de l'activer :
+     a) <html data-theme="observatoire">   → bascule à chaud
+     b) charger ce fichier seul            → thème par défaut du document
+
+   Registre : l'Observatoire des Mots est un podcast littéraire/éducatif.
+   Le violet foncé porte l'autorité, l'orange vif les interactions.
+   Le rose sert de bande secondaire douce.
+   ========================================================================== */
+
+/* ══════════════════════════════════════════════════════════════════════
+   1. PRIMITIVES — palette Observatoire des Mots
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --obs-purple: #33236B;        /* violet foncé — couleur principale */
+  --obs-purple-hover: #402D80;
+  --obs-purple-deep: #271A54;   /* bande de rupture sombre */
+  --obs-orange: #EA571B;        /* orange vif — accent interactif */
+  --obs-orange-hover: #F06B34;
+  --obs-orange-ink: #B53F0E;    /* orange en TEXTE — 5.8:1 sur blanc */
+  --obs-pink: #F4B0CF;          /* rose — seconde bande claire */
+  --obs-off-white: #FAF8FC;     /* blanc légèrement violacé — fond principal */
+  --obs-ink: #1E1340;           /* encre violette — texte, 15:1 sur le fond */
+  --obs-white: #FFFFFF;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   2. APPLICATION — tokens propres (le reste vient de _base.css)
+   ══════════════════════════════════════════════════════════════════════ */
+:root[data-theme="observatoire"],
+[data-theme="observatoire"] {
+  /* ── Triplets RGB pour les dérivations de _base.css ── */
+  --_ink-rgb: 30, 19, 64;
+  --_accent-rgb: 234, 87, 27;
+  --_shadow-rgb: 30, 19, 64;
+
+  /* ── Couleur principale : le violet porte titres et boutons ── */
+  --primary: var(--obs-purple);
+  --primary-hover: var(--obs-purple-hover);
+  --on-primary: var(--obs-white);
+
+  /* ── Surfaces : blanc violacé en fond, cartes blanches ── */
+  --surface: var(--obs-off-white);
+  --surface-raised: var(--obs-white);
+  --surface-sunken: #F0ECF5;
+  --surface-invert: var(--obs-purple-deep);
+  --surface-invert-raised: var(--obs-purple);
+
+  /* ── Accent ── */
+  --accent: var(--obs-orange);
+  --accent-hover: var(--obs-orange-hover);
+  --on-accent: var(--obs-white);
+  --accent-ink: var(--obs-orange-ink);
+
+  /* ── Typographie : Avenir Heavy pour les deux registres ── */
+  --font-heading: 'Avenir Heavy', 'Lexend', sans-serif;
+  --font-display: 'Avenir Heavy', 'Lexend', sans-serif;
+  --heading-lh: 1.05;
+  --heading-ls: -0.01em;
+
+  /* ── Séparateur : coulures par défaut ── */
+  --divider-shape: var(--shape-drips);
+  --divider-repeat: 50%;
+  --divider-repeat-mobile: 66.66%;
+  --wave-h: 75px;
+  --wave-h-mobile: 50px;
+
+  /* ── Alias de compatibilité ── */
+  --navy: var(--obs-purple-deep);
+  --navy-light: var(--obs-purple);
+  --yellow: var(--obs-orange);
+  --yellow-hover: var(--obs-orange-hover);
+  --white: var(--obs-off-white);
+  --black: var(--obs-ink);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   3. UTILITAIRE PROPRE AU THÈME
+   Le site alterne deux fonds clairs : le blanc violacé et le rose.
+   ══════════════════════════════════════════════════════════════════════ */
+[data-theme="observatoire"] .cl-section-light--alt,
+.obs-section-pink {
+  background: var(--obs-pink);
+}

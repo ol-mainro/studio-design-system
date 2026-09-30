@@ -118,6 +118,7 @@
     <a class="sg-theme__btn" href="/clap" data-page-link="clap">Clap ! Studio</a>
     <a class="sg-theme__btn" href="/conjugarium" data-page-link="conjugarium">Conjugarium</a>
     <a class="sg-theme__btn" href="/surhumains" data-page-link="surhumains">Surhumains</a>
+    <a class="sg-theme__btn" href="/observatoire" data-page-link="observatoire">Observatoire</a>
   </div>
 </nav>
 
@@ -727,7 +728,7 @@ renderTokens();
   if (link) link.classList.add('sg-theme__btn--on');
   // sans serveur, les chemins absolus ne résolvent pas : pointer vers le fichier voisin
   if (location.protocol === 'file:') {
-    var files = { clap: 'index.html', conjugarium: 'conjugarium.html', surhumains: 'surhumains.html' };
+    var files = { clap: 'index.html', conjugarium: 'conjugarium.html', surhumains: 'surhumains.html', observatoire: 'observatoire.html' };
     document.querySelectorAll('[data-page-link]').forEach(function (a) {
       a.setAttribute('href', files[a.dataset.pageLink]);
     });
