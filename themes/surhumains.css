@@ -1,8 +1,9 @@
 /* ==========================================================================
    Thème — Surhumains
    Dérivé de clapeditions.fr/surhumains.
-   Ne redéfinit QUE la couche sémantique de tokens.css : aucun composant
-   n'est modifié, aucune classe n'est ajoutée.
+   Hérite de _base.css pour les dérivations automatiques (text ramp,
+   borders, shadows, accent-soft/ring/glow). Ne déclare que les tokens
+   propres au thème.
 
    Deux façons de l'activer :
      a) <html data-theme="surhumains">   → bascule à chaud
@@ -18,29 +19,34 @@
    1. PRIMITIVES — palette Surhumains
    ══════════════════════════════════════════════════════════════════════ */
 :root {
-  --shm-blue: #3333CB;        /* bleu électrique — couleur principale */
+  --shm-blue: #3333CB;
   --shm-blue-hover: #4242DD;
-  --shm-blue-deep: #2626A8;   /* bande de rupture sombre */
-  --shm-pink: #F98FA5;        /* rose corail — accent interactif */
+  --shm-blue-deep: #2626A8;
+  --shm-pink: #F98FA5;
   --shm-pink-hover: #FBA8B9;
-  --shm-pink-ink: #B0234A;    /* rose en TEXTE — 6.3:1 sur le blanc cassé */
-  --shm-mint: #9EEFDF;        /* menthe — seconde bande claire */
-  --shm-off-white: #F9F9F9;   /* blanc cassé — fond principal */
-  --shm-ink: #14144B;         /* encre indigo — texte, 16:1 sur le fond */
+  --shm-pink-ink: #B0234A;
+  --shm-mint: #9EEFDF;
+  --shm-off-white: #F9F9F9;
+  --shm-ink: #14144B;
   --shm-white: #FFFFFF;
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   2. APPLICATION
+   2. APPLICATION — tokens propres (le reste vient de _base.css)
    ══════════════════════════════════════════════════════════════════════ */
 :root[data-theme="surhumains"],
 [data-theme="surhumains"] {
-  /* ── Couleur principale : le bleu électrique porte titres et boutons ── */
+  /* ── Triplets RGB pour les dérivations de _base.css ── */
+  --_ink-rgb: 20, 20, 75;
+  --_accent-rgb: 249, 143, 165;
+  --_shadow-rgb: 20, 20, 75;
+
+  /* ── Couleur principale ── */
   --primary: var(--shm-blue);
   --primary-hover: var(--shm-blue-hover);
   --on-primary: var(--shm-white);
 
-  /* ── Surfaces : blanc cassé en fond, cartes blanches ── */
+  /* ── Surfaces ── */
   --surface: var(--shm-off-white);
   --surface-raised: var(--shm-white);
   --surface-sunken: #EFEFF4;
@@ -51,45 +57,15 @@
   --accent: var(--shm-pink);
   --accent-hover: var(--shm-pink-hover);
   --on-accent: var(--shm-ink);
-  --on-accent-muted: rgba(20, 20, 75, 0.62);
-  --on-accent-faint: rgba(20, 20, 75, 0.48);
-  --accent-soft: rgba(249, 143, 165, 0.22);
-  --accent-ring: rgba(249, 143, 165, 0.45);
-  --accent-glow: rgba(249, 143, 165, 0.3);
-  --accent-glow-lg: rgba(249, 143, 165, 0.38);
-  --accent-faint: rgba(249, 143, 165, 0.6);
   --accent-ink: var(--shm-pink-ink);
 
-  /* ── Rampe de texte sur le blanc cassé ── */
-  --text-1: var(--shm-ink);
-  --text-2: rgba(20, 20, 75, 0.78);
-  --text-3: rgba(20, 20, 75, 0.62);   /* 5.2:1 — plancher AA */
-  --text-4: rgba(20, 20, 75, 0.47);   /* 3:1 — redondant seulement */
-
-  /* ── Bordures & voiles ── */
-  --border-subtle: rgba(20, 20, 75, 0.12);
-  --border-hairline: rgba(20, 20, 75, 0.07);
-  --border-strong: rgba(20, 20, 75, 0.25);
-  --overlay-hover: rgba(20, 20, 75, 0.04);
-  --chip-bg: rgba(20, 20, 75, 0.06);
-  --chip-border: rgba(20, 20, 75, 0.1);
-
-  /* ── Ombres teintées indigo ── */
-  --shadow-card: 0 1px 2px rgba(20, 20, 75, 0.05), 0 8px 24px rgba(20, 20, 75, 0.08);
-  --shadow-modal: 0 2px 4px rgba(20, 20, 75, 0.06), 0 16px 48px rgba(20, 20, 75, 0.16);
-  --shadow-cover: 0 8px 28px rgba(20, 20, 75, 0.22);
-  --shadow-player: 0 4px 24px rgba(20, 20, 75, 0.22);
-
-  /* ── Typographie : un seul registre, sans-serif ── */
+  /* ── Typographie ── */
   --font-heading: 'Avenir Heavy', 'Lexend', sans-serif;
   --font-display: 'Avenir Heavy', 'Lexend', sans-serif;
   --heading-lh: 1.05;
   --heading-ls: -0.01em;
 
-  /* ── Séparateur : les flammes du site d'origine ──
-     Relevées sur clapeditions.fr/surhumains. Le SVG contient déjà ~3 motifs
-     sur ses 1920 unités : il occupe donc toute la largeur d'un coup (100%),
-     là où les coulures sont un motif dense répété deux fois. */
+  /* ── Séparateur ── */
   --divider-shape: var(--shape-flames);
   --divider-repeat: 100%;
   --divider-repeat-mobile: 200%;
@@ -105,19 +81,8 @@
   --black: var(--shm-ink);
 }
 
-/* La bande inversée du thème : l'accent y redevient lisible en texte. */
-[data-theme="surhumains"] .cl-invert,
-[data-theme="surhumains"] .cl-section-invert,
-[data-theme="surhumains"] .cl-section-dark {
-  --accent-soft: rgba(249, 143, 165, 0.16);
-  --primary: var(--shm-white);
-  --on-primary: var(--shm-blue-deep);
-}
-
 /* ══════════════════════════════════════════════════════════════════════
    3. UTILITAIRE PROPRE AU THÈME
-   Le site de référence alterne deux fonds clairs : le blanc cassé et la
-   menthe. Cette classe donne la seconde bande.
    ══════════════════════════════════════════════════════════════════════ */
 [data-theme="surhumains"] .cl-section-light--alt,
 .shm-section-mint {

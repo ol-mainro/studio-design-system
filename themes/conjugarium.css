@@ -1,8 +1,9 @@
 /* ==========================================================================
    Thème — Bienvenue au Conjugarium
    Dérivé de clapeditions.fr/bienvenueauconjugarium-audio.
-   Ne redéfinit QUE la couche sémantique de tokens.css : aucun composant
-   n'est modifié, aucune classe n'est ajoutée.
+   Hérite de _base.css pour les dérivations automatiques (text ramp,
+   borders, shadows, accent-soft/ring/glow). Ne déclare que les tokens
+   propres au thème.
 
    Deux façons de l'activer :
      a) <html data-theme="conjugarium">   → bascule à chaud
@@ -23,26 +24,31 @@
    1. PRIMITIVES — palette Conjugarium
    ══════════════════════════════════════════════════════════════════════ */
 :root {
-  --cjg-navy: #0E172A;        /* nuit — fond des sections de contenu */
-  --cjg-navy-light: #1B2540;  /* nuit remontée — cartes, playlist */
-  --cjg-pink: #F4B0CF;        /* rose pochette — accent interactif */
+  --cjg-navy: #0E172A;
+  --cjg-navy-light: #1B2540;
+  --cjg-pink: #F4B0CF;
   --cjg-pink-hover: #F8C5DC;
-  --cjg-periwinkle: #C9C8FB;  /* bleu-lavande — bandeau principal du site */
-  --cjg-lavender: #EFEEFA;    /* lavande pâle — sections de texte long */
+  --cjg-periwinkle: #C9C8FB;
+  --cjg-lavender: #EFEEFA;
   --cjg-white: #FFFFFF;
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   2. APPLICATION
+   2. APPLICATION — tokens propres (le reste vient de _base.css)
    ══════════════════════════════════════════════════════════════════════ */
 :root[data-theme="conjugarium"],
 [data-theme="conjugarium"] {
-  /* ── Couleur principale : la nuit devient contenu, pas fond de page ── */
+  /* ── Triplets RGB pour les dérivations de _base.css ── */
+  --_ink-rgb: 14, 23, 42;
+  --_accent-rgb: 244, 176, 207;
+  --_shadow-rgb: 14, 23, 42;
+
+  /* ── Couleur principale ── */
   --primary: var(--cjg-navy);
   --primary-hover: #1B2540;
   --on-primary: var(--cjg-lavender);
 
-  /* ── Surfaces : lavande pâle en fond principal, cartes blanches ── */
+  /* ── Surfaces ── */
   --surface: var(--cjg-lavender);
   --surface-raised: var(--cjg-white);
   --surface-sunken: var(--cjg-white);
@@ -53,34 +59,7 @@
   --accent: var(--cjg-pink);
   --accent-hover: var(--cjg-pink-hover);
   --on-accent: var(--cjg-navy);
-  --on-accent-muted: rgba(14, 23, 42, 0.62);
-  --on-accent-faint: rgba(14, 23, 42, 0.48);
-  --accent-soft: rgba(244, 176, 207, 0.3);
-  --accent-ring: rgba(244, 176, 207, 0.45);
-  --accent-glow: rgba(244, 176, 207, 0.35);
-  --accent-glow-lg: rgba(244, 176, 207, 0.4);
-  --accent-faint: rgba(244, 176, 207, 0.6);
-  --accent-ink: #A62A60;              /* 5.9:1 sur la lavande #EFEEFA */
-
-  /* ── Rampe de texte sur la lavande ── */
-  --text-1: var(--cjg-navy);
-  --text-2: rgba(14, 23, 42, 0.78);
-  --text-3: rgba(14, 23, 42, 0.65);   /* plancher AA sur la lavande */
-  --text-4: rgba(14, 23, 42, 0.47);   /* 3:1 — redondant seulement */
-
-  /* ── Bordures & voiles ── */
-  --border-subtle: rgba(14, 23, 42, 0.12);
-  --border-hairline: rgba(14, 23, 42, 0.07);
-  --border-strong: rgba(14, 23, 42, 0.25);
-  --overlay-hover: rgba(14, 23, 42, 0.04);
-  --chip-bg: rgba(14, 23, 42, 0.06);
-  --chip-border: rgba(14, 23, 42, 0.1);
-
-  /* ── Ombres : la lavande pardonne encore moins que le blanc ── */
-  --shadow-card: 0 1px 2px rgba(14, 23, 42, 0.05), 0 8px 24px rgba(14, 23, 42, 0.07);
-  --shadow-modal: 0 2px 4px rgba(14, 23, 42, 0.06), 0 16px 48px rgba(14, 23, 42, 0.14);
-  --shadow-cover: 0 8px 28px rgba(14, 23, 42, 0.2);
-  --shadow-player: 0 4px 24px rgba(14, 23, 42, 0.2);
+  --accent-ink: #A62A60;
 
   /* ── Typographie ── */
   --font-heading: 'Simply Olive', 'Gaegu', cursive;
@@ -91,10 +70,8 @@
   --fs-title-pro: clamp(2rem, 5.5vw, 3.2rem);
   --fs-title-section: clamp(2rem, 5vw, 3.2rem);
 
-  /* ── Séparateur : nuages au lieu des coulures ── */
+  /* ── Séparateur ── */
   --divider-shape: var(--shape-clouds);
-  /* Les nuages sont plus larges que les coulures : comprimés à la densité de
-     base (50%) ils rapetissent. 70% leur rend la largeur du site d'origine. */
   --divider-repeat: 70%;
   --divider-repeat-mobile: 110%;
   --wave-h: 90px;
@@ -109,15 +86,6 @@
   --black: var(--cjg-navy);
 }
 
-/* La bande inversée du thème : l'accent y redevient lisible en texte. */
-[data-theme="conjugarium"] .cl-invert,
-[data-theme="conjugarium"] .cl-section-invert,
-[data-theme="conjugarium"] .cl-section-dark {
-  --accent-soft: rgba(244, 176, 207, 0.16);
-  --primary: #FFFFFF;
-  --on-primary: var(--cjg-navy);
-}
-
 /* ══════════════════════════════════════════════════════════════════════
    3. AJUSTEMENTS DE THÈME
    Simply Olive n'a qu'une graisse : neutraliser les faux gras des titres.
@@ -128,13 +96,11 @@
 [data-theme="conjugarium"] .cl-banner__title {
   line-height: var(--heading-lh);
   letter-spacing: var(--heading-ls);
-  font-weight: 400;   /* Simply Olive n'a qu'une graisse : pas de faux gras */
+  font-weight: 400;
 }
 
 /* ══════════════════════════════════════════════════════════════════════
    4. UTILITAIRE PROPRE AU THÈME
-   Le site de référence alterne DEUX fonds clairs : la lavande pâle et le
-   bleu-lavande plus saturé. Cette classe donne la seconde bande.
    ══════════════════════════════════════════════════════════════════════ */
 [data-theme="conjugarium"] .cl-section-light--alt,
 .cjg-section-periwinkle {

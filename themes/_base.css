@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Socle thématique — dérivations automatiques
+   Chaque thème enfant déclare :
+     --_ink-rgb          triplet RGB de la couleur d'encre
+     --_accent-rgb       triplet RGB de l'accent
+     --_shadow-rgb       triplet RGB pour les ombres (souvent = ink)
+   Et les tokens nommés qui ne se dérivent pas :
+     --primary, --primary-hover, --on-primary,
+     --surface, --surface-raised, --surface-sunken,
+     --surface-invert, --surface-invert-raised,
+     --accent, --accent-hover, --on-accent, --accent-ink,
+     --font-heading, --font-display, --heading-lh, --heading-ls,
+     --divider-shape, --divider-repeat, --divider-repeat-mobile,
+     --wave-h, --wave-h-mobile
+   Tout le reste (text ramp, borders, shadows, accent-soft/ring/glow)
+   est dérivé ici mécaniquement et n'a PAS besoin d'être redéclaré.
+   ========================================================================== */
+
+/* ══════════════════════════════════════════════════════════════════════
+   Rampe de texte — dérivée de --_ink-rgb
+   ══════════════════════════════════════════════════════════════════════ */
+:root[data-theme],
+[data-theme] {
+  --text-1: var(--primary);
+  --text-2: rgba(var(--_ink-rgb), 0.78);
+  --text-3: rgba(var(--_ink-rgb), 0.62);
+  --text-4: rgba(var(--_ink-rgb), 0.47);
+
+  /* ── Bordures & voiles ── */
+  --border-subtle: rgba(var(--_ink-rgb), 0.12);
+  --border-hairline: rgba(var(--_ink-rgb), 0.07);
+  --border-strong: rgba(var(--_ink-rgb), 0.25);
+  --overlay-hover: rgba(var(--_ink-rgb), 0.04);
+  --chip-bg: rgba(var(--_ink-rgb), 0.06);
+  --chip-border: rgba(var(--_ink-rgb), 0.1);
+
+  /* ── Déclinaisons d'accent ── */
+  --on-accent-muted: rgba(var(--_ink-rgb), 0.62);
+  --on-accent-faint: rgba(var(--_ink-rgb), 0.48);
+  --accent-soft: rgba(var(--_accent-rgb), 0.22);
+  --accent-ring: rgba(var(--_accent-rgb), 0.45);
+  --accent-glow: rgba(var(--_accent-rgb), 0.3);
+  --accent-glow-lg: rgba(var(--_accent-rgb), 0.38);
+  --accent-faint: rgba(var(--_accent-rgb), 0.6);
+
+  /* ── Ombres ── */
+  --shadow-card: 0 1px 2px rgba(var(--_shadow-rgb), 0.05), 0 8px 24px rgba(var(--_shadow-rgb), 0.07);
+  --shadow-modal: 0 2px 4px rgba(var(--_shadow-rgb), 0.06), 0 16px 48px rgba(var(--_shadow-rgb), 0.14);
+  --shadow-cover: 0 8px 28px rgba(var(--_shadow-rgb), 0.2);
+  --shadow-player: 0 4px 24px rgba(var(--_shadow-rgb), 0.2);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Zone inversée — commune à tous les thèmes enfants
+   ══════════════════════════════════════════════════════════════════════ */
+[data-theme] .cl-invert,
+[data-theme] .cl-section-invert,
+[data-theme] .cl-section-dark {
+  --accent-soft: rgba(var(--_accent-rgb), 0.16);
+  --primary: #FFFFFF;
+  --on-primary: var(--surface-invert);
+}

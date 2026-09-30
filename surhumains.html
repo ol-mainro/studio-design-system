@@ -34,6 +34,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./tokens.css" />
 <link rel="stylesheet" href="./components.css" />
+<link rel="stylesheet" href="./themes/_base.css" />
 <link rel="stylesheet" href="./themes/surhumains.css" />
 <style>
   /* Chrome de la page de styleguide — hors design system */
@@ -666,15 +667,18 @@
 &lt;html data-theme="surhumains"&gt;
 &lt;link rel="stylesheet" href="tokens.css"&gt;
 &lt;link rel="stylesheet" href="components.css"&gt;
+&lt;link rel="stylesheet" href="themes/_base.css"&gt;
 &lt;link rel="stylesheet" href="themes/surhumains.css"&gt;
 
-&lt;!-- b) écrire un nouveau thème : ne redéfinir que la couche sémantique --&gt;
+&lt;!-- b) écrire un nouveau thème : déclarer 3 triplets RGB + les tokens nommés --&gt;
 [data-theme="mon-projet"] {
+  --_ink-rgb: R, G, B;       /* → text ramp, borders, chips */
+  --_accent-rgb: R, G, B;    /* → accent-soft/ring/glow/faint */
+  --_shadow-rgb: R, G, B;    /* → ombres (souvent = ink) */
   --primary: #…;  --on-primary: #…;
   --surface: #…;  --surface-raised: #…;  --surface-invert: #…;
   --accent: #…;   --accent-hover: #…;    --accent-ink: #…;  --on-accent: #…;
-  --text-1: #…;   --text-2: …;  --text-3: …;  --text-4: …;
-  --font-heading: '…';  --divider-shape: var(--shape-clouds);  --divider-repeat: 100%;
+  --font-heading: '…';  --divider-shape: var(--shape-flames);  --divider-repeat: 100%;
 }</div>
 </section>
 
