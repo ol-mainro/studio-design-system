@@ -552,6 +552,268 @@ img { max-width: 100%; display: block; }
 
 .cl-range--volume { width: 70px; flex: none; }
 
+/* ── Galerie vidéo ── */
+
+/* Conteneur de la liste de cartes vidéo */
+.cl-vgallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* Carte vidéo (ligne) : vignette + info + CTA */
+.cl-vcard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: var(--sp-4) var(--sp-5);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+}
+.cl-vcard:hover {
+  box-shadow: var(--shadow-modal);
+  border-color: var(--accent-faint);
+  transform: translateY(-2px);
+}
+
+/* Zone interne : vignette + texte */
+.cl-vcard__body {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  min-width: 0;
+  flex: 1;
+}
+
+/* Vignette 16:9 */
+.cl-vcard__thumb {
+  position: relative;
+  width: 112px;
+  flex-shrink: 0;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--surface-invert);
+  border: 1px solid var(--border-hairline);
+  transition: transform var(--t-base);
+}
+.cl-vcard:hover .cl-vcard__thumb { transform: scale(1.02); }
+.cl-vcard__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Surcouche avec bouton play */
+.cl-vcard__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-base);
+}
+.cl-vcard:hover .cl-vcard__overlay { background: rgba(0, 0, 0, 0.1); }
+
+/* Bouton play dans la surcouche */
+.cl-vcard__play {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-round);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+.cl-vcard:hover .cl-vcard__play {
+  transform: scale(1.1);
+  background: var(--accent-ink);
+  color: var(--surface-raised);
+}
+
+/* Badge durée sur la vignette */
+.cl-vcard__duration {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: var(--r-xs);
+}
+
+/* Zone texte de la carte */
+.cl-vcard__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 4px;
+}
+
+/* Surtitre type "Chanson #1" */
+.cl-vcard__eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-ink);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Titre principal */
+.cl-vcard__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-1);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--t-base);
+}
+.cl-vcard:hover .cl-vcard__title { color: var(--accent-ink); }
+
+/* Sous-titre / auteur */
+.cl-vcard__sub {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+  font-weight: 300;
+}
+.cl-vcard__sub strong { color: var(--accent-ink); font-weight: 500; }
+
+/* CTA "Voir →" */
+.cl-vcard__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+  align-self: flex-end;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--accent-ink);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--t-base), color var(--t-base);
+}
+.cl-vcard:hover .cl-vcard__cta {
+  background: var(--accent-ink);
+  color: var(--surface-raised);
+}
+
+@media (min-width: 600px) {
+  .cl-vcard { flex-direction: row; align-items: center; justify-content: space-between; }
+  .cl-vcard__thumb { width: 144px; }
+  .cl-vcard__cta { align-self: center; }
+}
+
+/* ── Lecteur vidéo embarqué ── */
+
+/* Conteneur 16:9 avec frame */
+.cl-video {
+  width: 100%;
+  border-radius: var(--r-2xl);
+  overflow: hidden;
+  background: var(--surface-invert);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cl-video__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.cl-video__frame iframe,
+.cl-video__frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── Sélecteur de vidéo (chips) ── */
+
+.cl-vswitcher {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--sp-3);
+}
+
+/* Chip individuel */
+.cl-vchip {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+.cl-vchip:hover { border-color: var(--accent-faint); }
+.cl-vchip--active { border-color: var(--accent); }
+
+/* Badge numéro dans le chip */
+.cl-vchip__num {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-round);
+  background: var(--chip-bg);
+  color: var(--text-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cl-vchip--active .cl-vchip__num {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Zone texte du chip */
+.cl-vchip__info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cl-vchip__title {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-vchip__status {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ── Footer ── */
 .cl-footer {
   background: var(--accent);

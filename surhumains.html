@@ -102,6 +102,7 @@
   <a href="#formulaires">Formulaires</a>
   <a href="#playlist">Playlist</a>
   <a href="#player">Lecteur</a>
+  <a href="#video">Vidéo</a>
   <a href="#wave">Séparateurs</a>
   <a href="#invert">Inversé</a>
   <a href="#pages">Pages</a>
@@ -373,6 +374,131 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- ══════════ VIDÉO ══════════ -->
+<section class="sg-sec" id="video">
+  <h2>Playlist vidéo</h2>
+  <p class="sg-note">Le pendant vidéo de la playlist audio. Trois briques : <code>.cl-vgallery</code> pour choisir une vidéo, <code>.cl-video</code> pour le lecteur 16:9, <code>.cl-vswitcher</code> pour changer d'épisode sans quitter la page. Comme la playlist audio, aucune couleur n'est écrite en dur : le thème seul décide.</p>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Galerie</h3>
+  <p class="sg-note">La vignette est en <code>aspect-ratio:16/9</code>, donc jamais déformée. Au survol, quatre signaux partent ensemble : la carte se soulève, la vignette grandit d'un cheveu, le voile noir s'éclaircit et le bouton play s'inverse. Sous 600px la carte passe en colonne et le CTA se range à droite.</p>
+  <div class="sg-demo">
+    <div class="cl-vgallery">
+      <a class="cl-vcard" href="#video">
+        <div class="cl-vcard__body">
+          <div class="cl-vcard__thumb" style="background:linear-gradient(135deg,var(--accent),var(--surface-invert))">
+            <div class="cl-vcard__overlay"><span class="cl-vcard__play">&#9654;</span></div>
+            <span class="cl-vcard__duration">6:20</span>
+          </div>
+          <div class="cl-vcard__info">
+            <span class="cl-vcard__eyebrow">Épisode #1</span>
+            <span class="cl-vcard__title">Du charbon</span>
+            <span class="cl-vcard__sub">série <strong>documentaire</strong></span>
+          </div>
+        </div>
+        <span class="cl-vcard__cta">Voir l'épisode &#8594;</span>
+      </a>
+      <a class="cl-vcard" href="#video">
+        <div class="cl-vcard__body">
+          <div class="cl-vcard__thumb" style="background:linear-gradient(135deg,var(--surface-invert),var(--accent))">
+            <div class="cl-vcard__overlay"><span class="cl-vcard__play">&#9654;</span></div>
+            <span class="cl-vcard__duration">4:12</span>
+          </div>
+          <div class="cl-vcard__info">
+            <span class="cl-vcard__eyebrow">Clip</span>
+            <span class="cl-vcard__title">Tout le monde déteste</span>
+            <span class="cl-vcard__sub">avec <strong>Billy Dragon</strong></span>
+          </div>
+        </div>
+        <span class="cl-vcard__cta">Voir l'épisode &#8594;</span>
+      </a>
+      <a class="cl-vcard" href="#video">
+        <div class="cl-vcard__body">
+          <div class="cl-vcard__thumb" style="background:linear-gradient(160deg,var(--accent),var(--primary))">
+            <div class="cl-vcard__overlay"><span class="cl-vcard__play">&#9654;</span></div>
+            <span class="cl-vcard__duration">2:48</span>
+          </div>
+          <div class="cl-vcard__info">
+            <span class="cl-vcard__eyebrow">Capsule</span>
+            <span class="cl-vcard__title">Smiloo présente le solaire</span>
+            <span class="cl-vcard__sub">format <strong>court</strong></span>
+          </div>
+        </div>
+        <span class="cl-vcard__cta">Voir l'épisode &#8594;</span>
+      </a>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Lecteur</h3>
+  <p class="sg-note"><code>.cl-video__frame</code> tient le ratio 16:9 ; l'<code>iframe</code> ou la <code>video</code> qu'on y glisse se colle aux quatre bords toute seule. Le fond est <code>--surface-invert</code> pour que le noir de la vidéo ne fasse pas de saut au chargement.</p>
+  <div class="sg-demo sg-demo--light">
+    <div class="cl-video">
+      <div class="cl-video__frame" style="background:linear-gradient(135deg,var(--accent),var(--surface-invert));display:flex;align-items:center;justify-content:center">
+        <span style="font-size:2.5rem;color:#fff;opacity:.85">&#9654;</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Sélecteur</h3>
+  <p class="sg-note">La grille se remplit toute seule (<code>auto-fill</code>, colonnes de 200px minimum) : une colonne sur mobile, quatre sur grand écran, sans media query. L'épisode en cours porte <code>.cl-vchip--active</code> : bordure accent et pastille pleine.</p>
+  <div class="sg-demo">
+    <div class="cl-vswitcher">
+      <a class="cl-vchip cl-vchip--active" href="#video">
+        <span class="cl-vchip__num">01</span>
+        <div class="cl-vchip__info">
+          <span class="cl-vchip__title">1. Du charbon</span>
+          <span class="cl-vchip__status">En cours de lecture</span>
+        </div>
+      </a>
+      <a class="cl-vchip" href="#video">
+        <span class="cl-vchip__num">02</span>
+        <div class="cl-vchip__info">
+          <span class="cl-vchip__title">2. Billy Dragon</span>
+        </div>
+      </a>
+      <a class="cl-vchip" href="#video">
+        <span class="cl-vchip__num">03</span>
+        <div class="cl-vchip__info">
+          <span class="cl-vchip__title">3. Smiloo — solaire</span>
+        </div>
+      </a>
+      <a class="cl-vchip" href="#video">
+        <span class="cl-vchip__num">04</span>
+        <div class="cl-vchip__info">
+          <span class="cl-vchip__title">4. L'éolienne</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="sg-code">&lt;a class="cl-vcard" href="…"&gt;
+  &lt;div class="cl-vcard__body"&gt;
+    &lt;div class="cl-vcard__thumb"&gt;
+      &lt;img src="…" alt="" /&gt;
+      &lt;div class="cl-vcard__overlay"&gt;&lt;span class="cl-vcard__play"&gt;…&lt;/span&gt;&lt;/div&gt;
+      &lt;span class="cl-vcard__duration"&gt;6:20&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="cl-vcard__info"&gt;
+      &lt;span class="cl-vcard__eyebrow"&gt;Épisode #1&lt;/span&gt;
+      &lt;span class="cl-vcard__title"&gt;Du charbon&lt;/span&gt;
+      &lt;span class="cl-vcard__sub"&gt;série &lt;strong&gt;documentaire&lt;/strong&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;span class="cl-vcard__cta"&gt;Voir l'épisode →&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;div class="cl-video"&gt;
+  &lt;div class="cl-video__frame"&gt;&lt;iframe src="…" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;a class="cl-vchip cl-vchip--active"&gt;      &lt;!-- épisode en cours --&gt;
+  &lt;span class="cl-vchip__num"&gt;01&lt;/span&gt;
+  &lt;div class="cl-vchip__info"&gt;
+    &lt;span class="cl-vchip__title"&gt;1. Du charbon&lt;/span&gt;
+    &lt;span class="cl-vchip__status"&gt;En cours de lecture&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;</div>
 </section>
 
 <!-- ══════════ COULURES ══════════ -->
