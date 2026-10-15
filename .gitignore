@@ -3,3 +3,13 @@
 
 # macOS
 .DS_Store
+
+# Outils locaux (Obsidian, Playwright MCP)
+.obsidian/
+.playwright-mcp/
+
+# Sources de travail temporaires
+temporary-sources/
+
+# Logs
+*.log

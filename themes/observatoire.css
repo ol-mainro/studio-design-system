@@ -66,8 +66,8 @@
 
   /* ── Séparateur : coulures par défaut ── */
   --divider-shape: var(--shape-drips);
-  --divider-repeat: 50%;
-  --divider-repeat-mobile: 66.66%;
+  --divider-repeat: 720px;
+  --divider-repeat-mobile: 260px;
   --wave-h: 75px;
   --wave-h-mobile: 50px;
 

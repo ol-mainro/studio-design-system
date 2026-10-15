@@ -72,8 +72,8 @@
 
   /* ── Séparateur ── */
   --divider-shape: var(--shape-clouds);
-  --divider-repeat: 70%;
-  --divider-repeat-mobile: 110%;
+  --divider-repeat: 640px;
+  --divider-repeat-mobile: 430px;
   --wave-h: 90px;
   --wave-h-mobile: 60px;
 

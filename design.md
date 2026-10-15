@@ -291,19 +291,18 @@ instance. Plus aucun JavaScript n'est nécessaire.
 [data-theme="surhumains"]  { --divider-shape: var(--shape-flames); }  /* flammes  */
 ```
 
-La densité est réglable par `--divider-repeat` — la largeur d'*un* motif, donc `50%` en
-donne deux sur la largeur. Les coulures gardent `50%` ; les nuages, plus larges par nature,
-passent à `70%` (`110%` sous 600px) pour retrouver la densité du site d'origine ; les
-flammes contiennent déjà ~3 motifs dans leur SVG et passent donc à `100%` (`200%` sous
-600px).
+L'espacement est réglé par `--divider-repeat` — la largeur d'*un* motif, **en px fixes** : il
+reste identique quelle que soit la largeur d'écran (seul le nombre de motifs visibles
+change). Coulures `720px` (`260px` sous 600px) ; nuages `640px` (`430px`) ; flammes
+`1440px` (`780px`), leur SVG contenant déjà ~3 motifs.
 
 Trois formes sont livrées dans `tokens.css` : `--shape-drips`, `--shape-clouds` et
 `--shape-flames`. Elles partagent la même convention : un SVG de 1920 unités de large, calé
 sur son bord bas, sans couleur propre (c'est un masque). Pour en ajouter une, suivre la même
 convention et exposer la variable à côté des autres.
 
-`mask-size` + `repeat-x` → deux motifs sur desktop, trois sous 600px, pour garder des
-gouttes et des nuages de taille constante quelle que soit la largeur d'écran.
+`mask-size` en px + `repeat-x` → gouttes et nuages de taille et d'espacement constants
+quelle que soit la largeur d'écran.
 
 ### Titres
 

@@ -67,8 +67,8 @@
 
   /* ── Séparateur ── */
   --divider-shape: var(--shape-flames);
-  --divider-repeat: 100%;
-  --divider-repeat-mobile: 200%;
+  --divider-repeat: 1440px;
+  --divider-repeat-mobile: 780px;
   --wave-h: 105px;
   --wave-h-mobile: 64px;
 
