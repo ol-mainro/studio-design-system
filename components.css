@@ -469,8 +469,6 @@ img { max-width: 100%; display: block; }
 
 .cl-empty { text-align: center; padding: var(--sp-12) var(--sp-4); color: var(--text-3); }
 
-.cl-pulse { animation: cl-pulse 1.4s ease-in-out infinite; }
-@keyframes cl-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 
 /* ── Lecteur audio flottant ── */
 .cl-player {
@@ -1373,8 +1371,7 @@ body.cl-lightbox-open {
 @keyframes cl-eq { 0% { height: 3px; } 50% { height: 14px; } 100% { height: 6px; } }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-playing="true"] .cl-eq > span,
-  .cl-pulse { animation: none; }
+  [data-playing="true"] .cl-eq > span { animation: none; }
   [data-playing="true"] .cl-eq > span { height: 10px; }
 }
 
