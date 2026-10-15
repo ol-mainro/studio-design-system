@@ -322,6 +322,7 @@ img { max-width: 100%; display: block; }
 
 .cl-hero__badges { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; }
 .cl-hero__badges .cl-btn--ghost { margin-left: auto; }
+.cl-hero__actions { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; padding-top: var(--sp-2); }
 
 /* ── Champs de formulaire ── */
 .cl-form { display: flex; flex-direction: column; gap: var(--sp-5); }
@@ -525,13 +526,13 @@ img { max-width: 100%; display: block; }
 }
 .cl-range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 32px; height: 32px;
+  width: 16px; height: 16px;
   border-radius: var(--r-round);
   background: var(--on-accent);
   cursor: pointer;
 }
 .cl-range::-moz-range-thumb {
-  width: 32px; height: 32px;
+  width: 16px; height: 16px;
   border-radius: var(--r-round);
   background: var(--on-accent);
   border: none;
@@ -1301,6 +1302,674 @@ body.cl-lightbox-open {
   font-weight: 500;
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   MÉDIA — composants pilotés par components.js (ClapAudio, ClapVideo…)
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Utilitaires ── */
+.cl-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Icône SVG inline : prend la taille du texte, la couleur du parent */
+.cl-ico { width: 1.15em; height: 1.15em; flex-shrink: 0; display: inline-block; vertical-align: -0.2em; }
+
+/* Bascule lecture/pause : l'élément contient les deux états,
+   components.js pose data-playing="true" sur lui (ou un ancêtre). */
+.cl-ico--pause:not([data-playing="true"] *),
+.cl-when-playing:not([data-playing="true"] *),
+[data-playing="true"] .cl-ico--play,
+[data-playing="true"] .cl-when-paused { display: none; }
+
+/* Pastille courte (tag, groupe, temps) */
+.cl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  padding: 2px var(--sp-2);
+  border-radius: var(--r-pill);
+  background: var(--chip-bg);
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.cl-chip--accent { background: var(--accent-soft); color: var(--accent-ink); }
+
+/* Désactivé : commun à tous les boutons du système */
+.cl-btn:disabled,
+.cl-icon-btn:disabled,
+.cl-player__iconbtn:disabled { opacity: 0.3; pointer-events: none; }
+
+/* ── Égaliseur : « en cours de lecture » ──
+   <span class="cl-eq"><span></span><span></span><span></span><span></span></span>
+   Immobile par défaut ; animé quand un ancêtre porte data-playing="true". */
+.cl-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; flex-shrink: 0; }
+.cl-eq > span {
+  width: 3px;
+  height: 4px;
+  border-radius: 2px;
+  background: currentColor;
+}
+[data-playing="true"] .cl-eq > span { animation: cl-eq 0.9s ease-in-out infinite alternate; }
+.cl-eq > span:nth-child(2) { animation-delay: 0.2s; }
+.cl-eq > span:nth-child(3) { animation-delay: 0.4s; }
+.cl-eq > span:nth-child(4) { animation-delay: 0.1s; }
+@keyframes cl-eq { 0% { height: 3px; } 50% { height: 14px; } 100% { height: 6px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-playing="true"] .cl-eq > span,
+  .cl-pulse { animation: none; }
+  [data-playing="true"] .cl-eq > span { height: 10px; }
+}
+
+/* ── Compléments du lecteur flottant ── */
+.cl-player__titleline { display: flex; align-items: center; gap: var(--sp-2); min-width: 0; color: var(--on-accent); }
+.cl-player__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-left: auto;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--on-accent);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  opacity: 0.75;
+}
+.cl-player__link:hover { opacity: 1; text-decoration: underline; }
+.cl-player__sep { width: 1px; align-self: stretch; margin: var(--sp-1) var(--sp-1); background: var(--on-accent-track); }
+
+/* Vignette dans une rangée de playlist */
+.cl-row__thumb {
+  width: var(--icon-btn);
+  height: var(--icon-btn);
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--surface-sunken);
+}
+.cl-row[data-cl-track] { cursor: pointer; }
+
+/* ── Fond de section alternatif (le thème le colore) ── */
+.cl-section-light--alt { background: var(--surface-raised); }
+
+/* ── Citation mise en avant ── */
+.cl-quote {
+  max-width: var(--prose-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+  text-align: center;
+  color: var(--text-1);
+}
+.cl-quote__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-4);
+  border-radius: var(--r-pill);
+  background: var(--surface-raised);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-chip);
+  text-transform: uppercase;
+}
+.cl-quote__label .cl-ico { color: var(--accent-ink); }
+.cl-quote__text {
+  font-family: var(--font-display);
+  font-weight: var(--heading-weight);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-normal);
+}
+.cl-quote__source { font-size: var(--fs-sm); font-weight: 600; color: var(--text-3); }
+
+/* ── Barre supérieure (pages d'application : retour, marque) ── */
+.cl-topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-player);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.cl-topbar__inner {
+  max-width: var(--wide-max);
+  margin: 0 auto;
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+.cl-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--text-1);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  line-height: 1;
+}
+.cl-topbar__brand img { width: 36px; height: 36px; }
+
+/* Bouton pilule clair (retour, raccourci) */
+.cl-btn--soft {
+  background: var(--surface-raised);
+  color: var(--text-1);
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+.cl-btn--soft:hover { background: var(--surface-raised); border-color: var(--accent); transform: scale(1.03); }
+
+/* Conteneur large (pages vidéo, grilles) */
+.cl-container--wide { max-width: var(--wide-max); }
+
+/* ── Fil d'Ariane ── */
+.cl-breadcrumb { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; font-size: var(--fs-xs); color: var(--text-3); }
+.cl-breadcrumb a { color: inherit; text-decoration: none; }
+.cl-breadcrumb a:hover { color: var(--accent-ink); text-decoration: underline; }
+.cl-breadcrumb [aria-current] { color: var(--text-1); font-weight: 600; }
+
+/* ── En-tête de page média (surtitre, titre, ligne d'info) ── */
+.cl-pagehead { display: flex; flex-direction: column; gap: var(--sp-3); margin-bottom: var(--sp-6); }
+.cl-pagehead__row { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap; }
+.cl-pagehead__sub { font-size: var(--fs-md); color: var(--text-2); display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.cl-pagehead__sub strong { color: var(--text-1); font-weight: 600; }
+
+/* ── Grille de chapitres (parcours, exposition) ── */
+.cl-chapters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-10);
+}
+
+.cl-chapter {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+  transition: transform var(--t-fast), border-color var(--t-base), box-shadow var(--t-fast);
+}
+.cl-chapter:hover { transform: scale(1.02); border-color: var(--accent); }
+.cl-chapter:focus-visible { outline: none; box-shadow: var(--ring-focus); }
+.cl-chapter--active { border: 2px solid var(--accent); box-shadow: var(--shadow-accent); }
+
+.cl-chapter__thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+.cl-chapter__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--t-base); }
+.cl-chapter:hover .cl-chapter__thumb img { transform: scale(1.04); }
+
+.cl-chapter__num {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 3px var(--sp-3);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  box-shadow: var(--shadow-float);
+}
+
+.cl-chapter__play {
+  position: absolute;
+  right: var(--sp-3);
+  bottom: var(--sp-3);
+  width: var(--icon-btn);
+  height: var(--icon-btn);
+  border-radius: var(--r-round);
+  background: var(--primary);
+  color: var(--on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-float);
+  transition: transform var(--t-fast), background var(--t-fast);
+}
+.cl-chapter:hover .cl-chapter__play { transform: scale(1.1); background: var(--accent); color: var(--on-accent); }
+
+.cl-chapter__body { padding: var(--sp-4) var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); flex: 1; }
+.cl-chapter__title {
+  font-family: var(--font-display);
+  font-weight: var(--heading-weight);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-tight);
+  color: var(--text-1);
+}
+.cl-chapter--active .cl-chapter__title { color: var(--accent-ink); }
+.cl-chapter__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+  line-height: var(--lh-normal);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Modale générique ──
+   <div class="cl-modal" id="x" aria-hidden="true">
+     <div class="cl-modal__backdrop" data-cl-modal-close></div>
+     <div class="cl-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="…">
+       <header class="cl-modal__header">…<button class="cl-modal__close" data-cl-modal-close></button></header>
+       <div class="cl-modal__body">…</div>
+       <footer class="cl-modal__footer">…</footer>
+     </div>
+   </div> */
+body.cl-modal-open { overflow: hidden; }
+
+.cl-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--t-base), visibility var(--t-base);
+}
+.cl-modal--open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+.cl-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-strong);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cl-modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-raised);
+  color: var(--text-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-2xl);
+  box-shadow: var(--shadow-modal);
+  overflow: hidden;
+  transform: scale(0.96) translateY(8px);
+  transition: transform var(--t-base);
+}
+.cl-modal--open .cl-modal__dialog { transform: none; }
+.cl-modal__dialog--accent { border: 2px solid var(--accent); }
+.cl-modal__dialog--wide { max-width: 1040px; height: min(88vh, 760px); }
+
+.cl-modal__header,
+.cl-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  padding: var(--sp-4) var(--sp-6);
+  flex-shrink: 0;
+}
+.cl-modal__header { border-bottom: 1px solid var(--border-hairline); }
+.cl-modal__footer { border-top: 1px solid var(--border-hairline); }
+.cl-modal__heading { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; min-width: 0; }
+
+.cl-modal__close {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-round);
+  border: none;
+  background: var(--chip-bg);
+  color: var(--text-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+.cl-modal__close:hover { background: var(--accent); color: var(--on-accent); transform: rotate(90deg); }
+
+.cl-modal__body { flex: 1; min-height: 0; overflow-y: auto; padding: var(--sp-6); overscroll-behavior: contain; }
+.cl-modal__title { font-family: var(--font-heading); font-size: var(--fs-title-section); color: var(--text-1); line-height: var(--heading-lh); margin-bottom: var(--sp-5); }
+.cl-modal__nav { display: flex; gap: var(--sp-2); }
+
+/* ── Visionneuse de chapitre (média + récit, dans une .cl-modal) ── */
+.cl-viewer__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+
+.cl-viewer__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  background: var(--surface-invert);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.cl-viewer__media { width: 100%; height: 100%; object-fit: contain; }
+.cl-viewer__media[hidden] { display: none; }
+
+/* Flèche ronde posée sur un média (viewer, lecteur vidéo) */
+.cl-media-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--icon-btn);
+  height: var(--icon-btn);
+  border-radius: var(--r-round);
+  border: none;
+  background: var(--scrim-chip);
+  color: var(--on-media);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-float);
+  transition: transform var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+.cl-media-nav:hover { background: var(--accent); color: var(--on-accent); transform: translateY(-50%) scale(1.1); }
+.cl-media-nav--prev { left: var(--sp-3); }
+.cl-media-nav--next { right: var(--sp-3); }
+.cl-media-nav:disabled { opacity: 0; pointer-events: none; }
+
+.cl-viewer__story {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+.cl-viewer__head { display: flex; flex-direction: column; gap: var(--sp-1); padding-bottom: var(--sp-3); border-bottom: 1px solid var(--border-hairline); }
+.cl-viewer__title { font-family: var(--font-heading); font-size: var(--fs-title-section); line-height: var(--heading-lh); color: var(--text-1); }
+.cl-viewer__subtitle { font-size: var(--fs-md); font-weight: 500; line-height: var(--lh-normal); color: var(--accent-ink); }
+.cl-viewer__text { font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--text-1); }
+.cl-viewer__text p + p { margin-top: 0.9em; }
+.cl-viewer__hint { font-size: var(--fs-xs); color: var(--text-3); }
+
+/* ── Pagination en points ── */
+.cl-stepper { display: flex; justify-content: center; gap: var(--sp-2); flex-wrap: wrap; width: 100%; }
+.cl-stepper__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--border-strong);
+  transition: width var(--t-fast), background var(--t-fast);
+}
+.cl-stepper__dot:hover { background: var(--accent-faint); }
+.cl-stepper__dot--active { width: 28px; background: var(--accent-ink); }
+
+/* ── Mode borne (plein écran) ── */
+body.cl-kiosk { user-select: none; -webkit-user-select: none; }
+
+/* ── Lecteur vidéo à contrôles intégrés ──
+   S'ajoute à .cl-video : <div class="cl-video cl-vplayer" data-cl-vplayer>. */
+.cl-vplayer { position: relative; }
+.cl-vplayer .cl-video__frame { background: var(--surface-invert); }
+.cl-vplayer video { object-fit: contain; cursor: pointer; }
+
+.cl-vplayer__big {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--r-round);
+  border: none;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-float);
+  transition: transform var(--t-fast), opacity var(--t-base);
+  z-index: 2;
+}
+.cl-vplayer__big:hover { transform: scale(1.08); }
+.cl-vplayer__big .cl-ico { width: 28px; height: 28px; }
+.cl-vplayer[data-playing="true"] .cl-vplayer__big { opacity: 0; pointer-events: none; }
+
+.cl-vplayer__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-8) var(--sp-4) var(--sp-3);
+  background: linear-gradient(to top, var(--scrim-strong), transparent);
+  color: var(--on-media);
+  transition: opacity var(--t-base);
+}
+.cl-vplayer--idle .cl-vplayer__bar { opacity: 0; pointer-events: none; }
+.cl-vplayer--idle { cursor: none; }
+
+.cl-vplayer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--sp-1);
+  border: none;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--on-media);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  opacity: 0.85;
+  transition: opacity var(--t-fast), background var(--t-fast);
+}
+.cl-vplayer__btn:hover { opacity: 1; background: var(--chip-bg); }
+.cl-vplayer__time { font-size: var(--fs-xs); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Curseur sur média : rail clair, remplissage accent via --cl-fill */
+.cl-range--media {
+  flex: 1;
+  background: linear-gradient(to right, var(--accent) var(--cl-fill, 0%), var(--on-media-track) var(--cl-fill, 0%));
+  accent-color: var(--accent);
+}
+.cl-range--media::-webkit-slider-thumb { width: 14px; height: 14px; background: var(--accent); }
+.cl-range--media::-moz-range-thumb { width: 14px; height: 14px; background: var(--accent); }
+.cl-range--media.cl-range--volume { flex: none; width: 70px; }
+
+.cl-vplayer__spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-round);
+  border: 4px solid var(--on-media-track);
+  border-top-color: var(--accent);
+  animation: cl-spin 0.8s linear infinite;
+  display: none;
+  z-index: 2;
+}
+.cl-vplayer--buffering .cl-vplayer__spinner { display: block; }
+@keyframes cl-spin { to { transform: rotate(360deg); } }
+
+.cl-vplayer__error {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6);
+  text-align: center;
+  color: var(--on-media);
+  background: var(--scrim-strong);
+  z-index: 4;
+}
+.cl-vplayer--error .cl-vplayer__error { display: flex; }
+
+/* Variante YouTube/iframe : pas de barre maison */
+.cl-vplayer--embed .cl-vplayer__bar,
+.cl-vplayer--embed .cl-vplayer__big { display: none; }
+
+/* ── Navigation entre pistes (précédente / liste / suivante) ── */
+.cl-track-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-2);
+  margin: var(--sp-5) 0 var(--sp-10);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+}
+.cl-track-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border: none;
+  border-radius: var(--r-md);
+  background: none;
+  color: var(--text-1);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--t-fast);
+}
+.cl-track-nav__btn:hover { background: var(--accent-soft); }
+.cl-track-nav__btn .cl-ico { color: var(--accent-ink); }
+.cl-track-nav__btn[hidden] { display: inline-flex; visibility: hidden; }
+.cl-track-nav__label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+.cl-track-nav__btn--center { color: var(--text-3); font-weight: 500; }
+
+/* ── Fiche mémo ── */
+.cl-memo { display: flex; flex-direction: column; gap: var(--sp-5); }
+.cl-memo__head { display: flex; align-items: center; gap: var(--sp-3); }
+.cl-memo__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-round);
+  background: var(--accent);
+  color: var(--on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cl-memo__title { font-family: var(--font-heading); font-size: var(--fs-title-section); line-height: var(--heading-lh); color: var(--text-1); }
+.cl-memo__intro { padding: var(--sp-4); border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--border-hairline); color: var(--text-2); line-height: var(--lh-relaxed); }
+.cl-memo__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
+.cl-memo__box { padding: var(--sp-4); border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--border-hairline); display: flex; flex-direction: column; gap: var(--sp-2); }
+.cl-memo__box--accent { background: var(--accent-soft); border-color: var(--accent-faint); }
+.cl-memo__label { font-size: var(--fs-xs); font-weight: 700; letter-spacing: var(--ls-chip); text-transform: uppercase; color: var(--accent-ink); display: flex; align-items: center; gap: var(--sp-2); }
+.cl-memo__list { list-style: none; display: flex; flex-direction: column; gap: var(--sp-1); }
+.cl-memo__list li {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: var(--fs-xs);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-1);
+}
+.cl-memo__example { font-size: var(--fs-sm); font-weight: 500; color: var(--text-1); line-height: var(--lh-normal); }
+.cl-memo__tip { margin-top: auto; padding-top: var(--sp-2); border-top: 1px solid var(--border-hairline); font-size: var(--fs-xs); color: var(--text-2); }
+
+/* ── Bloc QR code (partage d'une ressource) ── */
+.cl-qr { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sp-6); align-items: center; }
+.cl-qr__code {
+  width: 180px;
+  height: 180px;
+  padding: var(--sp-2);
+  border-radius: var(--r-lg);
+  background: var(--on-media);   /* un QR se scanne sur blanc, quel que soit le thème */
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cl-qr__code canvas, .cl-qr__code img { width: 100%; height: 100%; image-rendering: pixelated; }
+.cl-qr__info { display: flex; flex-direction: column; gap: var(--sp-3); min-width: 0; }
+.cl-qr__url {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  background: var(--chip-bg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cl-qr__actions { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.cl-select {
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+  color: var(--text-1);
+  font: inherit;
+  font-size: var(--fs-sm);
+  max-width: 100%;
+}
+.cl-select:focus { outline: none; border-color: var(--accent); box-shadow: var(--ring-focus); }
+
+/* ── Notification éphémère ── */
+.cl-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--player-h) + var(--sp-4));
+  transform: translate(-50%, 16px);
+  z-index: var(--z-toast);
+  max-width: calc(100vw - 32px);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--r-pill);
+  background: var(--surface-invert);
+  color: var(--on-media);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-player);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base), transform var(--t-base);
+}
+.cl-toast--show { opacity: 1; transform: translate(-50%, 0); }
+
 /* ── Footer ── */
 .cl-footer {
   background: var(--accent);
@@ -1332,6 +2001,7 @@ body.cl-lightbox-open {
 
   .cl-hero { flex-direction: column; align-items: center; text-align: center; gap: var(--sp-6); }
   .cl-hero .cl-badge { align-self: center; }
+  .cl-hero__badges, .cl-hero__actions { justify-content: center; }
   .cl-hero__cover { width: 160px; height: 160px; }
 
   .cl-section-invert, .cl-section-dark { padding: var(--sp-10) var(--sp-4); }
@@ -1363,4 +2033,22 @@ body.cl-lightbox-open {
   .cl-lightbox__nav { width: 36px; height: 36px; }
   .cl-lightbox__nav--prev { left: var(--sp-2); }
   .cl-lightbox__nav--next { right: var(--sp-2); }
+
+  .cl-chapters { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .cl-modal { padding: var(--sp-2); }
+  .cl-modal__dialog--wide { height: auto; max-height: 96vh; }
+  .cl-modal__header, .cl-modal__footer { padding: var(--sp-3) var(--sp-4); }
+  .cl-modal__body { padding: var(--sp-4); }
+  .cl-viewer__split { grid-template-columns: 1fr; overflow-y: auto; }
+  .cl-viewer__stage { min-height: 220px; height: 38vh; }
+  .cl-viewer__story { overflow: visible; padding: var(--sp-4); }
+  .cl-viewer__hint { display: none; }
+  .cl-player__sep, .cl-player__link { display: none; }
+  .cl-vplayer__bar { gap: var(--sp-1); padding: var(--sp-6) var(--sp-2) var(--sp-2); }
+  .cl-vplayer .cl-range--volume, .cl-vplayer [data-cl-v="rate"] { display: none; }
+  .cl-track-nav__label { max-width: 110px; }
+  .cl-memo__grid { grid-template-columns: 1fr; }
+  .cl-qr { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .cl-qr__actions { justify-content: center; }
+  .cl-topbar__brand span { display: none; }
 }

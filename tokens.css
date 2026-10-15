@@ -227,6 +227,7 @@
   /* ── Média : couleurs posées sur une image/vidéo, quel que soit le thème ── */
   --on-media: #FFFFFF;
   --on-media-soft: rgba(255, 255, 255, 0.9);
+  --on-media-track: rgba(255, 255, 255, 0.3);
 
   /* ── Tailles fixes ── */
   --num-size: 32px;          /* pastille numéro (rangées, chips) */
@@ -244,6 +245,7 @@
 
   /* ── Layout ── */
   --content-max: 820px;
+  --wide-max: 1100px;         /* pages vidéo, grilles de chapitres */
   --prose-max: 620px;
   --card-max: 520px;
   --player-max: 760px;

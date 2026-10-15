@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="fr" data-theme="surhumains">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<script>
+  // Thème du projet par défaut ; ?theme=clap|conjugarium|surhumains|observatoire pour comparer.
+  (function () {
+    var t = (location.search.match(/[?&]theme=([\w-]+)/) || [])[1];
+    if (t === 'clap') document.documentElement.removeAttribute('data-theme');
+    else if (t) document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<title>Surhumains — Lecteur de podcast</title>
+<meta name="description" content="Layout « lecteur de podcast » du design system Clap ! : pochette, playlist, lecteur flottant et mode lecture." />
+<link rel="canonical" href="https://clap-design-system.web.app/layouts/podcast" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Clap ! Studio — Design System" />
+<meta property="og:title" content="Surhumains — Lecteur de podcast" />
+<meta property="og:description" content="Layout « lecteur de podcast » du design system Clap ! : pochette, playlist, lecteur flottant et mode lecture." />
+<meta property="og:url" content="https://clap-design-system.web.app/layouts/podcast" />
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F6250812c-d697-4c74-b335-3dc4d80ebce9.jpeg?alt=media&amp;token=a75799d5-76e7-44ea-8b6f-81ccb932e77f" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Surhumains — Lecteur de podcast" />
+<meta name="twitter:description" content="Layout « lecteur de podcast » du design system Clap ! : pochette, playlist, lecteur flottant et mode lecture." />
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F6250812c-d697-4c74-b335-3dc4d80ebce9.jpeg?alt=media&amp;token=a75799d5-76e7-44ea-8b6f-81ccb932e77f" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Gaegu:wght@700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../tokens.css" />
+<link rel="stylesheet" href="../themes/conjugarium.css" />
+<link rel="stylesheet" href="../themes/surhumains.css" />
+<link rel="stylesheet" href="../themes/observatoire.css" />
+<link rel="stylesheet" href="../components.css" />
+</head>
+<body>
+<div class="cl-page">
+
+  <!-- ═══ En-tête ═══ -->
+  <header class="cl-header">
+    <img src="../assets/clap-logo.png" alt="Clap ! Studio" width="76" height="76" />
+    <p class="cl-tagline">Aventures audio &amp; podcasts<br /><span class="cl-tagline__accent">pour les enfants</span></p>
+  </header>
+
+  <div class="cl-wave" style="--wave-from: var(--surface); --wave-to: var(--surface-invert)"></div>
+
+  <!-- ═══ Bande de rupture : pochette + playlist ═══ -->
+  <main class="cl-section-invert">
+    <div class="cl-container">
+
+      <div class="cl-hero">
+        <img class="cl-hero__cover" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F6250812c-d697-4c74-b335-3dc4d80ebce9.jpeg?alt=media&amp;token=a75799d5-76e7-44ea-8b6f-81ccb932e77f" alt="Pochette de Surhumains" width="180" height="180" />
+        <div class="cl-hero__info">
+          <div class="cl-hero__badges">
+            <span class="cl-badge">Conte musical</span>
+            <span class="cl-badge cl-badge--ghost">Énergie &amp; climat</span>
+            <span class="cl-badge cl-badge--ghost">11 pistes</span>
+          </div>
+          <h1 class="cl-title-pro">Surhumains</h1>
+          <p class="cl-desc">Et si vos enfants découvraient les grands enjeux du siècle... en chanson ?</p>
+          <div class="cl-hero__actions">
+            <button type="button" class="cl-btn" data-cl-play-all><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg><span class="cl-when-paused">Tout écouter</span><span class="cl-when-playing">Pause</span></button>
+            <button type="button" class="cl-btn cl-btn--soft" data-cl-reader=""><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg> Mode lecture</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="cl-playlist" aria-label="Pistes">
+        <li class="cl-row" data-cl-track="0">
+          <span class="cl-row__num"><span class="cl-when-paused">1</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Introduction</span>
+              <span class="cl-row__tag">~1:48</span>
+            </div>
+            <span class="cl-row__desc">On rêve tous de superpouvoirs... Mais n&#x27;en aurait-on pas déjà ? À ton avis, comment nous verrait un homme du moyen-âge s&#x27;il mettait les pieds une journée dans notre époque ?</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="0" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="0" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Ffa090f75-e7a5-4227-b850-2c0c53520a94.mp3?alt=media&amp;token=bc033fd6-8e87-42f6-b96c-f110f91960a1" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="1">
+          <span class="cl-row__num"><span class="cl-when-paused">2</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Surhumains, la chanson</span>
+              <span class="cl-row__tag">~4:00</span>
+            </div>
+            <span class="cl-row__desc">Mais… en vrai, nos modes de vies sont déjà celles de véritables superhéros ! C&#x27;est parce que nous sommes dopés …à l&#x27;ÉNERGIE !</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="1" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="1" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F2b0e8a2d-54e6-406e-82ee-4997178a46f9.mp3?alt=media&amp;token=ea0caeca-dff2-414a-99e6-e60bd3683110" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="2">
+          <span class="cl-row__num"><span class="cl-when-paused">3</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Le pétrole et le charbon</span>
+              <span class="cl-row__tag">~2:08</span>
+            </div>
+            <span class="cl-row__desc">Et pas n&#x27;importe quelle énergie ! Celles qui vient du fond de la Terre : du pétrole et du charbon !</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="2" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="2" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F426f87e1-18df-46ef-bd31-aa1661de96e2.mp3?alt=media&amp;token=855c7a5c-bce1-4302-bccd-7a016bcb2e6f" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="3">
+          <span class="cl-row__num"><span class="cl-when-paused">4</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Du charbon 1</span>
+              <span class="cl-row__tag">~1:36</span>
+            </div>
+            <span class="cl-row__desc">Et une grande partie des objets qui nous entourent, même quand ça n&#x27;a pas n&#x27;en a pas l&#x27;air, c&#x27;est du pétrole et du charbon</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="3" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="3" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F6e506d8b-6c9a-4004-82d3-b2d077eaa4b3.mp3?alt=media&amp;token=52767df6-8e62-4497-96be-fa4a12c07ed9" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="4">
+          <span class="cl-row__num"><span class="cl-when-paused">5</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Du charbon 2</span>
+              <span class="cl-row__tag">~5:42</span>
+            </div>
+            <span class="cl-row__desc"><em>Interlude musical</em></span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="4" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F523bfae6-2cfc-4ea5-b7b5-b31a9acea985.mp3?alt=media&amp;token=daf9c226-e8b4-4256-a24d-faf2f4d24427" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="5">
+          <span class="cl-row__num"><span class="cl-when-paused">6</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Pompons</span>
+              <span class="cl-row__tag">~3:56</span>
+            </div>
+            <span class="cl-row__desc">Donc il nous faut toujours plus de pétrole et de charbon, mais il y en a-t&#x27;il tant que ça ? Et pour combien de temps encore ?</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="5" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="5" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F8e23222f-d7e0-4721-a29e-9f113f155f1a.mp3?alt=media&amp;token=b89ba0c8-e01f-4261-833b-9fc1dc3521e3" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="6">
+          <span class="cl-row__num"><span class="cl-when-paused">7</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Kestumafé</span>
+              <span class="cl-row__tag">~4:53</span>
+            </div>
+            <span class="cl-row__desc">...et puis les énergies fossiles nous donnent des superpouvoirs, mais aussi aussi celui de détruire notre planète. D&#x27;ailleurs la Terre s&#x27;en plaint et ça commence à chauffer</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="6" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="6" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Fb6fd70ab-f3d1-4c2c-af7b-7eecedb72b2d.mp3?alt=media&amp;token=7603abfb-0c41-47c6-8541-322ca99c8e21" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="7">
+          <span class="cl-row__num"><span class="cl-when-paused">8</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Intervention du barde</span>
+              <span class="cl-row__tag">~1:54</span>
+            </div>
+            <span class="cl-row__desc"><em>Interlude musical</em></span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="7" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Fa6c99933-eb42-4d57-af22-fcc67231c1bb.mp3?alt=media&amp;token=61d2ddf0-c535-4766-b38e-47d1fa61b692" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="8">
+          <span class="cl-row__num"><span class="cl-when-paused">9</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Nucléaire</span>
+              <span class="cl-row__tag">~2:55</span>
+            </div>
+            <span class="cl-row__desc">Il paraît qu’il existe des énergies dites «renouvables»... mais sont elles si propres qu&#x27;elles n&#x27;y paraissent ? Que doit-on en espérer ? Doit-on croire sur parole ceux qui nous en font la pub ?</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="8" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="8" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Fab6a2fef-f59e-4a56-8434-cc77e21930c2.mp3?alt=media&amp;token=7fe8bc07-2c6b-4d5f-99fb-52c189c88a94" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="9">
+          <span class="cl-row__num"><span class="cl-when-paused">10</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Le songe d&#x27;Alice</span>
+              <span class="cl-row__tag">~2:21</span>
+            </div>
+            <span class="cl-row__desc">Peut-on vraiment faire confiance aux adultes ?</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="9" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="9" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F12f6adc3-f1b8-47c1-acce-12be82091b71.mp3?alt=media&amp;token=1f4f4cca-388b-417e-8ad7-245d7a23ed0d" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="10">
+          <span class="cl-row__num"><span class="cl-when-paused">11</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <div class="cl-row__info">
+            <div class="cl-row__titleline">
+              <span class="cl-row__title">Trankilou</span>
+              <span class="cl-row__tag">~8:23</span>
+            </div>
+            <span class="cl-row__desc">Il faudra donc vivre avec moins d&quot;énergie... Continuer à vivre bien et heureux... mais différemment</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="10" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-reader="10" aria-label="Lire le texte"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></button>
+            <a class="cl-icon-btn cl-icon-btn--outline" href="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Ffbc25b1d-e9ff-4410-9279-7a6bf7169d04.mp3?alt=media&amp;token=b6c6749a-3f4a-4d3f-ac64-35a0e9310259" download target="_blank" rel="noopener" aria-label="Télécharger l'audio"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </main>
+
+  <div class="cl-wave" style="--wave-from: var(--surface-invert); --wave-to: var(--surface)"></div>
+
+  <!-- ═══ Présentation ═══ -->
+  <section class="cl-section-light">
+    <div class="cl-prose">
+      <h2 class="cl-section-title">À propos <span class="cl-section-title__accent">du conte</span></h2>
+      <p class="cl-text"><strong>Surhumains</strong>, conte musical signé Clap Éditions, transforme l&#x27;un des sujets les plus complexes de notre époque — l&#x27;énergie et le climat — en une aventure pleine de joie, d&#x27;humour et de mélodies entraînantes.</p>
+      <p class="cl-text">En écho au best-seller <em>Le Monde sans fin</em> de Jean-Marc Jancovici, ce spectacle audio embarque les enfants dans un voyage à travers l&#x27;histoire des hydrocarbures, les énergies renouvelables et leurs conséquences climatiques, tout en glissant au passage quelques repères scientifiques et historiques, porté par des personnages hauts en couleur qui rendent la science aussi drôle qu&#x27;accessible.</p>
+      <p class="cl-text">Une manière ludique et intelligente d&#x27;éveiller les consciences dès le plus jeune âge, sans jamais ennuyer.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Citation (fond alternatif du thème) ═══ -->
+  <section class="cl-section-light cl-section-light--alt">
+    <figure class="cl-quote">
+      <span class="cl-quote__label"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-sparkles"/></svg> Message clé</span>
+      <blockquote class="cl-quote__text">« Il faudra donc vivre avec moins d’énergie… Continuer à vivre bien et heureux… mais différemment. »</blockquote>
+      <figcaption class="cl-quote__source">Extrait du final · Clap ! Éditions</figcaption>
+    </figure>
+  </section>
+
+  <footer class="cl-footer">
+    <p class="cl-footer__tagline"><strong>Une création Clap ! Éditions — Surhumains</strong></p>
+    <a class="cl-footer__link" href="https://clapeditions.fr/surhumains" target="_blank" rel="noopener">Site officiel</a>
+    <p class="cl-footer__legal">Voir ce layout dans le thème : <a class="cl-footer__link" href="./podcast?theme=clap">Clap ! Studio</a> · <a class="cl-footer__link" href="./podcast?theme=conjugarium">Conjugarium</a> · <a class="cl-footer__link" href="./podcast?theme=surhumains">Surhumains</a> · <a class="cl-footer__link" href="./podcast?theme=observatoire">Observatoire</a></p>
+    <p class="cl-footer__legal">© Clap ! Éditions — Tous droits réservés.</p>
+  </footer>
+
+  <div class="cl-player-spacer"></div>
+</div>
+
+<!-- ═══ Lecteur flottant ═══ -->
+<div class="cl-player" role="region" aria-label="Lecteur audio">
+  <div class="cl-player__inner">
+    <button type="button" class="cl-player__play" data-cl-action="toggle" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+    <div class="cl-player__meta">
+      <div class="cl-player__titleline">
+        <span class="cl-player__title" data-cl-now="title"></span>
+        <span class="cl-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <button type="button" class="cl-player__link" data-cl-reader=""><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg> Texte</button>
+      </div>
+      <div class="cl-player__progress">
+        <span class="cl-player__time" data-cl-time="current">0:00</span>
+        <input class="cl-range" type="range" min="0" max="100" step="0.5" value="0" data-cl-seek aria-label="Progression de la piste" />
+        <span class="cl-player__time" data-cl-time="total">--:--</span>
+      </div>
+    </div>
+    <div class="cl-player__side">
+      <button type="button" class="cl-player__iconbtn" data-cl-action="prev" aria-label="Piste précédente"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-prev"/></svg></button>
+      <button type="button" class="cl-player__iconbtn" data-cl-action="next" aria-label="Piste suivante"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-next"/></svg></button>
+      <span class="cl-player__sep" aria-hidden="true"></span>
+      <button type="button" class="cl-player__iconbtn" data-cl-action="mute" aria-label="Couper le son"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-volume"/></svg></button>
+      <input class="cl-range cl-range--volume" type="range" min="0" max="1" step="0.05" value="1" data-cl-volume aria-label="Volume" />
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Mode lecture : texte de la piste ═══ -->
+<div class="cl-modal" id="reader" aria-hidden="true">
+  <div class="cl-modal__backdrop" data-cl-modal-close></div>
+  <div class="cl-modal__dialog cl-modal__dialog--accent" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+    <header class="cl-modal__header">
+      <div class="cl-modal__heading">
+        <span class="cl-badge">Texte</span>
+        <span class="cl-row__tag" data-reader="count"></span>
+      </div>
+      <button type="button" class="cl-modal__close" data-cl-modal-close aria-label="Fermer"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-close"/></svg></button>
+    </header>
+    <div class="cl-modal__body">
+      <h2 class="cl-modal__title" id="reader-title" data-reader="title"></h2>
+      <div class="cl-viewer__text" data-reader="text"></div>
+    </div>
+    <footer class="cl-modal__footer">
+      <button type="button" class="cl-btn cl-btn--primary" data-reader="play"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg><span class="cl-when-paused">Écouter la piste</span><span class="cl-when-playing">Pause</span></button>
+      <div class="cl-modal__nav">
+        <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-reader="prev" aria-label="Piste précédente"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-chevron-left"/></svg></button>
+        <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-reader="next" aria-label="Piste suivante"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-chevron-right"/></svg></button>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- Données : une entrée par piste. title, src (obligatoires), text, fallback (facultatifs). -->
+<script type="application/json" data-cl-tracks>
+[
+ {
+  "title": "Introduction",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Ffa090f75-e7a5-4227-b850-2c0c53520a94.mp3?alt=media&token=bc033fd6-8e87-42f6-b96c-f110f91960a1",
+  "text": "On rêve tous de superpouvoirs... Mais n'en aurait-on pas déjà ? \n\nÀ ton avis, comment nous verrait un homme du moyen-âge s'il mettait les pieds une journée dans notre époque ?"
+ },
+ {
+  "title": "Surhumains, la chanson",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F2b0e8a2d-54e6-406e-82ee-4997178a46f9.mp3?alt=media&token=ea0caeca-dff2-414a-99e6-e60bd3683110",
+  "text": "Mais… en vrai, nos modes de vies sont déjà celles de véritables superhéros ! \n\nC'est parce que nous sommes dopés …à l'ÉNERGIE !"
+ },
+ {
+  "title": "Le pétrole et le charbon",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F426f87e1-18df-46ef-bd31-aa1661de96e2.mp3?alt=media&token=855c7a5c-bce1-4302-bccd-7a016bcb2e6f",
+  "text": "Et pas n'importe quelle énergie ! Celles qui vient du fond de la Terre : du pétrole et du charbon !"
+ },
+ {
+  "title": "Du charbon 1",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F6e506d8b-6c9a-4004-82d3-b2d077eaa4b3.mp3?alt=media&token=52767df6-8e62-4497-96be-fa4a12c07ed9",
+  "text": "Et une grande partie des objets qui nous entourent, même quand ça n'a pas n'en a pas l'air, c'est du pétrole et du charbon"
+ },
+ {
+  "title": "Du charbon 2",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F523bfae6-2cfc-4ea5-b7b5-b31a9acea985.mp3?alt=media&token=daf9c226-e8b4-4256-a24d-faf2f4d24427",
+  "text": ""
+ },
+ {
+  "title": "Pompons",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F8e23222f-d7e0-4721-a29e-9f113f155f1a.mp3?alt=media&token=b89ba0c8-e01f-4261-833b-9fc1dc3521e3",
+  "text": "Donc il nous faut toujours plus de pétrole et de charbon, mais il y en a-t'il tant que ça ? Et pour combien de temps encore ?"
+ },
+ {
+  "title": "Kestumafé",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Fb6fd70ab-f3d1-4c2c-af7b-7eecedb72b2d.mp3?alt=media&token=7603abfb-0c41-47c6-8541-322ca99c8e21",
+  "text": "...et puis les énergies fossiles nous donnent des superpouvoirs, mais aussi aussi celui de détruire notre planète. \n\nD'ailleurs la Terre s'en plaint et ça commence à chauffer"
+ },
+ {
+  "title": "Intervention du barde",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Fa6c99933-eb42-4d57-af22-fcc67231c1bb.mp3?alt=media&token=61d2ddf0-c535-4766-b38e-47d1fa61b692",
+  "text": ""
+ },
+ {
+  "title": "Nucléaire",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Fab6a2fef-f59e-4a56-8434-cc77e21930c2.mp3?alt=media&token=7fe8bc07-2c6b-4d5f-99fb-52c189c88a94",
+  "text": "Il paraît qu’il existe des énergies dites «renouvables»... mais sont elles si propres qu'elles n'y paraissent ? Que doit-on en espérer ?\n\nDoit-on croire sur parole ceux qui nous en font la pub ?"
+ },
+ {
+  "title": "Le songe d'Alice",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2F12f6adc3-f1b8-47c1-acce-12be82091b71.mp3?alt=media&token=1f4f4cca-388b-417e-8ad7-245d7a23ed0d",
+  "text": "Peut-on vraiment faire confiance aux adultes ?"
+ },
+ {
+  "title": "Trankilou",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FG0y8u5aLKgTHdfMxxwQ7%2Ffbc25b1d-e9ff-4410-9279-7a6bf7169d04.mp3?alt=media&token=b6c6749a-3f4a-4d3f-ac64-35a0e9310259",
+  "text": "Il faudra donc vivre avec moins d\"énergie... \n\nContinuer à vivre bien et heureux... mais différemment"
+ }
+]
+</script>
+
+<script src="../components.js"></script>
+<script>
+  // ── Mode lecture : la modale affiche le texte d'une piste et suit le lecteur ──
+  (function () {
+    var at = 0;
+    var $ = function (k) { return document.querySelector('[data-reader="' + k + '"]'); };
+
+    function show(i) {
+      var tracks = ClapAudio.tracks;  // lu à l'usage : ClapAudio s'initialise au DOMContentLoaded
+      at = Math.max(0, Math.min(tracks.length - 1, i));
+      var t = tracks[at];
+      $('title').textContent = t.title;
+      $('count').textContent = 'Piste ' + (at + 1) + ' / ' + tracks.length;
+      $('text').innerHTML = t.text ? Clap.util.richText(t.text)
+        : '<p><em>Transition instrumentale, sans texte d’accompagnement.</em></p>';
+      $('play').setAttribute('data-cl-play', at);
+      $('play').setAttribute('data-playing', String(ClapAudio.index === at && ClapAudio.isPlaying()));
+      $('prev').disabled = at === 0;
+      $('next').disabled = at === tracks.length - 1;
+    }
+
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cl-reader]');
+      if (b) {
+        e.stopPropagation();
+        var v = b.getAttribute('data-cl-reader');
+        show(v === '' ? Math.max(0, ClapAudio.index) : +v);
+        ClapModal.open('#reader', b);
+      }
+      if (e.target.closest('[data-reader="prev"]')) show(at - 1);
+      if (e.target.closest('[data-reader="next"]')) show(at + 1);
+    }, true);
+    ['cl:play', 'cl:pause', 'cl:trackchange'].forEach(function (ev) {
+      document.addEventListener(ev, function () { if (document.querySelector('#reader.cl-modal--open')) show(at); });
+    });
+  })();
+</script>
+</body>
+</html>
