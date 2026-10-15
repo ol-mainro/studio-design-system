@@ -6,11 +6,11 @@
     "ignore": [
       "firebase.json",
       ".firebaserc",
-      "/design.md",
+      "design.md",
+      "CLAUDE.md",
+      "temporary-sources/**",
       "**/.*",
-      "**/node_modules/**",
-      "/temporary-sources/**",
-      "/CLAUDE.md"
+      "**/node_modules/**"
     ],
     "redirects": [
       {
