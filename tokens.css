@@ -5,7 +5,8 @@
         consommées directement par un composant.
      2. Tokens sémantiques    (--surface, --accent, …) : ce que lisent les
         composants. Un thème ne redéfinit QUE cette couche.
-   Voir themes/conjugarium.css pour un exemple de thème.
+   Les dérivations (§ 2 ter) partent de trois triplets RGB : un thème ne
+   déclare que ses rôles nommés et ses triplets. Voir themes/*.css.
    ========================================================================== */
 
 @font-face {
@@ -52,35 +53,20 @@
   --accent: var(--clap-yellow);
   --accent-hover: var(--clap-yellow-hover);
   --on-accent: var(--clap-black);           /* texte/icône posé SUR l'accent */
-  --on-accent-muted: rgba(0, 0, 0, 0.55);
-  --on-accent-faint: rgba(0, 0, 0, 0.45);
-  --accent-soft: rgba(255, 209, 0, 0.18);   /* fond de rangée active */
-  --accent-ring: rgba(255, 209, 0, 0.35);   /* halo de focus */
-  --accent-glow: rgba(255, 209, 0, 0.3);
-  --accent-glow-lg: rgba(255, 209, 0, 0.35);
-  --accent-faint: rgba(255, 209, 0, 0.55);  /* bordure au survol */
   --accent-ink: #7A6000;                    /* accent en TEXTE (6.0:1 sur blanc) */
 
-  /* ── Rampe de texte, relative à la surface courante ──
-     Quatre paliers, pas davantage. Ils basculent en bloc dans une zone
-     .cl-invert : les composants n'ont donc rien à savoir du fond. */
-  --text-1: var(--primary);             /* titres, libellés forts — 16:1 */
-  --text-2: rgba(13, 27, 46, 0.78);     /* corps de texte, descriptions — 10:1 */
-  --text-3: rgba(13, 27, 46, 0.64);   /* tags, légendes — plancher AA */
-  --text-4: rgba(13, 27, 46, 0.47);     /* 3:1 — information redondante SEULEMENT */
-
-  /* ── Bordures & voiles, relatifs à la surface courante ── */
-  --border-subtle: rgba(13, 27, 46, 0.12);
-  --border-hairline: rgba(13, 27, 46, 0.07);
-  --border-strong: rgba(13, 27, 46, 0.25);
-  --overlay-hover: rgba(13, 27, 46, 0.04);
-  --chip-bg: rgba(13, 27, 46, 0.06);
-  --chip-border: rgba(13, 27, 46, 0.1);
+  /* ── Triplets RGB — source des dérivations (§ 2 ter) ──
+     Chaque thème les redéclare ; rampe de texte, bordures, voiles,
+     déclinaisons d'accent et ombres en découlent automatiquement. */
+  --_ink-rgb: 13, 27, 46;
+  --_accent-rgb: 255, 209, 0;
+  --_shadow-rgb: 13, 27, 46;
 
   /* ── Typographie ── */
   --font-body: 'Lexend', sans-serif;
   --font-heading: 'Gaegu', cursive;                       /* registre enfant */
   --font-display: 'Avenir Heavy', 'Lexend', sans-serif;   /* registre pro */
+  --heading-weight: 800;      /* Avenir Heavy ; un thème mono-graisse passe à 400 */
   --heading-lh: 1;
   --heading-ls: normal;
 
@@ -98,6 +84,53 @@
   --success: #067647;
   --success-bg: rgba(6, 118, 71, 0.1);
   --success-border: rgba(6, 118, 71, 0.25);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   2 ter. DÉRIVATIONS — calculées depuis les triplets RGB
+   Déclarées sur :root ET sur tout [data-theme] : un thème posé sur un
+   sous-arbre (démo, encart) recalcule ses propres valeurs. Un thème ne
+   redéclare JAMAIS ces tokens, seulement ses triplets.
+   ══════════════════════════════════════════════════════════════════════ */
+:root,
+[data-theme] {
+  /* ── Rampe de texte : quatre paliers, pas davantage ── */
+  --text-1: var(--primary);                     /* titres, libellés forts */
+  --text-2: rgba(var(--_ink-rgb), 0.78);        /* corps de texte */
+  --text-3: rgba(var(--_ink-rgb), 0.64);        /* tags, légendes — plancher AA */
+  --text-4: rgba(var(--_ink-rgb), 0.47);        /* 3:1 — information redondante SEULEMENT */
+
+  /* ── Bordures & voiles ── */
+  --border-subtle: rgba(var(--_ink-rgb), 0.12);
+  --border-hairline: rgba(var(--_ink-rgb), 0.07);
+  --border-strong: rgba(var(--_ink-rgb), 0.25);
+  --overlay-hover: rgba(var(--_ink-rgb), 0.04);
+  --chip-bg: rgba(var(--_ink-rgb), 0.06);
+  --chip-border: rgba(var(--_ink-rgb), 0.1);
+
+  /* ── Déclinaisons d'accent ── */
+  --on-accent-muted: rgba(var(--_ink-rgb), 0.62);
+  --on-accent-faint: rgba(var(--_ink-rgb), 0.48);
+  --on-accent-track: rgba(var(--_ink-rgb), 0.2);  /* rail de curseur sur l'accent */
+  --accent-soft: rgba(var(--_accent-rgb), 0.2);   /* fond de rangée active */
+  --accent-ring: rgba(var(--_accent-rgb), 0.45);  /* halo de focus */
+  --accent-glow: rgba(var(--_accent-rgb), 0.3);
+  --accent-faint: rgba(var(--_accent-rgb), 0.6);  /* bordure au survol */
+
+  /* ── Voiles de média (posés sur une image ou une vidéo) ── */
+  --scrim: rgba(var(--_shadow-rgb), 0.45);        /* voile de survol */
+  --scrim-strong: rgba(var(--_shadow-rgb), 0.88); /* fond de modale */
+  --scrim-chip: rgba(var(--_shadow-rgb), 0.78);   /* pastille sur image */
+
+  /* ── Ombres : basses, une ombre forte salit un fond clair ── */
+  --shadow-card: 0 1px 2px rgba(var(--_shadow-rgb), 0.05), 0 8px 24px rgba(var(--_shadow-rgb), 0.07);
+  --shadow-modal: 0 2px 4px rgba(var(--_shadow-rgb), 0.06), 0 16px 48px rgba(var(--_shadow-rgb), 0.14);
+  --shadow-cover: 0 8px 28px rgba(var(--_shadow-rgb), 0.2);
+  --shadow-player: 0 4px 24px rgba(var(--_shadow-rgb), 0.2);
+  --shadow-float: 0 4px 14px rgba(var(--_shadow-rgb), 0.22);  /* bouton posé sur un média */
+  --shadow-media: 0 12px 40px rgba(var(--_shadow-rgb), 0.22); /* vidéo, image agrandie */
+  --shadow-accent: 0 4px 16px var(--accent-glow);
+  --ring-focus: 0 0 0 3px var(--accent-ring);
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -162,8 +195,10 @@
    ══════════════════════════════════════════════════════════════════════ */
 :root {
   /* ── Tailles de police ── */
+  --fs-2xs: 0.68rem;   /* pastilles sur image, tags */
   --fs-xs: 0.72rem;
   --fs-sm: 0.8rem;
+  --fs-ui: 0.875rem;   /* boutons, libellés d'interface */
   --fs-base: 0.95rem;
   --fs-md: 1rem;
   --fs-lg: 1.2rem;
@@ -172,12 +207,11 @@
   --fs-title-pro: clamp(1.8rem, 5vw, 2.8rem);
   --fs-title-section: clamp(1.8rem, 4.5vw, 2.8rem);
 
-  --lh-tight: 1.15;
+  --lh-tight: 1.25;    /* titres de carte */
   --lh-normal: 1.5;
   --lh-relaxed: 1.7;
   --lh-loose: 1.8;
 
-  --ls-tight: -0.02em;
   --ls-label: 2px;
   --ls-chip: 1.5px;
 
@@ -190,15 +224,19 @@
   --r-xs: 4px;   --r-sm: 5px;    --r-md: 14px;  --r-lg: 16px;
   --r-xl: 20px;  --r-2xl: 24px;  --r-pill: 50px; --r-round: 50%;
 
-  /* ── Ombres ── */
-  /* Sur fond clair, une ombre forte salit : elles sont volontairement basses. */
-  --shadow-card: 0 1px 2px rgba(13, 27, 46, 0.06), 0 8px 24px rgba(13, 27, 46, 0.06);
-  --shadow-modal: 0 2px 4px rgba(13, 27, 46, 0.06), 0 16px 48px rgba(13, 27, 46, 0.12);
-  --shadow-cover: 0 8px 28px rgba(13, 27, 46, 0.18);
-  --shadow-player: 0 4px 24px rgba(13, 27, 46, 0.18);
-  --shadow-accent: 0 4px 16px var(--accent-glow);
-  --shadow-accent-lg: 0 8px 24px var(--accent-glow-lg);
-  --ring-focus: 0 0 0 3px var(--accent-ring);
+  /* ── Média : couleurs posées sur une image/vidéo, quel que soit le thème ── */
+  --on-media: #FFFFFF;
+  --on-media-soft: rgba(255, 255, 255, 0.9);
+
+  /* ── Tailles fixes ── */
+  --num-size: 32px;          /* pastille numéro (rangées, chips) */
+  --icon-btn: 44px;          /* cible tactile minimale */
+
+  /* ── Empilement ── */
+  --z-wave: 2;
+  --z-player: 100;
+  --z-modal: 500;
+  --z-toast: 600;
 
   /* ── Transitions ── */
   --t-fast: 0.15s ease;
@@ -216,27 +254,3 @@
   /* Breakpoint unique : @media (max-width: 600px) */
 }
 
-/* ══════════════════════════════════════════════════════════════════════
-   5. ALIAS DE COMPATIBILITÉ
-   Pour le code existant (conjugarium-minisite) qui lit --navy / --yellow.
-   Ne pas utiliser dans du code neuf : passer par la couche sémantique.
-   ══════════════════════════════════════════════════════════════════════ */
-:root {
-  --navy: var(--clap-navy);
-  --navy-light: var(--clap-navy-light);
-  --yellow: var(--clap-yellow);
-  --yellow-hover: var(--clap-yellow-hover);
-  --white: var(--clap-white);
-  --black: var(--clap-black);
-  --surface-alt: var(--surface);        /* ancien nom du fond clair */
-  --ink: var(--text-1);
-  --ink-heading: var(--text-1);
-  --ink-55: var(--on-accent-muted);
-  --ink-45: var(--on-accent-faint);
-  --text-on-dark: var(--text-1);
-  --text-on-dark-70: var(--text-2);
-  --text-on-dark-65: var(--text-2);
-  --text-on-dark-55: var(--text-3);
-  --text-on-dark-40: var(--text-4);
-  --text-on-dark-30: var(--text-4);
-}

@@ -1,13 +1,12 @@
 /* ==========================================================================
    Thème — Surhumains
    Dérivé de clapeditions.fr/surhumains.
-   Hérite de _base.css pour les dérivations automatiques (text ramp,
-   borders, shadows, accent-soft/ring/glow). Ne déclare que les tokens
-   propres au thème.
+   Ne déclare que ses rôles nommés et ses trois triplets RGB : rampe de
+   texte, bordures, voiles, déclinaisons d'accent et ombres sont dérivés
+   dans tokens.css § 2 ter.
 
-   Deux façons de l'activer :
-     a) <html data-theme="surhumains">   → bascule à chaud
-     b) charger ce fichier seul          → thème par défaut du document
+   Activation : charger ce fichier après tokens.css, puis
+     <html data-theme="surhumains">  (ou sur un sous-arbre)
 
    Registre : le site de référence est entièrement en Avenir, sans écriture
    manuscrite. Le thème passe donc le registre « enfant » (Gaegu) au registre
@@ -32,11 +31,11 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   2. APPLICATION — tokens propres (le reste vient de _base.css)
+   2. APPLICATION — tokens propres (le reste est dérivé dans tokens.css § 2 ter)
    ══════════════════════════════════════════════════════════════════════ */
 :root[data-theme="surhumains"],
 [data-theme="surhumains"] {
-  /* ── Triplets RGB pour les dérivations de _base.css ── */
+  /* ── Triplets RGB pour les dérivations de tokens.css § 2 ter ── */
   --_ink-rgb: 20, 20, 75;
   --_accent-rgb: 249, 143, 165;
   --_shadow-rgb: 20, 20, 75;
@@ -71,14 +70,6 @@
   --divider-repeat-mobile: 780px;
   --wave-h: 105px;
   --wave-h-mobile: 64px;
-
-  /* ── Alias de compatibilité ── */
-  --navy: var(--shm-blue-deep);
-  --navy-light: var(--shm-blue);
-  --yellow: var(--shm-pink);
-  --yellow-hover: var(--shm-pink-hover);
-  --white: var(--shm-off-white);
-  --black: var(--shm-ink);
 }
 
 /* ══════════════════════════════════════════════════════════════════════

@@ -1,13 +1,12 @@
 /* ==========================================================================
    Thème — L'Observatoire des Mots
    Dérivé de clapeditions.fr/observatoire-des-mots.
-   Hérite de _base.css pour les dérivations automatiques (text ramp,
-   borders, shadows, accent-soft/ring/glow). Ne déclare que les tokens
-   propres au thème.
+   Ne déclare que ses rôles nommés et ses trois triplets RGB : rampe de
+   texte, bordures, voiles, déclinaisons d'accent et ombres sont dérivés
+   dans tokens.css § 2 ter.
 
-   Deux façons de l'activer :
-     a) <html data-theme="observatoire">   → bascule à chaud
-     b) charger ce fichier seul            → thème par défaut du document
+   Activation : charger ce fichier après tokens.css, puis
+     <html data-theme="observatoire">  (ou sur un sous-arbre)
 
    Registre : l'Observatoire des Mots est un podcast littéraire/éducatif.
    Le violet foncé porte l'autorité, l'orange vif les interactions.
@@ -31,11 +30,11 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   2. APPLICATION — tokens propres (le reste vient de _base.css)
+   2. APPLICATION — tokens propres (le reste est dérivé dans tokens.css § 2 ter)
    ══════════════════════════════════════════════════════════════════════ */
 :root[data-theme="observatoire"],
 [data-theme="observatoire"] {
-  /* ── Triplets RGB pour les dérivations de _base.css ── */
+  /* ── Triplets RGB pour les dérivations de tokens.css § 2 ter ── */
   --_ink-rgb: 30, 19, 64;
   --_accent-rgb: 234, 87, 27;
   --_shadow-rgb: 30, 19, 64;
@@ -70,14 +69,6 @@
   --divider-repeat-mobile: 260px;
   --wave-h: 75px;
   --wave-h-mobile: 50px;
-
-  /* ── Alias de compatibilité ── */
-  --navy: var(--obs-purple-deep);
-  --navy-light: var(--obs-purple);
-  --yellow: var(--obs-orange);
-  --yellow-hover: var(--obs-orange-hover);
-  --white: var(--obs-off-white);
-  --black: var(--obs-ink);
 }
 
 /* ══════════════════════════════════════════════════════════════════════

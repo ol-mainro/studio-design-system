@@ -7,10 +7,10 @@
       "firebase.json",
       ".firebaserc",
       "/design.md",
-      "clap/index.html",
-      "conjugarium/index.html",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "/temporary-sources/**",
+      "/CLAUDE.md"
     ],
     "redirects": [
       {
@@ -37,6 +37,21 @@
         "source": "/observatoire/",
         "destination": "/observatoire",
         "type": 301
+      },
+      {
+        "source": "/layouts/podcast/",
+        "destination": "/layouts/podcast",
+        "type": 301
+      },
+      {
+        "source": "/layouts/musee/",
+        "destination": "/layouts/musee",
+        "type": 301
+      },
+      {
+        "source": "/layouts/video/",
+        "destination": "/layouts/video",
+        "type": 301
       }
     ],
     "rewrites": [
@@ -55,6 +70,18 @@
       {
         "source": "/observatoire",
         "destination": "/observatoire.html"
+      },
+      {
+        "source": "/layouts/podcast",
+        "destination": "/layouts/podcast.html"
+      },
+      {
+        "source": "/layouts/musee",
+        "destination": "/layouts/musee.html"
+      },
+      {
+        "source": "/layouts/video",
+        "destination": "/layouts/video.html"
       }
     ],
     "headers": [
@@ -77,7 +104,7 @@
         ]
       },
       {
-        "source": "/clap",
+        "source": "/@(clap|conjugarium|surhumains|observatoire)",
         "headers": [
           {
             "key": "Cache-Control",
@@ -86,25 +113,7 @@
         ]
       },
       {
-        "source": "/conjugarium",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      },
-      {
-        "source": "/surhumains",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      },
-      {
-        "source": "/observatoire",
+        "source": "/layouts/*",
         "headers": [
           {
             "key": "Cache-Control",

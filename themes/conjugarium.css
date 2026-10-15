@@ -1,13 +1,12 @@
 /* ==========================================================================
    Thème — Bienvenue au Conjugarium
    Dérivé de clapeditions.fr/bienvenueauconjugarium-audio.
-   Hérite de _base.css pour les dérivations automatiques (text ramp,
-   borders, shadows, accent-soft/ring/glow). Ne déclare que les tokens
-   propres au thème.
+   Ne déclare que ses rôles nommés et ses trois triplets RGB : rampe de
+   texte, bordures, voiles, déclinaisons d'accent et ombres sont dérivés
+   dans tokens.css § 2 ter.
 
-   Deux façons de l'activer :
-     a) <html data-theme="conjugarium">   → bascule à chaud
-     b) charger ce fichier seul           → thème par défaut du document
+   Activation : charger ce fichier après tokens.css, puis
+     <html data-theme="conjugarium">  (ou sur un sous-arbre)
 
    ⚠ Police : « Simply Olive » (Ali Hamidi) est marquée PERSONAL USE ONLY
      dans ses métadonnées. Voir design.md § Licence avant toute mise en ligne.
@@ -34,11 +33,11 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   2. APPLICATION — tokens propres (le reste vient de _base.css)
+   2. APPLICATION — tokens propres (le reste est dérivé dans tokens.css § 2 ter)
    ══════════════════════════════════════════════════════════════════════ */
 :root[data-theme="conjugarium"],
 [data-theme="conjugarium"] {
-  /* ── Triplets RGB pour les dérivations de _base.css ── */
+  /* ── Triplets RGB pour les dérivations de tokens.css § 2 ter ── */
   --_ink-rgb: 14, 23, 42;
   --_accent-rgb: 244, 176, 207;
   --_shadow-rgb: 14, 23, 42;
@@ -64,6 +63,7 @@
   /* ── Typographie ── */
   --font-heading: 'Simply Olive', 'Gaegu', cursive;
   --font-display: 'Simply Olive', 'Avenir Heavy', 'Lexend', sans-serif;
+  --heading-weight: 400;     /* Simply Olive n'a qu'une graisse */
   --heading-lh: 1.1;
   --heading-ls: 0.01em;
   --fs-title-fun: clamp(2.4rem, 6vw, 4.2rem);
@@ -76,14 +76,6 @@
   --divider-repeat-mobile: 430px;
   --wave-h: 90px;
   --wave-h-mobile: 60px;
-
-  /* ── Alias de compatibilité ── */
-  --navy: var(--cjg-navy);
-  --navy-light: var(--cjg-navy-light);
-  --yellow: var(--cjg-pink);
-  --yellow-hover: var(--cjg-pink-hover);
-  --white: var(--cjg-lavender);
-  --black: var(--cjg-navy);
 }
 
 /* ══════════════════════════════════════════════════════════════════════
