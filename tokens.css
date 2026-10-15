@@ -48,6 +48,7 @@
   --surface-sunken: #F0F2F5;            /* champs de saisie */
   --surface-invert: var(--clap-navy);   /* LA bande de rupture sombre */
   --surface-invert-raised: var(--clap-navy-light);
+  --surface-alt: #F2F4F7;               /* seconde bande claire (citation, encart) */
 
   /* ── Accent : tout ce qui est cliquable ou actif ── */
   --accent: var(--clap-yellow);

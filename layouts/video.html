@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="fr" data-theme="conjugarium">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<script>
+  // Thème du projet par défaut ; ?theme=clap|conjugarium|surhumains|observatoire pour comparer.
+  (function () {
+    var t = (location.search.match(/[?&]theme=([\w-]+)/) || [])[1];
+    if (t === 'clap') document.documentElement.removeAttribute('data-theme');
+    else if (t) document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<title>Le Karaoké du Conjugarium — Playlist vidéo</title>
+<meta name="description" content="Layout « playlist vidéo » du design system Clap ! : catalogue, lecteur à contrôles intégrés, fiche mémo et QR code de partage." />
+<link rel="canonical" href="https://clap-design-system.web.app/layouts/video" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Clap ! Studio — Design System" />
+<meta property="og:title" content="Le Karaoké du Conjugarium — Playlist vidéo" />
+<meta property="og:description" content="Layout « playlist vidéo » du design system Clap ! : catalogue, lecteur à contrôles intégrés, fiche mémo et QR code de partage." />
+<meta property="og:url" content="https://clap-design-system.web.app/layouts/video" />
+<meta property="og:image" content="https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Le Karaoké du Conjugarium — Playlist vidéo" />
+<meta name="twitter:description" content="Layout « playlist vidéo » du design system Clap ! : catalogue, lecteur à contrôles intégrés, fiche mémo et QR code de partage." />
+<meta name="twitter:image" content="https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Gaegu:wght@700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../tokens.css" />
+<link rel="stylesheet" href="../themes/conjugarium.css" />
+<link rel="stylesheet" href="../themes/surhumains.css" />
+<link rel="stylesheet" href="../themes/observatoire.css" />
+<link rel="stylesheet" href="../components.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" defer></script>
+</head>
+<body>
+<div class="cl-page">
+
+  <!-- ═══ Barre supérieure ═══ -->
+  <header class="cl-topbar">
+    <div class="cl-topbar__inner">
+      <a class="cl-topbar__brand" href="#">
+        <img src="../assets/clap-logo.png" alt="Clap !" width="36" height="36" />
+        <span>Le Conjugarium</span>
+      </a>
+      <a class="cl-btn cl-btn--soft" href="#" data-show="player" hidden><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-left"/></svg> Toutes les chansons</a>
+    </div>
+  </header>
+
+  <!-- ═══ Vue 1 : catalogue ═══ -->
+  <main class="cl-section cl-section--end" id="catalogue">
+    <div class="cl-container">
+      <div class="cl-pagehead" style="text-align:center; align-items:center">
+        <span class="cl-meta">Karaoké · 7 chansons</span>
+        <h1 class="cl-title-fun">Le Karaoké du <span class="cl-section-title__accent">Conjugarium</span></h1>
+        <p class="cl-desc">Chantez avec les personnages pour mémoriser les terminaisons, un temps après l’autre.</p>
+      </div>
+      <div class="cl-vgallery">
+        <a class="cl-vcard" href="#track-1">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">3:45</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 1</span>
+              <span class="cl-vcard__title">Les verbes en -ER</span>
+              <span class="cl-vcard__sub">avec <strong>Madame Javel</strong> · 1er Groupe au Présent</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+        <a class="cl-vcard" href="#track-2">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/2-les-verbes-en-dre.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">3:20</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 2</span>
+              <span class="cl-vcard__title">Les verbes en -DRE</span>
+              <span class="cl-vcard__sub">avec <strong>Justin Chandelle</strong> · 2e groupe &amp; verbes en -DRE</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+        <a class="cl-vcard" href="#track-3">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/3-les-verbes-en-ir-oir-re-indre-et-soudre.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">4:05</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 3</span>
+              <span class="cl-vcard__title">Les verbes en -IR, -OIR, -RE, -INDRE &amp; -SOUDRE</span>
+              <span class="cl-vcard__sub">avec <strong>Gaby Deux Visages</strong> · Être &amp; Avoir / 3e groupe</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+        <a class="cl-vcard" href="#track-4">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">3:15</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 4</span>
+              <span class="cl-vcard__title">Le verbe Avoir</span>
+              <span class="cl-vcard__sub">avec <strong>Mister A</strong> · L&#x27;Imparfait</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+        <a class="cl-vcard" href="#track-5">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/2-les-verbes-en-dre.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">3:30</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 5</span>
+              <span class="cl-vcard__title">Le verbe Être</span>
+              <span class="cl-vcard__sub">avec <strong>Big E</strong> · Le Futur Simple</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+        <a class="cl-vcard" href="#track-6">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/3-les-verbes-en-ir-oir-re-indre-et-soudre.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">3:50</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 6</span>
+              <span class="cl-vcard__title">Valoir, Vouloir &amp; Pouvoir</span>
+              <span class="cl-vcard__sub">avec <strong>Les Sœurs Miroir</strong> · Verbes Pronominaux &amp; Modaux</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+        <a class="cl-vcard" href="#track-7">
+          <div class="cl-vcard__body">
+            <div class="cl-vcard__thumb">
+              <img src="https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg" alt="" loading="lazy" />
+              <div class="cl-vcard__overlay"><span class="cl-vcard__play">▶</span></div>
+              <span class="cl-vcard__duration">2:55</span>
+            </div>
+            <div class="cl-vcard__info">
+              <span class="cl-vcard__eyebrow">Chanson 7</span>
+              <span class="cl-vcard__title">Le verbe Aller</span>
+              <span class="cl-vcard__sub">avec <strong>Raoul le Rebelle</strong> · 3e Groupe &amp; Irréguliers</span>
+            </div>
+          </div>
+          <span class="cl-vcard__cta">Voir le karaoké <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══ Vue 2 : lecteur ═══ -->
+  <main class="cl-section cl-section--end" id="lecteur" hidden>
+    <div class="cl-container cl-container--wide">
+
+      <nav class="cl-breadcrumb" aria-label="Fil d’Ariane" style="margin-bottom: var(--sp-5)">
+        <a href="#">Toutes les chansons</a> <span aria-hidden="true">/</span> <span aria-current="page" data-v="title"></span>
+      </nav>
+
+      <div class="cl-pagehead">
+        <span class="cl-meta">Karaoké interactif · <span data-v="position"></span></span>
+        <div class="cl-pagehead__row">
+          <h1 class="cl-title-fun" data-v="title"></h1>
+          <a class="cl-btn cl-btn--soft" href="#partage" data-scroll><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-qr"/></svg> QR code</a>
+        </div>
+        <p class="cl-pagehead__sub">Avec <strong data-v="character"></strong> <span class="cl-chip cl-chip--accent" data-v="group"></span></p>
+      </div>
+
+      <div class="cl-video cl-vplayer" data-cl-vplayer>
+        <div class="cl-video__frame">
+          <video playsinline preload="metadata"></video>
+          <div class="cl-vplayer__spinner" aria-hidden="true"></div>
+          <div class="cl-vplayer__error">Cette vidéo ne peut pas être lue pour le moment.</div>
+          <button type="button" class="cl-vplayer__big" data-cl-v="play" aria-label="Lecture"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-play"/></svg></button>
+          <div class="cl-vplayer__bar">
+            <button type="button" class="cl-vplayer__btn" data-cl-v="play" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <span class="cl-vplayer__time"><span data-cl-v-time="current">0:00</span> / <span data-cl-v-time="total">--:--</span></span>
+            <input class="cl-range cl-range--media" type="range" min="0" max="100" step="0.1" value="0" data-cl-v-seek aria-label="Progression" />
+            <button type="button" class="cl-vplayer__btn" data-cl-v="mute" aria-label="Couper le son" aria-pressed="false"><svg class="cl-ico cl-when-unpressed" aria-hidden="true"><use href="#cl-i-volume"/></svg><svg class="cl-ico cl-when-pressed" aria-hidden="true"><use href="#cl-i-mute"/></svg></button>
+            <input class="cl-range cl-range--media cl-range--volume" type="range" min="0" max="1" step="0.05" value="1" data-cl-v-volume aria-label="Volume" />
+            <button type="button" class="cl-vplayer__btn" data-cl-v="rate" aria-label="Vitesse de lecture">1×</button>
+            <button type="button" class="cl-vplayer__btn" data-cl-v="fullscreen" aria-label="Plein écran"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-expand"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="cl-track-nav" aria-label="Chansons voisines">
+        <a class="cl-track-nav__btn" data-v="prev"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-chevron-left"/></svg><span class="cl-track-nav__label"></span></a>
+        <a class="cl-track-nav__btn cl-track-nav__btn--center" href="#"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-list"/></svg> Liste</a>
+        <a class="cl-track-nav__btn" data-v="next"><span class="cl-track-nav__label"></span><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-chevron-right"/></svg></a>
+      </nav>
+
+      <div class="cl-pagehead__row" style="margin-bottom: var(--sp-4)">
+        <h2 class="cl-section-title" style="margin:0">Changer de chanson</h2>
+        <span class="cl-desc"><strong>7</strong> vidéos disponibles</span>
+      </div>
+      <div class="cl-vswitcher" style="margin-bottom: var(--sp-10)">
+        <a class="cl-vchip" href="#track-1" data-track="0">
+          <span class="cl-vchip__num">01</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Mme Javel (-ER)</span>
+            <span class="cl-vchip__status" data-status>1er Groupe au Présent</span>
+          </span>
+        </a>
+        <a class="cl-vchip" href="#track-2" data-track="1">
+          <span class="cl-vchip__num">02</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Justin Chandelle</span>
+            <span class="cl-vchip__status" data-status>2e groupe &amp; verbes en -DRE</span>
+          </span>
+        </a>
+        <a class="cl-vchip" href="#track-3" data-track="2">
+          <span class="cl-vchip__num">03</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Gaby Deux Visag...</span>
+            <span class="cl-vchip__status" data-status>Être &amp; Avoir / 3e groupe</span>
+          </span>
+        </a>
+        <a class="cl-vchip" href="#track-4" data-track="3">
+          <span class="cl-vchip__num">04</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Mister A</span>
+            <span class="cl-vchip__status" data-status>L&#x27;Imparfait</span>
+          </span>
+        </a>
+        <a class="cl-vchip" href="#track-5" data-track="4">
+          <span class="cl-vchip__num">05</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Big E</span>
+            <span class="cl-vchip__status" data-status>Le Futur Simple</span>
+          </span>
+        </a>
+        <a class="cl-vchip" href="#track-6" data-track="5">
+          <span class="cl-vchip__num">06</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Les Sœurs Miroir</span>
+            <span class="cl-vchip__status" data-status>Verbes Pronominaux &amp; Modaux</span>
+          </span>
+        </a>
+        <a class="cl-vchip" href="#track-7" data-track="6">
+          <span class="cl-vchip__num">07</span>
+          <span class="cl-vchip__info">
+            <span class="cl-vchip__title">Raoul le Rebelle</span>
+            <span class="cl-vchip__status" data-status>3e Groupe &amp; Irréguliers</span>
+          </span>
+        </a>
+      </div>
+
+      <section class="cl-card cl-memo" style="margin-bottom: var(--sp-10)" aria-labelledby="memo-title">
+        <div class="cl-memo__head">
+          <span class="cl-memo__icon"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-book"/></svg></span>
+          <h2 class="cl-memo__title" id="memo-title">Fiche mémo : <span data-v="memo-rule"></span></h2>
+        </div>
+        <p class="cl-memo__intro" data-v="description"></p>
+        <div class="cl-memo__grid">
+          <div class="cl-memo__box">
+            <h3 class="cl-memo__label"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-check"/></svg> Terminaisons &amp; repères</h3>
+            <ul class="cl-memo__list" data-v="memo-endings"></ul>
+          </div>
+          <div class="cl-memo__box cl-memo__box--accent">
+            <h3 class="cl-memo__label"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-sparkles"/></svg> Exemple</h3>
+            <p class="cl-memo__example" data-v="memo-example"></p>
+            <p class="cl-memo__tip" data-v="memo-tip"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cl-card cl-qr" id="partage" style="margin-bottom: var(--sp-12)" aria-labelledby="qr-title">
+        <div class="cl-qr__code" data-v="qr"></div>
+        <div class="cl-qr__info">
+          <span class="cl-meta">Partager en classe</span>
+          <h2 class="cl-banner__title" id="qr-title">Scannez pour lancer « <span data-v="title"></span> »</h2>
+          <p class="cl-desc">Affichez ou imprimez ce QR code : les élèves ouvrent directement la vidéo sur leur tablette.</p>
+          <div class="cl-qr__url" data-v="url"></div>
+          <div class="cl-qr__actions">
+            <button type="button" class="cl-btn" data-qr="card"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg> Carte à imprimer</button>
+            <button type="button" class="cl-btn cl-btn--soft" data-qr="raw"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-qr"/></svg> QR seul</button>
+            <button type="button" class="cl-btn cl-btn--soft" data-qr="print"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-printer"/></svg> Imprimer</button>
+            <button type="button" class="cl-btn cl-btn--soft" data-qr="share"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-share"/></svg> Partager</button>
+            <button type="button" class="cl-btn cl-btn--soft" data-qr="copy"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-copy"/></svg> Copier le lien</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="cl-wave" style="--wave-from: var(--surface); --wave-to: var(--accent)"></div>
+
+  <footer class="cl-footer">
+    <p class="cl-footer__tagline"><strong>Chantez, vibrez, conjuguez !</strong></p>
+    <p class="cl-footer__legal">Voir ce layout dans le thème : <a class="cl-footer__link" href="./video?theme=clap">Clap ! Studio</a> · <a class="cl-footer__link" href="./video?theme=conjugarium">Conjugarium</a> · <a class="cl-footer__link" href="./video?theme=surhumains">Surhumains</a> · <a class="cl-footer__link" href="./video?theme=observatoire">Observatoire</a></p>
+    <p class="cl-footer__legal">© Clap ! Éditions — Le Karaoké des verbes</p>
+  </footer>
+</div>
+
+<!-- Données : une entrée par vidéo. id (ancre), title, src, poster, character, group, description, memo{rule, endings[], example, tip}. -->
+<script type="application/json" id="videos">
+[
+ {
+  "id": "track-1",
+  "title": "Les verbes en -ER",
+  "short": "Mme Javel (-ER)",
+  "character": "Madame Javel",
+  "group": "1er Groupe au Présent",
+  "duration": "3:45",
+  "src": "https://storage.googleapis.com/clap-videos-media/3eb0d386-16-9.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg",
+  "description": "Chantez avec Madame Javel pour mémoriser toutes les terminaisons régulières du 1er groupe au présent (-e, -es, -e, -ons, -ez, -ent).",
+  "memo": {
+   "rule": "Verbes en -ER au présent de l’indicatif",
+   "endings": [
+    "je -e",
+    "tu -es",
+    "il/elle/on -e",
+    "nous -ons",
+    "vous -ez",
+    "ils/elles -ent"
+   ],
+   "example": "Chanter : je chante, tu chantes, il chante, nous chantons, vous chantez, ils chantent.",
+   "tip": "Verbes en -ger : nous mangeons (avec un e). Verbes en -cer : nous commençons (avec une cédille)."
+  }
+ },
+ {
+  "id": "track-2",
+  "title": "Les verbes en -DRE",
+  "short": "Justin Chandelle",
+  "character": "Justin Chandelle",
+  "group": "2e groupe & verbes en -DRE",
+  "duration": "3:20",
+  "src": "https://storage.googleapis.com/clap-videos-media/2-les-verbes-en-dre.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/2-les-verbes-en-dre.jpg",
+  "description": "Justin Chandelle vous guide à travers les particularités rythmiques des verbes en -DRE comme prendre, attendre et entendre.",
+  "memo": {
+   "rule": "Verbes en -DRE au présent",
+   "endings": [
+    "je -ds",
+    "tu -ds",
+    "il/elle/on -d",
+    "nous -ons",
+    "vous -ez",
+    "ils/elles -ent"
+   ],
+   "example": "Attendre : j’attends, tu attends, il attend, nous attendons, vous attendez, ils attendent.",
+   "tip": "Prendre et ses dérivés doublent le n au pluriel : nous prenons, ils prennent."
+  }
+ },
+ {
+  "id": "track-3",
+  "title": "Les verbes en -IR, -OIR, -RE, -INDRE & -SOUDRE",
+  "short": "Gaby Deux Visag...",
+  "character": "Gaby Deux Visages",
+  "group": "Être & Avoir / 3e groupe",
+  "duration": "4:05",
+  "src": "https://storage.googleapis.com/clap-videos-media/3-les-verbes-en-ir-oir-re-indre-et-soudre.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/3-les-verbes-en-ir-oir-re-indre-et-soudre.jpg",
+  "description": "Le tourbillonnant 3e groupe décodé en refrain pop avec Gaby Deux Visages, pour ne plus jamais hésiter.",
+  "memo": {
+   "rule": "Verbes en -IR, -OIR, -RE, -INDRE et -SOUDRE",
+   "endings": [
+    "je -s / -x",
+    "tu -s / -x",
+    "il/elle/on -t / -d",
+    "nous -ons",
+    "vous -ez",
+    "ils/elles -ent"
+   ],
+   "example": "Peindre : je peins, tu peins, il peint, nous peignons, vous peignez, ils peignent.",
+   "tip": "Les verbes en -indre et -soudre perdent le d au singulier : je peins, je résous."
+  }
+ },
+ {
+  "id": "track-4",
+  "title": "Le verbe Avoir",
+  "short": "Mister A",
+  "character": "Mister A",
+  "group": "L'Imparfait",
+  "duration": "3:15",
+  "src": "https://storage.googleapis.com/clap-videos-media/3eb0d386-16-9.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg",
+  "description": "J'avais, tu avais, il avait... Maîtrisez l'auxiliaire avoir et ses temps clés avec le groove de Mister A.",
+  "memo": {
+   "rule": "L’auxiliaire AVOIR",
+   "endings": [
+    "Présent : j’ai, tu as, il a, nous avons, vous avez, ils ont",
+    "Imparfait : j’avais, tu avais, il avait…"
+   ],
+   "example": "Indispensable pour former le passé composé : j’ai chanté.",
+   "tip": "Ne pas confondre « a » (verbe avoir) et « à » (préposition)."
+  }
+ },
+ {
+  "id": "track-5",
+  "title": "Le verbe Être",
+  "short": "Big E",
+  "character": "Big E",
+  "group": "Le Futur Simple",
+  "duration": "3:30",
+  "src": "https://storage.googleapis.com/clap-videos-media/2-les-verbes-en-dre.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/2-les-verbes-en-dre.jpg",
+  "description": "Je serai, tu seras, il sera ! Embarquez dans le futur avec Big E pour explorer la conjugaison du verbe être.",
+  "memo": {
+   "rule": "L’auxiliaire ÊTRE",
+   "endings": [
+    "Présent : je suis, tu es, il est, nous sommes, vous êtes, ils sont",
+    "Futur : je serai, tu seras, il sera…"
+   ],
+   "example": "Demain, je serai le champion de la conjugaison !",
+   "tip": "Attention à l’accent circonflexe de « vous êtes »."
+  }
+ },
+ {
+  "id": "track-6",
+  "title": "Valoir, Vouloir & Pouvoir",
+  "short": "Les Sœurs Miroir",
+  "character": "Les Sœurs Miroir",
+  "group": "Verbes Pronominaux & Modaux",
+  "duration": "3:50",
+  "src": "https://storage.googleapis.com/clap-videos-media/3-les-verbes-en-ir-oir-re-indre-et-soudre.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/3-les-verbes-en-ir-oir-re-indre-et-soudre.jpg",
+  "description": "Une harmonie à deux voix par Les Sœurs Miroir pour dompter les irrégularités de valoir, vouloir et pouvoir.",
+  "memo": {
+   "rule": "Pouvoir, vouloir, valoir",
+   "endings": [
+    "je peux, tu peux, il peut",
+    "je veux, tu veux, il veut",
+    "je vaux, tu vaux, il vaut"
+   ],
+   "example": "Vouloir, c’est pouvoir ! Nous voulons, vous voulez, ils veulent.",
+   "tip": "Au singulier, ces verbes se terminent par -x aux deux premières personnes."
+  }
+ },
+ {
+  "id": "track-7",
+  "title": "Le verbe Aller",
+  "short": "Raoul le Rebelle",
+  "character": "Raoul le Rebelle",
+  "group": "3e Groupe & Irréguliers",
+  "duration": "2:55",
+  "src": "https://storage.googleapis.com/clap-videos-media/3eb0d386-16-9.mp4",
+  "poster": "https://storage.googleapis.com/clap-videos-media/thumbnails/3eb0d386-16-9.jpg",
+  "description": "Je vais, tu vas, il va ! Raoul dépoussière le verbe aller à grand coup de décibels stimulants.",
+  "memo": {
+   "rule": "Le verbe ALLER (3e groupe)",
+   "endings": [
+    "je vais",
+    "tu vas",
+    "il/elle va",
+    "nous allons",
+    "vous allez",
+    "ils/elles vont"
+   ],
+   "example": "Au futur : j’irai, tu iras, il ira, nous irons, vous irez, ils iront.",
+   "tip": "Il se termine en -er mais appartient au 3e groupe : son radical change complètement."
+  }
+ }
+]
+</script>
+
+<script src="../components.js"></script>
+<script>
+  // ── Routage par ancre : # → catalogue, #track-N → lecteur ──
+  (function () {
+    var tracks = Clap.util.readJSON('#videos');
+    var catalogue = document.getElementById('catalogue');
+    var lecteur = document.getElementById('lecteur');
+    var player = ClapVideo.get('[data-cl-vplayer]');
+    var current = -1;
+    var all = function (k) { return Array.prototype.slice.call(document.querySelectorAll('[data-v="' + k + '"]')); };
+    var set = function (k, text) { all(k).forEach(function (el) { el.textContent = text; }); };
+    var shareUrl = function (t) { return location.href.split('#')[0] + '#' + t.id; };
+
+    function show(i) {
+      var t = tracks[i];
+      current = i;
+      catalogue.hidden = true; lecteur.hidden = false;
+      document.querySelector('[data-show="player"]').hidden = false;
+      document.title = t.title + ' — Le Karaoké du Conjugarium';
+
+      set('title', t.title); set('character', t.character); set('group', t.group);
+      set('position', 'Piste ' + (i + 1) + ' sur ' + tracks.length);
+      set('description', t.description);
+      set('memo-rule', t.memo.rule); set('memo-example', t.memo.example); set('memo-tip', t.memo.tip);
+      all('memo-endings')[0].innerHTML = t.memo.endings.map(function (e) { return '<li>' + Clap.util.escapeHTML(e) + '</li>'; }).join('');
+      set('url', shareUrl(t));
+      ClapQR.render(document.querySelector('[data-v="qr"]'), shareUrl(t));
+
+      [['prev', tracks[i - 1]], ['next', tracks[i + 1]]].forEach(function (p) {
+        var a = all(p[0])[0];
+        a.hidden = !p[1];
+        if (p[1]) { a.href = '#' + p[1].id; a.querySelector('.cl-track-nav__label').textContent = p[1].title; }
+      });
+      document.querySelectorAll('.cl-vchip').forEach(function (c) {
+        var on = +c.getAttribute('data-track') === i;
+        c.classList.toggle('cl-vchip--active', on);
+        if (on) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
+        c.querySelector('[data-status]').textContent = on ? 'En cours de lecture' : tracks[+c.getAttribute('data-track')].group;
+      });
+
+      player.load({ src: t.src, poster: t.poster, title: t.title, autoplay: true });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function route() {
+      var i = tracks.findIndex(function (t) { return '#' + t.id === location.hash; });
+      if (i >= 0) { if (i !== current) show(i); return; }
+      if (location.hash === '#partage') return;
+      current = -1;
+      player.element.pause();
+      lecteur.hidden = true; catalogue.hidden = false;
+      document.querySelector('[data-show="player"]').hidden = true;
+      document.title = 'Le Karaoké du Conjugarium — Playlist vidéo';
+    }
+
+    // fin de vidéo → chanson suivante
+    document.addEventListener('cl:videoended', function () { if (tracks[current + 1]) location.hash = tracks[current + 1].id; });
+    // le lien « QR code » défile sans changer de route
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-scroll]')) { e.preventDefault(); document.getElementById('partage').scrollIntoView({ behavior: 'smooth' }); }
+      var q = e.target.closest('[data-qr]');
+      if (!q || current < 0) return;
+      var t = tracks[current], o = { url: shareUrl(t), title: t.title, subtitle: t.character + ' · ' + t.group, brand: 'Clap ! Éditions · Le Conjugarium', hint: 'Scannez pour lancer la vidéo karaoké' };
+      ({ card: function () { ClapQR.downloadCard(o); }, raw: function () { ClapQR.downloadRaw(o.url, 'QR-' + t.id + '.png'); },
+        print: function () { ClapQR.print(o); }, share: function () { ClapQR.share(o); }, copy: function () { ClapQR.copy(o.url); } })[q.getAttribute('data-qr')]();
+    });
+    window.addEventListener('hashchange', route);
+    // QRious est chargé en defer : attendre la fin du chargement pour le premier rendu
+    if (document.readyState === 'complete') route(); else window.addEventListener('load', route);
+  })();
+</script>
+</body>
+</html>

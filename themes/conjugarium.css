@@ -53,6 +53,7 @@
   --surface-sunken: var(--cjg-white);
   --surface-invert: var(--cjg-navy);
   --surface-invert-raised: #1B2540;
+  --surface-alt: var(--cjg-periwinkle);      /* seconde bande claire */
 
   /* ── Accent ── */
   --accent: var(--cjg-pink);
@@ -94,7 +95,7 @@
 /* ══════════════════════════════════════════════════════════════════════
    4. UTILITAIRE PROPRE AU THÈME
    ══════════════════════════════════════════════════════════════════════ */
-[data-theme="conjugarium"] .cl-section-light--alt,
+/* Alias historique de .cl-section-light--alt */
 .cjg-section-periwinkle {
-  background: var(--cjg-periwinkle);
+  background: var(--surface-alt);
 }

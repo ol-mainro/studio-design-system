@@ -7,6 +7,7 @@
  *   ClapLightbox  visionneuse de planches / illustrations
  *   ClapModal     modale générique (focus piégé, Échap, retour du focus)
  *   ClapToast     notification éphémère
+ *   ClapTabs      bascule de vues (pastilles d'onglets)
  *   ClapAudio     playlist audio + lecteur flottant
  *   ClapViewer    visionneuse de chapitre (média + récit), liée à ClapAudio
  *   ClapFullscreen plein écran / mode borne
@@ -413,6 +414,39 @@
   })();
 
   /* ════════════════════════════════════════════════════════════════════
+     ClapTabs — bascule de vues.
+       <div class="cl-pills" role="tablist" data-cl-tabs>
+         <button class="cl-pill" role="tab" data-cl-tab="#vue-a">A</button> …
+     Le bouton actif reçoit cl-pill--active + aria-selected ; les autres
+     panneaux sont masqués (attribut hidden).
+     ════════════════════════════════════════════════════════════════════ */
+
+  var Tabs = (function () {
+    function select(btn) {
+      var list = btn.closest('[data-cl-tabs]');
+      $$('[data-cl-tab]', list).forEach(function (b) {
+        var on = b === btn, panel = $(b.getAttribute('data-cl-tab'));
+        setActive(b, on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.removeAttribute('aria-current');
+        if (panel) panel.hidden = !on;
+      });
+    }
+    function init() {
+      $$('[data-cl-tabs]').forEach(function (list) {
+        var btns = $$('[data-cl-tab]', list);
+        var current = btns.filter(function (b) { return b.getAttribute('aria-selected') === 'true'; })[0] || btns[0];
+        if (current) select(current);
+      });
+      document.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-cl-tabs] [data-cl-tab]');
+        if (b) { e.preventDefault(); select(b); }
+      });
+    }
+    return { init: init, select: select };
+  })();
+
+  /* ════════════════════════════════════════════════════════════════════
      ClapToast — ClapToast.show('Message', 3000)
      ════════════════════════════════════════════════════════════════════ */
 
@@ -624,6 +658,7 @@
      Dans la modale : [data-cl-viewer-img|video|title|subtitle|text|badge],
      [data-cl-viewer-prev|next], [data-cl-viewer-dots], [data-cl-viewer-play].
      Clavier : ← / → ; balayage tactile horizontal ≥ 50 px.
+     data-cl-viewer-autoplay sur la modale : ouvrir un chapitre le fait jouer.
      ════════════════════════════════════════════════════════════════════ */
 
   var Viewer = (function () {
@@ -715,10 +750,13 @@
 
       document.addEventListener('click', function (e) {
         var opener = e.target.closest('[data-cl-viewer-open]');
-        if (opener) {
+        if (opener && !e.target.closest('[data-cl-play], a[href]:not([data-cl-viewer-open])')) {
           e.preventDefault(); e.stopPropagation();
           var v = opener.getAttribute('data-cl-viewer-open');
-          open(v === '' ? undefined : +v);
+          var i = v === '' ? undefined : +v;
+          open(i);
+          // data-cl-viewer-autoplay : ouvrir un chapitre lance aussi son écoute
+          if (el.hasAttribute('data-cl-viewer-autoplay') && typeof i === 'number' && !(Audio.index === i && Audio.isPlaying())) Audio.play(i);
           return;
         }
         if (!isOpen()) return;
@@ -809,7 +847,7 @@
         var p = ctl('play');
         if (p) { setPlaying(p, playing); p.setAttribute('aria-label', playing ? 'Pause' : 'Lecture'); }
         var m = ctl('mute');
-        if (m) { m.setAttribute('aria-pressed', video.muted ? 'true' : 'false'); setPlaying(m, !video.muted); }
+        if (m) { m.setAttribute('aria-pressed', video.muted ? 'true' : 'false'); m.setAttribute('aria-label', video.muted ? 'Activer le son' : 'Couper le son'); }
         var r = ctl('rate');
         if (r) r.textContent = video.playbackRate + '×';
         if (vol) { vol.value = video.muted ? 0 : video.volume; fill(vol, video.muted ? 0 : video.volume); }
@@ -1028,13 +1066,14 @@
   window.ClapLightbox = Lightbox;
   window.ClapModal = Modal;
   window.ClapToast = Toast;
+  window.ClapTabs = Tabs;
   window.ClapAudio = Audio;
   window.ClapViewer = Viewer;
   window.ClapFullscreen = Fullscreen;
   window.ClapVideo = Video;
   window.ClapQR = QR;
   window.Clap = {
-    lightbox: Lightbox, modal: Modal, toast: Toast, audio: Audio, viewer: Viewer,
+    lightbox: Lightbox, modal: Modal, toast: Toast, tabs: Tabs, audio: Audio, viewer: Viewer,
     fullscreen: Fullscreen, video: Video, qr: QR, icons: Icons,
     util: { formatTime: formatTime, escapeHTML: escapeHTML, richText: richText, readJSON: readJSON }
   };
@@ -1045,6 +1084,7 @@
     Icons.inject();
     Lightbox.init();
     Modal.init();
+    Tabs.init();
     Fullscreen.init();
     Video.init();
     if ($('[data-cl-tracks]')) Audio.init();

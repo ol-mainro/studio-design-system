@@ -249,6 +249,8 @@
     </div>
   </section>
 
+  <div class="cl-wave" style="--wave-from: var(--surface); --wave-to: var(--surface-alt)"></div>
+
   <!-- ═══ Citation (fond alternatif du thème) ═══ -->
   <section class="cl-section-light cl-section-light--alt">
     <figure class="cl-quote">
@@ -257,6 +259,8 @@
       <figcaption class="cl-quote__source">Extrait du final · Clap ! Éditions</figcaption>
     </figure>
   </section>
+
+  <div class="cl-wave" style="--wave-from: var(--surface-alt); --wave-to: var(--accent)"></div>
 
   <footer class="cl-footer">
     <p class="cl-footer__tagline"><strong>Une création Clap ! Éditions — Surhumains</strong></p>
@@ -288,7 +292,7 @@
       <button type="button" class="cl-player__iconbtn" data-cl-action="prev" aria-label="Piste précédente"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-prev"/></svg></button>
       <button type="button" class="cl-player__iconbtn" data-cl-action="next" aria-label="Piste suivante"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-next"/></svg></button>
       <span class="cl-player__sep" aria-hidden="true"></span>
-      <button type="button" class="cl-player__iconbtn" data-cl-action="mute" aria-label="Couper le son"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-volume"/></svg></button>
+      <button type="button" class="cl-player__iconbtn" data-cl-action="mute" aria-label="Couper le son" aria-pressed="false"><svg class="cl-ico cl-when-unpressed" aria-hidden="true"><use href="#cl-i-volume"/></svg><svg class="cl-ico cl-when-pressed" aria-hidden="true"><use href="#cl-i-mute"/></svg></button>
       <input class="cl-range cl-range--volume" type="range" min="0" max="1" step="0.05" value="1" data-cl-volume aria-label="Volume" />
     </div>
   </div>

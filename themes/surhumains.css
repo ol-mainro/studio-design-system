@@ -51,6 +51,7 @@
   --surface-sunken: #EFEFF4;
   --surface-invert: var(--shm-blue-deep);
   --surface-invert-raised: var(--shm-blue);
+  --surface-alt: var(--shm-mint);      /* seconde bande claire */
 
   /* ── Accent ── */
   --accent: var(--shm-pink);
@@ -75,7 +76,7 @@
 /* ══════════════════════════════════════════════════════════════════════
    3. UTILITAIRE PROPRE AU THÈME
    ══════════════════════════════════════════════════════════════════════ */
-[data-theme="surhumains"] .cl-section-light--alt,
+/* Alias historique de .cl-section-light--alt */
 .shm-section-mint {
-  background: var(--shm-mint);
+  background: var(--surface-alt);
 }

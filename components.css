@@ -17,6 +17,7 @@ body {
 }
 
 button { font-family: var(--font-body); cursor: pointer; }
+[hidden] { display: none !important; }
 img { max-width: 100%; display: block; }
 
 /* ── Layout ── */
@@ -30,6 +31,8 @@ img { max-width: 100%; display: block; }
   padding: var(--sp-12) var(--sp-4) 0;
   flex: 1;
 }
+
+.cl-section--end { padding-bottom: var(--sp-12); }   /* dernière section avant une vague */
 
 .cl-section-invert,
 .cl-section-dark { padding: var(--sp-12) var(--sp-4); flex: 1; }  /* -dark : alias déprécié */
@@ -69,6 +72,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   width: 100%;
   height: var(--wave-h);
+  margin-bottom: -1px;   /* recouvre le liseré d'arrondi avec la section suivante */
   z-index: var(--z-wave);
   background: var(--wave-from, transparent);
 }
@@ -673,7 +677,7 @@ img { max-width: 100%; display: block; }
 
 /* Surtitre type "Chanson #1" */
 .cl-vcard__eyebrow {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: var(--fs-xs);
   font-weight: 700;
   color: var(--accent-ink);
@@ -943,7 +947,7 @@ img { max-width: 100%; display: block; }
 }
 
 .cl-board-card__eyebrow {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: var(--fs-xs);
   font-weight: 700;
   color: var(--accent-ink);
@@ -1124,6 +1128,7 @@ body.cl-lightbox-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transition: opacity var(--t-base), visibility 0s;
 }
 
 .cl-lightbox__backdrop {
@@ -1327,6 +1332,10 @@ body.cl-lightbox-open {
 [data-playing="true"] .cl-ico--play,
 [data-playing="true"] .cl-when-paused { display: none; }
 
+/* Bascule d'un bouton à bascule (muet…) : suit aria-pressed. */
+[aria-pressed="true"] > .cl-when-unpressed,
+[aria-pressed]:not([aria-pressed="true"]) > .cl-when-pressed { display: none; }
+
 /* Pastille courte (tag, groupe, temps) */
 .cl-chip {
   display: inline-flex;
@@ -1399,7 +1408,7 @@ body.cl-lightbox-open {
 .cl-row[data-cl-track] { cursor: pointer; }
 
 /* ── Fond de section alternatif (le thème le colore) ── */
-.cl-section-light--alt { background: var(--surface-raised); }
+.cl-section-light--alt { background: var(--surface-alt); }
 
 /* ── Citation mise en avant ── */
 .cl-quote {
@@ -1495,6 +1504,7 @@ body.cl-lightbox-open {
 }
 
 .cl-chapter {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--surface-raised);
@@ -1503,9 +1513,6 @@ body.cl-lightbox-open {
   overflow: hidden;
   box-shadow: var(--shadow-card);
   color: inherit;
-  text-align: left;
-  font: inherit;
-  padding: 0;
   cursor: pointer;
   transition: transform var(--t-fast), border-color var(--t-base), box-shadow var(--t-fast);
 }
@@ -1540,8 +1547,9 @@ body.cl-lightbox-open {
 
 .cl-chapter__play {
   position: absolute;
+  top: var(--sp-3);
   right: var(--sp-3);
-  bottom: var(--sp-3);
+  z-index: 1;
   width: var(--icon-btn);
   height: var(--icon-btn);
   border-radius: var(--r-round);
@@ -1553,7 +1561,8 @@ body.cl-lightbox-open {
   box-shadow: var(--shadow-float);
   transition: transform var(--t-fast), background var(--t-fast);
 }
-.cl-chapter:hover .cl-chapter__play { transform: scale(1.1); background: var(--accent); color: var(--on-accent); }
+.cl-chapter__play:hover,
+.cl-chapter--active .cl-chapter__play { transform: scale(1.1); background: var(--accent); color: var(--on-accent); }
 
 .cl-chapter__body { padding: var(--sp-4) var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); flex: 1; }
 .cl-chapter__title {
@@ -1598,7 +1607,7 @@ body.cl-modal-open { overflow: hidden; }
   pointer-events: none;
   transition: opacity var(--t-base), visibility var(--t-base);
 }
-.cl-modal--open { opacity: 1; visibility: visible; pointer-events: auto; }
+.cl-modal--open { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity var(--t-base), visibility 0s; }  /* visible tout de suite : le focus peut y entrer */
 
 .cl-modal__backdrop {
   position: absolute;
@@ -1680,7 +1689,6 @@ body.cl-modal-open { overflow: hidden; }
   touch-action: pan-y;
 }
 .cl-viewer__media { width: 100%; height: 100%; object-fit: contain; }
-.cl-viewer__media[hidden] { display: none; }
 
 /* Flèche ronde posée sur un média (viewer, lecteur vidéo) */
 .cl-media-nav {
@@ -1873,7 +1881,7 @@ body.cl-kiosk { user-select: none; -webkit-user-select: none; }
 }
 .cl-track-nav__btn:hover { background: var(--accent-soft); }
 .cl-track-nav__btn .cl-ico { color: var(--accent-ink); }
-.cl-track-nav__btn[hidden] { display: inline-flex; visibility: hidden; }
+.cl-track-nav__btn[hidden] { display: inline-flex !important; visibility: hidden; }  /* garde sa place */
 .cl-track-nav__label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
 .cl-track-nav__btn--center { color: var(--text-3); font-weight: 500; }
 

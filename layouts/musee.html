@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="fr" data-theme="conjugarium">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<script>
+  // Thème du projet par défaut ; ?theme=clap|conjugarium|surhumains|observatoire pour comparer.
+  (function () {
+    var t = (location.search.match(/[?&]theme=([\w-]+)/) || [])[1];
+    if (t === 'clap') document.documentElement.removeAttribute('data-theme');
+    else if (t) document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<title>Germain l&#x27;Auxerrois — Parcours sonore</title>
+<meta name="description" content="Layout « lecteur de musée » du design system Clap ! : parcours en chapitres, illustration et récit plein cadre, mode borne." />
+<link rel="canonical" href="https://clap-design-system.web.app/layouts/musee" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Clap ! Studio — Design System" />
+<meta property="og:title" content="Germain l&#x27;Auxerrois — Parcours sonore" />
+<meta property="og:description" content="Layout « lecteur de musée » du design system Clap ! : parcours en chapitres, illustration et récit plein cadre, mode borne." />
+<meta property="og:url" content="https://clap-design-system.web.app/layouts/musee" />
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F4e091ecf-9ff0-415b-92ff-953e7ef91cd8.jpeg?alt=media&amp;token=2a6b3acf-e2c3-4d10-a8a0-c0640a9e6307" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Germain l&#x27;Auxerrois — Parcours sonore" />
+<meta name="twitter:description" content="Layout « lecteur de musée » du design system Clap ! : parcours en chapitres, illustration et récit plein cadre, mode borne." />
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F4e091ecf-9ff0-415b-92ff-953e7ef91cd8.jpeg?alt=media&amp;token=2a6b3acf-e2c3-4d10-a8a0-c0640a9e6307" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Gaegu:wght@700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../tokens.css" />
+<link rel="stylesheet" href="../themes/conjugarium.css" />
+<link rel="stylesheet" href="../themes/surhumains.css" />
+<link rel="stylesheet" href="../themes/observatoire.css" />
+<link rel="stylesheet" href="../components.css" />
+</head>
+<body>
+<div class="cl-page">
+
+  <header class="cl-header">
+    <img src="../assets/clap-logo.png" alt="Clap ! Studio" width="76" height="76" />
+    <p class="cl-tagline">Médiation sonore &amp; récit illustré<br /><span class="cl-tagline__accent">Germain l&#x27;Auxerrois</span></p>
+  </header>
+
+  <div class="cl-wave" style="--wave-from: var(--surface); --wave-to: var(--surface-invert)"></div>
+
+  <!-- ═══ Bande de rupture : le parcours ═══ -->
+  <main class="cl-section-invert">
+    <div class="cl-container cl-container--wide">
+
+      <div class="cl-card cl-card--accent cl-banner" style="margin-bottom: var(--sp-8)">
+        <div class="cl-banner__left">
+          <button type="button" class="cl-banner__icon" data-cl-play-all aria-label="Écouter le parcours"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div>
+            <h1 class="cl-banner__title">Germain l&#x27;Auxerrois</h1>
+            <p class="cl-banner__subtitle">Auxerre — Autessiodurum · 6 chapitres</p>
+          </div>
+        </div>
+        <button type="button" class="cl-btn cl-btn--lg" data-cl-play-all><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg><span class="cl-when-paused">Écouter tout le parcours</span><span class="cl-when-playing">Mettre en pause</span></button>
+      </div>
+
+      <div class="cl-controls">
+        <div class="cl-pills" role="tablist" aria-label="Affichage" data-cl-tabs>
+          <button type="button" class="cl-pill" role="tab" data-cl-tab="#vue-galerie" aria-selected="true">Galerie illustrée</button>
+          <button type="button" class="cl-pill" role="tab" data-cl-tab="#vue-liste">Liste d’écoute</button>
+        </div>
+        <button type="button" class="cl-btn cl-btn--soft" data-cl-fullscreen aria-pressed="false"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-expand"/></svg> Mode borne</button>
+      </div>
+
+      <div class="cl-chapters" id="vue-galerie" role="tabpanel">
+        <article class="cl-chapter" data-cl-track="0" data-cl-viewer-open="0" aria-label="Chapitre 01 : Accroche">
+          <div class="cl-chapter__thumb">
+            <img src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F4e091ecf-9ff0-415b-92ff-953e7ef91cd8_thumb.webp?alt=media&amp;token=5e1ed65a-16bb-413f-9959-6ae6d8ed15af" alt="" loading="lazy" />
+            <span class="cl-chapter__num">01 <span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          </div>
+          <button type="button" class="cl-chapter__play" data-cl-play="0" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div class="cl-chapter__body">
+            <h3 class="cl-chapter__title">Accroche</h3>
+            <p class="cl-chapter__desc">Est-ce qu&#x27;un homme qui aime le luxe, la bonne chair et les grandes parties de chasse peut devenir un saint ?</p>
+          </div>
+        </article>
+        <article class="cl-chapter" data-cl-track="1" data-cl-viewer-open="1" aria-label="Chapitre 02 : Jeunesse et rivalité avec Amatre">
+          <div class="cl-chapter__thumb">
+            <img src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fcda46cec-7ff6-47eb-9c12-de865db95255_thumb.webp?alt=media&amp;token=a8ed7c89-1b27-406d-a0c8-c08edbba4651" alt="" loading="lazy" />
+            <span class="cl-chapter__num">02 <span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          </div>
+          <button type="button" class="cl-chapter__play" data-cl-play="1" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div class="cl-chapter__body">
+            <h3 class="cl-chapter__title">Jeunesse et rivalité avec Amatre</h3>
+            <p class="cl-chapter__desc">Nous sommes à la fin du IVe siècle. L&#x27;Empire romain existe encore, mais il vacille.</p>
+          </div>
+        </article>
+        <article class="cl-chapter" data-cl-track="2" data-cl-viewer-open="2" aria-label="Chapitre 03 : Évêque bâtisseur">
+          <div class="cl-chapter__thumb">
+            <img src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Ff279e335-16f7-4269-a57f-1bb772eab0a4_thumb.webp?alt=media&amp;token=167e516d-37bf-4854-86e1-6bfaeb9fa66f" alt="" loading="lazy" />
+            <span class="cl-chapter__num">03 <span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          </div>
+          <button type="button" class="cl-chapter__play" data-cl-play="2" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div class="cl-chapter__body">
+            <h3 class="cl-chapter__title">Évêque bâtisseur</h3>
+            <p class="cl-chapter__desc">La vie de Germain change alors du tout au tout. Il renonce au faste, distribue une grande partie de sa fortune aux plus démunis et adopte une existence modeste.</p>
+          </div>
+        </article>
+        <article class="cl-chapter" data-cl-track="3" data-cl-viewer-open="3" aria-label="Chapitre 04 : Voyages et miracles">
+          <div class="cl-chapter__thumb">
+            <img src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F64e13d56-2c9c-4462-8e11-1753fd8a105b_thumb.webp?alt=media&amp;token=04dcc546-d758-44f9-9f52-c6e507489b10" alt="" loading="lazy" />
+            <span class="cl-chapter__num">04 <span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          </div>
+          <button type="button" class="cl-chapter__play" data-cl-play="3" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div class="cl-chapter__body">
+            <h3 class="cl-chapter__title">Voyages et miracles</h3>
+            <p class="cl-chapter__desc">Être évêque à cette époque ne signifie pas rester dans une cathédrale. Non. Germain voyage. Beaucoup.</p>
+          </div>
+        </article>
+        <article class="cl-chapter" data-cl-track="4" data-cl-viewer-open="4" aria-label="Chapitre 05 : Rencontre avec Geneviève">
+          <div class="cl-chapter__thumb">
+            <img src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fbd9fdc88-3bd6-4156-aba7-db04b68120f6_thumb.webp?alt=media&amp;token=112b6478-c9eb-4c21-9fef-b99d081a5865" alt="" loading="lazy" />
+            <span class="cl-chapter__num">05 <span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          </div>
+          <button type="button" class="cl-chapter__play" data-cl-play="4" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div class="cl-chapter__body">
+            <h3 class="cl-chapter__title">Rencontre avec Geneviève</h3>
+            <p class="cl-chapter__desc">Au cours de ses voyages incessants pour défendre la foi, Germain s&#x27;arrête un jour dans le petit village de Nanterre, près de Paris.</p>
+          </div>
+        </article>
+        <article class="cl-chapter" data-cl-track="5" data-cl-viewer-open="5" aria-label="Chapitre 06 : Mort et postérité">
+          <div class="cl-chapter__thumb">
+            <img src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F7415050f-b27f-4c9b-9b94-8221cba85d91_thumb.webp?alt=media&amp;token=8d6bf9d4-dd1b-4f4c-b2b1-5b81de30da91" alt="" loading="lazy" />
+            <span class="cl-chapter__num">06 <span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          </div>
+          <button type="button" class="cl-chapter__play" data-cl-play="5" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <div class="cl-chapter__body">
+            <h3 class="cl-chapter__title">Mort et postérité</h3>
+            <p class="cl-chapter__desc">Vers la fin de sa vie, Germain entreprend un dernier voyage, jusqu&#x27;à Ravenne, en Italie. Une fois encore, il veut plaider la paix pour l&#x27;arme rique.</p>
+          </div>
+        </article>
+      </div>
+
+      <ul class="cl-playlist" id="vue-liste" role="tabpanel" hidden>
+        <li class="cl-row" data-cl-track="0">
+          <span class="cl-row__num"><span class="cl-when-paused">01</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <img class="cl-row__thumb" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F4e091ecf-9ff0-415b-92ff-953e7ef91cd8_thumb.webp?alt=media&amp;token=5e1ed65a-16bb-413f-9959-6ae6d8ed15af" alt="" loading="lazy" />
+          <div class="cl-row__info">
+            <span class="cl-row__title">Accroche</span>
+            <span class="cl-row__desc">Est-ce qu&#x27;un homme qui aime le luxe, la bonne chair et les grandes parties de chasse peut devenir un saint ?</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="0" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-viewer-open="0" aria-label="Voir l'illustration et le récit"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg></button>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="1">
+          <span class="cl-row__num"><span class="cl-when-paused">02</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <img class="cl-row__thumb" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fcda46cec-7ff6-47eb-9c12-de865db95255_thumb.webp?alt=media&amp;token=a8ed7c89-1b27-406d-a0c8-c08edbba4651" alt="" loading="lazy" />
+          <div class="cl-row__info">
+            <span class="cl-row__title">Jeunesse et rivalité avec Amatre</span>
+            <span class="cl-row__desc">Nous sommes à la fin du IVe siècle. L&#x27;Empire romain existe encore, mais il vacille.</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="1" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-viewer-open="1" aria-label="Voir l'illustration et le récit"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg></button>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="2">
+          <span class="cl-row__num"><span class="cl-when-paused">03</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <img class="cl-row__thumb" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Ff279e335-16f7-4269-a57f-1bb772eab0a4_thumb.webp?alt=media&amp;token=167e516d-37bf-4854-86e1-6bfaeb9fa66f" alt="" loading="lazy" />
+          <div class="cl-row__info">
+            <span class="cl-row__title">Évêque bâtisseur</span>
+            <span class="cl-row__desc">La vie de Germain change alors du tout au tout. Il renonce au faste, distribue une grande partie de sa fortune aux plus démunis et adopte une existence modeste.</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="2" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-viewer-open="2" aria-label="Voir l'illustration et le récit"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg></button>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="3">
+          <span class="cl-row__num"><span class="cl-when-paused">04</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <img class="cl-row__thumb" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F64e13d56-2c9c-4462-8e11-1753fd8a105b_thumb.webp?alt=media&amp;token=04dcc546-d758-44f9-9f52-c6e507489b10" alt="" loading="lazy" />
+          <div class="cl-row__info">
+            <span class="cl-row__title">Voyages et miracles</span>
+            <span class="cl-row__desc">Être évêque à cette époque ne signifie pas rester dans une cathédrale. Non. Germain voyage. Beaucoup.</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="3" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-viewer-open="3" aria-label="Voir l'illustration et le récit"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg></button>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="4">
+          <span class="cl-row__num"><span class="cl-when-paused">05</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <img class="cl-row__thumb" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fbd9fdc88-3bd6-4156-aba7-db04b68120f6_thumb.webp?alt=media&amp;token=112b6478-c9eb-4c21-9fef-b99d081a5865" alt="" loading="lazy" />
+          <div class="cl-row__info">
+            <span class="cl-row__title">Rencontre avec Geneviève</span>
+            <span class="cl-row__desc">Au cours de ses voyages incessants pour défendre la foi, Germain s&#x27;arrête un jour dans le petit village de Nanterre, près de Paris.</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="4" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-viewer-open="4" aria-label="Voir l'illustration et le récit"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg></button>
+          </div>
+        </li>
+        <li class="cl-row" data-cl-track="5">
+          <span class="cl-row__num"><span class="cl-when-paused">06</span><span class="cl-eq cl-when-playing" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+          <img class="cl-row__thumb" src="https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F7415050f-b27f-4c9b-9b94-8221cba85d91_thumb.webp?alt=media&amp;token=8d6bf9d4-dd1b-4f4c-b2b1-5b81de30da91" alt="" loading="lazy" />
+          <div class="cl-row__info">
+            <span class="cl-row__title">Mort et postérité</span>
+            <span class="cl-row__desc">Vers la fin de sa vie, Germain entreprend un dernier voyage, jusqu&#x27;à Ravenne, en Italie. Une fois encore, il veut plaider la paix pour l&#x27;arme rique.</span>
+          </div>
+          <div class="cl-row__actions">
+            <button type="button" class="cl-icon-btn" data-cl-play="5" aria-label="Écouter"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+            <button type="button" class="cl-icon-btn cl-icon-btn--outline" data-cl-viewer-open="5" aria-label="Voir l'illustration et le récit"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg></button>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </main>
+
+  <div class="cl-wave" style="--wave-from: var(--surface-invert); --wave-to: var(--surface)"></div>
+
+  <section class="cl-section-light">
+    <div class="cl-prose">
+      <h2 class="cl-section-title">À propos <span class="cl-section-title__accent">de Germain</span></h2>
+      <p class="cl-text">Fin du IVe siècle. L&#x27;Empire romain vacille et le christianisme progresse. Le jeune Germain grandit au sein d&#x27;une riche famille gallo-romaine d&#x27;Autessiodurum (Auxerre). Après avoir étudié le droit à Rome, il devient gouverneur provincial, épouse Eustachie et mène grand train. Passionné de chasse, il fait suspendre les têtes de ses gibiers aux branches d&#x27;un grand poirier en plein centre d&#x27;Auxerre. Cette coutume exaspère l&#x27;évêque Amâtre, qui y voit un reste insupportable de rites païens. Profitant de l&#x27;absence du gouverneur, Amâtre fait abattre l&#x27;arbre.</p>
+    </div>
+  </section>
+
+  <div class="cl-wave" style="--wave-from: var(--surface); --wave-to: var(--accent)"></div>
+
+  <footer class="cl-footer">
+    <p class="cl-footer__tagline"><strong>Germain l&#x27;Auxerrois</strong> — un parcours Clap ! Éditions</p>
+    <p class="cl-footer__legal">Voir ce layout dans le thème : <a class="cl-footer__link" href="./musee?theme=clap">Clap ! Studio</a> · <a class="cl-footer__link" href="./musee?theme=conjugarium">Conjugarium</a> · <a class="cl-footer__link" href="./musee?theme=surhumains">Surhumains</a> · <a class="cl-footer__link" href="./musee?theme=observatoire">Observatoire</a></p>
+    <p class="cl-footer__legal">© Clap ! Éditions</p>
+  </footer>
+
+  <div class="cl-player-spacer"></div>
+</div>
+
+<!-- ═══ Lecteur flottant ═══ -->
+<div class="cl-player" role="region" aria-label="Lecteur audio">
+  <div class="cl-player__inner">
+    <button type="button" class="cl-player__play" data-cl-action="toggle" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+    <div class="cl-player__meta">
+      <div class="cl-player__titleline">
+        <span class="cl-player__title" data-cl-now="title"></span>
+        <span class="cl-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <button type="button" class="cl-player__link" data-cl-viewer-open=""><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg> Voir</button>
+      </div>
+      <div class="cl-player__progress">
+        <span class="cl-player__time" data-cl-time="current">0:00</span>
+        <input class="cl-range" type="range" min="0" max="100" step="0.5" value="0" data-cl-seek aria-label="Progression" />
+        <span class="cl-player__time" data-cl-time="total">--:--</span>
+      </div>
+    </div>
+    <div class="cl-player__side">
+      <button type="button" class="cl-player__iconbtn" data-cl-action="prev" aria-label="Chapitre précédent"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-prev"/></svg></button>
+      <button type="button" class="cl-player__iconbtn" data-cl-action="next" aria-label="Chapitre suivant"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-next"/></svg></button>
+      <span class="cl-player__sep" aria-hidden="true"></span>
+      <button type="button" class="cl-player__iconbtn" data-cl-action="mute" aria-label="Couper le son" aria-pressed="false"><svg class="cl-ico cl-when-unpressed" aria-hidden="true"><use href="#cl-i-volume"/></svg><svg class="cl-ico cl-when-pressed" aria-hidden="true"><use href="#cl-i-mute"/></svg></button>
+      <input class="cl-range cl-range--volume" type="range" min="0" max="1" step="0.05" value="1" data-cl-volume aria-label="Volume" />
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Visionneuse de chapitre : illustration + récit ═══ -->
+<div class="cl-modal" id="viewer" aria-hidden="true" data-cl-viewer data-cl-viewer-autoplay>
+  <div class="cl-modal__backdrop" data-cl-modal-close></div>
+  <div class="cl-modal__dialog cl-modal__dialog--wide cl-viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+    <header class="cl-modal__header">
+      <span class="cl-badge" data-cl-viewer-badge></span>
+      <button type="button" class="cl-modal__close" data-cl-modal-close aria-label="Fermer"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-close"/></svg></button>
+    </header>
+    <div class="cl-viewer__split">
+      <div class="cl-viewer__stage">
+        <img class="cl-viewer__media" data-cl-viewer-img alt="" />
+        <video class="cl-viewer__media" data-cl-viewer-video muted loop playsinline hidden></video>
+        <button type="button" class="cl-media-nav cl-media-nav--prev" data-cl-viewer-prev aria-label="Chapitre précédent"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-chevron-left"/></svg></button>
+        <button type="button" class="cl-media-nav cl-media-nav--next" data-cl-viewer-next aria-label="Chapitre suivant"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-chevron-right"/></svg></button>
+      </div>
+      <div class="cl-viewer__story">
+        <div class="cl-viewer__head">
+          <h2 class="cl-viewer__title" id="viewer-title" data-cl-viewer-title></h2>
+          <p class="cl-viewer__subtitle" data-cl-viewer-subtitle></p>
+        </div>
+        <div class="cl-viewer__text" data-cl-viewer-text></div>
+      </div>
+    </div>
+    <footer class="cl-modal__footer">
+      <div class="cl-stepper" data-cl-viewer-dots></div>
+      <button type="button" class="cl-btn" data-cl-viewer-play><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg><span class="cl-when-paused">Écouter le chapitre</span><span class="cl-when-playing">Pause</span></button>
+      <span class="cl-viewer__hint">Balayez ou utilisez les flèches ← → pour parcourir</span>
+    </footer>
+  </div>
+</div>
+
+<!-- Données : un chapitre par entrée. title, src, image (ou video), subtitle, text, badge. -->
+<script type="application/json" data-cl-tracks>
+[
+ {
+  "title": "Accroche",
+  "subtitle": "Est-ce qu'un homme qui aime le luxe, la bonne chair et les grandes parties de chasse peut devenir un saint ?",
+  "badge": "Chapitre 01",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F77bd07e9-704a-41db-83a9-31ecbe4b51bd.mp3?alt=media&token=35cbba0e-9063-4d8b-a871-630a689755ae",
+  "image": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F4e091ecf-9ff0-415b-92ff-953e7ef91cd8.jpeg?alt=media&token=2a6b3acf-e2c3-4d10-a8a0-c0640a9e6307",
+  "text": "À première vue, ce n'est pas le chemin le plus direct.\n\nEt pourtant, c'est bien ce qui arriva à Germain-d'Auxerre.\n\nMais comment cet aristocrate romain, ce gouverneur un peu provocateur, a-t-il pu devenir l'un des saints les plus célèbres de notre histoire ?\n\nPour le comprendre, il faut reprendre les choses dans l'ordre."
+ },
+ {
+  "title": "Jeunesse et rivalité avec Amatre",
+  "subtitle": "Nous sommes à la fin du IVe siècle. L'Empire romain existe encore, mais il vacille.",
+  "badge": "Chapitre 02",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fdd0abed3-166f-4e7e-a98e-c949ac999bb1.mp3?alt=media&token=75e35d7a-7e24-40d8-b951-fe0bebddf797",
+  "image": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fcda46cec-7ff6-47eb-9c12-de865db95255.jpeg?alt=media&token=b0cdd4b0-3240-4eca-ac0a-6829f63792e9",
+  "text": "Le christianisme, longtemps persécuté, lui, progresse. Le monde ancien commence à disparaître, mais le monde nouveau, lui, n'est pas encore né. Et c'est dans cette époque troublée que grandit le jeune Germain.\n\nIssu d'une riche famille gallo-romaine établie près d'Auxerre, alors appelé Othessiodurum, il étudie le droit à Rome avant de revenir en Gaule. Il devient gouverneur, exerce d'importantes responsabilités, et épouse Eustachie, une femme de haute naissance. Riche, puissant et respecté, Germain a tout pour lui.\n\nMais à Auxerre vit un autre homme d'autorité, l'évêque Amatre. Entre eux, l'entente est délicate.\n\nOui, Germain a un péché mignon qui agace prodigieusement l'évêque Amatre. Le gouverneur adore la chasse et, après chaque battue, il fait suspendre les têtes de ses gibiers aux branches d'un grand poirier, en plein centre d'Auxerre. Pour lui, c'est une manière d'exhiber ses victoires, mais pour Amatre, c'est une provocation, un reste de vieux rite païen insupportable.\n\nAlors un jour, profitant de l'absence du gouverneur, l'évêque Amatre fait abattre le poirier.\n\nEt c'est là que l'histoire prend un tour inattendu. Amatre aurait eu une vision. Germain, son adversaire, deviendra son successeur.\n\nAlors il le fait arrêter pour le traîner dans la cathédrale, lui couper les cheveux et lui imposer la tonsure. En un instant, l'homme de pouvoir devient diacre.\n\nLa légende s'est sans doute mêlée à l'histoire. Mais une chose est certaine, à la mort d'Amatre en 418, Germain devient évêque d'Auxerre."
+ },
+ {
+  "title": "Évêque bâtisseur",
+  "subtitle": "La vie de Germain change alors du tout au tout. Il renonce au faste, distribue une grande partie de sa fortune aux plus démunis et adopte une existence modeste.",
+  "badge": "Chapitre 03",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F97019ee3-0486-4ba3-9d4e-aafb8b9527fc.mp3?alt=media&token=d0b3498d-16b2-48a6-be2c-b7f6895a72f6",
+  "image": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Ff279e335-16f7-4269-a57f-1bb772eab0a4.jpg?alt=media&token=2607745b-0e3f-4c4c-8007-6cee73246ab5",
+  "text": "Mais Germain n'a rien perdu de son énergie. L'ancien administrateur devient un bâtisseur et un diplomate infatigable.\n\nPrès de son palais, tout d'abord, il fait construire une chapelle destinée à abriter les reliques de Saint Alban.\n\nPuis, sur l'autre rive de Lyon, il fonde un monastère où il aime se retirer, loin du pouvoir et du bruit.\n\nSur ces terres, il fait également bâtir un modeste oratoire dédié à Saint Maurice. C'est autour de cette petite chapelle que s'élèvera bien plus tard l'abbaye Saint Germain.\n\nMais revenons à notre histoire."
+ },
+ {
+  "title": "Voyages et miracles",
+  "subtitle": "Être évêque à cette époque ne signifie pas rester dans une cathédrale. Non. Germain voyage. Beaucoup.",
+  "badge": "Chapitre 04",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fed2d6d64-9991-4a73-884d-3f9874344ab8.mp3?alt=media&token=c8804703-8204-4cdf-ae40-00c2b8f6c3e7",
+  "image": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F64e13d56-2c9c-4462-8e11-1753fd8a105b.jpeg?alt=media&token=758e3034-0048-4251-8fb8-6a48e4c4d1a7",
+  "text": "Lorsque les habitants de sa région sont écrasés par les impôts, il se rend jusqu'à Arles et plaide leur cause devant les autorités romaines.\n\nQuand les armées barbares menacent de tout massacrer en armes ricques, il monte sur son cheval, va à la rencontre du chef ennemi et, par la seule force de son éloquence, réussit à arrêter la guerre.\n\nOn raconte qu'il fait des miracles partout où il passe. Il calme les tempêtes, guérit les malades et on dit même qu'un bâton qu'il avait planté en terre s'est transformé en un arbre magnifique."
+ },
+ {
+  "title": "Rencontre avec Geneviève",
+  "subtitle": "Au cours de ses voyages incessants pour défendre la foi, Germain s'arrête un jour dans le petit village de Nanterre, près de Paris.",
+  "badge": "Chapitre 05",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fe7c438f2-7286-47e0-a8d9-b6cee2559ee4.mp3?alt=media&token=bd784c30-2bc0-4ee3-9890-3786facb9b8c",
+  "image": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2Fbd9fdc88-3bd6-4156-aba7-db04b68120f6.jpeg?alt=media&token=ca2c3d7f-a9d2-492d-a0be-46cd41c3320e",
+  "text": "Dans la foule, son regard se pose sur une petite fille. Il devine en elle une force exceptionnelle. Il la bénit et demande à ses parents de veiller sur sa destinée.\n\nCet enfant, c'est Sainte Geneviève.\n\nVous la connaissez ?"
+ },
+ {
+  "title": "Mort et postérité",
+  "subtitle": "Vers la fin de sa vie, Germain entreprend un dernier voyage, jusqu'à Ravenne, en Italie. Une fois encore, il veut plaider la paix pour l'arme rique.",
+  "badge": "Chapitre 06",
+  "src": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F3bbc53f0-fc26-45db-834c-74353a8939db.mp3?alt=media&token=185f7b3f-7c47-4625-86a8-0f86b1f03404",
+  "image": "https://firebasestorage.googleapis.com/v0/b/creative-assets-server.firebasestorage.app/o/media%2FYKk3utzRXSnWhrvpzS2V%2F7415050f-b27f-4c9b-9b94-8221cba85d91.jpeg?alt=media&token=77312727-4b66-41c7-afd6-0ed4e900e896",
+  "text": "Mais, épuisé par ses missions, il tombe malade et meurt loin de chez lui, le 31 juillet 448.\n\nSon retour à Auxerre prend alors l'allure d'une procession.\n\nPendant plusieurs semaines, un immense cortège accompagne son corps. Dans chaque ville, dans chaque village, les habitants viennent rendre hommage à l'évêque.\n\nGermain est finalement inhumé aux portes d'Auxerre, dans la petite chapelle qu'il avait lui-même fait bâtir, Saint Maurice.\n\nVous vous rappelez ?\n\nAutour de son tombeau, on vient se recueillir. Et puis, on construit, on agrandit. Les siècles passent et une grande abbaye finit par s'élever, l'abbaye Saint Germain.\n\nLe voyage de Germain s'achève, mais la grande histoire de son abbaye, elle, ne fait que commencer."
+ }
+]
+</script>
+
+<script src="../components.js"></script>
+</body>
+</html>

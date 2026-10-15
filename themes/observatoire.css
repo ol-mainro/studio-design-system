@@ -50,6 +50,7 @@
   --surface-sunken: #F0ECF5;
   --surface-invert: var(--obs-purple-deep);
   --surface-invert-raised: var(--obs-purple);
+  --surface-alt: var(--obs-pink);      /* seconde bande claire */
 
   /* ── Accent ── */
   --accent: var(--obs-orange);
@@ -75,7 +76,7 @@
    3. UTILITAIRE PROPRE AU THÈME
    Le site alterne deux fonds clairs : le blanc violacé et le rose.
    ══════════════════════════════════════════════════════════════════════ */
-[data-theme="observatoire"] .cl-section-light--alt,
+/* Alias historique de .cl-section-light--alt */
 .obs-section-pink {
-  background: var(--obs-pink);
+  background: var(--surface-alt);
 }
