@@ -1,13 +1,9 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="observatoire" data-page="observatoire">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<script>
-  document.documentElement.dataset.theme = 'observatoire';
-  document.documentElement.dataset.page = 'observatoire';
-</script>
 <title>Observatoire des Mots — Design System</title>
 <meta name="description" content="Design system de L'Observatoire des Mots : couleurs, typographie et composants pour les pages du podcast." />
 <link rel="canonical" href="https://clap-design-system.web.app/observatoire" />
@@ -18,69 +14,22 @@
 <meta property="og:title" content="Observatoire des Mots — Design System" />
 <meta property="og:description" content="Couleurs, typographie et composants de L'Observatoire des Mots — thème dérivé du design system Clap ! Studio." />
 <meta property="og:url" content="https://clap-design-system.web.app/observatoire" />
+<meta property="og:image" content="https://clap-design-system.web.app/assets/clap-logo.png" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Observatoire des Mots — Design System" />
 <meta name="twitter:description" content="Couleurs, typographie et composants de L'Observatoire des Mots — thème dérivé du design system Clap ! Studio." />
+<meta name="twitter:image" content="https://clap-design-system.web.app/assets/clap-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./tokens.css" />
-<link rel="stylesheet" href="./components.css" />
 <link rel="stylesheet" href="./themes/observatoire.css" />
-<style>
-  /* Chrome de la page de styleguide — hors design system */
-  body { background: #f6f7f9; }
-  .sg-nav {
-    position: sticky; top: 0; z-index: 200;
-    background: #0D1B2E; color: #fff;
-    padding: 1rem 1.5rem;
-    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-  }
-  .sg-nav strong { font-family: 'Avenir Heavy','Lexend',sans-serif; letter-spacing: -0.02em; }
-  .sg-nav a { color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem; }
-  .sg-nav a:hover { color: #FFD100; }
-  .sg-wrap { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
-  .sg-sec { margin-bottom: 3.5rem; }
-  .sg-sec > h2 {
-    font-family: 'Avenir Heavy','Lexend',sans-serif; font-size: 1.4rem; color: #0D1B2E;
-    letter-spacing: -0.02em; margin-bottom: .35rem;
-  }
-  .sg-sec > p.sg-note { font-size: .875rem; color: #5b6472; margin-bottom: 1.25rem; line-height: 1.6; }
-  .sg-demo {
-    background: var(--surface); border: 1px solid var(--border-subtle);
-    border-radius: 20px; padding: 2rem; margin-bottom: .75rem;
-  }
-  .sg-demo--invert { border-color: transparent; }
-  .sg-demo--light { background: var(--surface); border: 1px solid var(--border-subtle); }
-  .sg-demo--yellow { background: var(--accent); }
-  .sg-demo--flow { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-  .sg-demo--pad0 { padding: 0; overflow: hidden; }
-  .sg-code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: .78rem; background: #10182a; color: #c9d4e6;
-    padding: .9rem 1.1rem; border-radius: 12px; overflow-x: auto;
-    white-space: pre; margin-bottom: 1.5rem;
-  }
-  .sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
-  .sg-swatch { border: 1px solid #e3e6ea; border-radius: 12px; overflow: hidden; background: #fff; }
-  .sg-swatch__chip { height: 72px; }
-  .sg-swatch__body { padding: .6rem .75rem; }
-  .sg-swatch__name { font-size: .78rem; font-weight: 600; color: #0D1B2E; }
-  .sg-swatch__val { font-size: .72rem; color: #7a8595; font-family: ui-monospace, monospace; }
-  .sg-scale-row { display: flex; align-items: baseline; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid #e9ecf1; }
-  .sg-scale-row code { font-size: .72rem; color: #7a8595; width: 170px; flex-shrink: 0; font-family: ui-monospace, monospace; }
-  .sg-bar { height: 22px; background: var(--accent); border-radius: 4px; }
-  .sg-theme { margin-left: auto; display: flex; gap: .35rem; background: rgba(255,255,255,.08); padding: 3px; border-radius: 50px; }
-  .sg-theme__btn {
-    border: none; background: transparent; color: rgba(255,255,255,.65);
-    font: inherit; font-size: .75rem; padding: .3rem .8rem; border-radius: 50px;
-    cursor: pointer; text-decoration: none; display: inline-block;
-  }
-  .sg-nav .sg-theme__btn--on { background: #fff; color: #0D1B2E; font-weight: 600; }
-  @media (max-width: 600px) { .sg-demo { padding: 1.25rem; } .sg-theme { margin-left: 0; } }
-</style>
+<link rel="stylesheet" href="./components.css" />
+<link rel="stylesheet" href="./styleguide/styleguide.css" />
 </head>
 <body>
 
@@ -98,8 +47,9 @@
   <a href="#video">Vidéo</a>
   <a href="#planches">Planches & BD</a>
   <a href="#wave">Séparateurs</a>
-  <a href="#invert">Inversé</a>
   <a href="#pages">Pages</a>
+  <a href="#invert">Inversé</a>
+  <a href="#layouts">Layouts</a>
   <a href="#themes">Thèmes</a>
   <div class="sg-theme">
     <a class="sg-theme__btn" href="/clap" data-page-link="clap">Clap ! Studio</a>
@@ -162,8 +112,8 @@
     <button class="cl-btn">Écouter</button>
     <button class="cl-btn cl-btn--lg">Découvrir le podcast</button>
     <button class="cl-btn cl-btn--ghost">Se déconnecter</button>
-    <button class="cl-icon-btn" aria-label="Lecture">▶</button>
-    <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+    <button class="cl-icon-btn" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+    <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
   </div>
   <div class="sg-demo"><button class="cl-btn cl-btn--block">Accéder aux épisodes</button></div>
   <div class="sg-code">&lt;button class="cl-btn"&gt;Écouter&lt;/button&gt;
@@ -227,7 +177,7 @@
   &lt;a class="cl-btn cl-btn--lg"&gt;Télécharger&lt;/a&gt;
 &lt;/div&gt;</div>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Hero projet</h3>
+  <h3 class="sg-h3">Hero projet</h3>
   <div class="sg-demo">
     <div class="cl-hero" style="margin-bottom:0">
       <div class="cl-hero__cover" style="background:linear-gradient(135deg,var(--accent),var(--primary))"></div>
@@ -263,7 +213,7 @@
     </div>
   </div>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Barre de contrôles</h3>
+  <h3 class="sg-h3">Barre de contrôles</h3>
   <div class="sg-demo">
     <div class="cl-controls" style="margin-bottom:0">
       <div class="cl-search">
@@ -295,12 +245,12 @@
           <span class="cl-row__desc">Quand l'école était un lieu de loisir.</span>
         </div>
         <div class="cl-row__actions">
-          <button class="cl-icon-btn" aria-label="Lecture">▶</button>
-          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+          <button class="cl-icon-btn" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
         </div>
       </li>
-      <li class="cl-row cl-row--active">
-        <span class="cl-row__num cl-pulse">♫</span>
+      <li class="cl-row cl-row--active" data-playing="true">
+        <span class="cl-row__num"><span class="cl-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
         <div class="cl-row__info">
           <div class="cl-row__titleline">
             <span class="cl-row__title">Pourquoi dit-on « chouette » ?</span>
@@ -309,8 +259,8 @@
           <span class="cl-row__desc">Du rapace nocturne à l'exclamation enthousiaste.</span>
         </div>
         <div class="cl-row__actions">
-          <button class="cl-icon-btn" aria-label="Pause">❚❚</button>
-          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+          <button class="cl-icon-btn" aria-label="Pause" data-playing="true"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
         </div>
       </li>
       <li class="cl-row">
@@ -323,14 +273,14 @@
           <span class="cl-row__desc">D'une langue à l'autre, les mots font le tour du monde.</span>
         </div>
         <div class="cl-row__actions">
-          <button class="cl-icon-btn" aria-label="Lecture">▶</button>
-          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger">↓</a>
+          <button class="cl-icon-btn" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
+          <a class="cl-icon-btn cl-icon-btn--outline" href="#" aria-label="Télécharger"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-download"/></svg></a>
         </div>
       </li>
     </ul>
   </div>
   <div class="sg-code">&lt;li class="cl-row cl-row--active"&gt;
-  &lt;span class="cl-row__num cl-pulse"&gt;&lt;!-- icône note --&gt;&lt;/span&gt;
+  &lt;span class="cl-row__num"&gt;&lt;span class="cl-eq"&gt;…&lt;/span&gt;&lt;/span&gt;  &lt;!-- animé si data-playing="true" --&gt;
   &lt;div class="cl-row__info"&gt;
     &lt;div class="cl-row__titleline"&gt;
       &lt;span class="cl-row__title"&gt;Pourquoi dit-on « chouette » ?&lt;/span&gt;
@@ -349,7 +299,7 @@
   <div class="sg-demo sg-demo--light">
     <div class="cl-player" style="position:static;transform:none;width:100%">
       <div class="cl-player__inner">
-        <button class="cl-player__play" aria-label="Pause">❚❚</button>
+        <button class="cl-player__play" aria-label="Pause" data-playing="true"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button>
         <div class="cl-player__meta">
           <div class="cl-player__title">Pourquoi dit-on « chouette » ?</div>
           <div class="cl-player__progress">
@@ -359,7 +309,7 @@
           </div>
         </div>
         <div class="cl-player__side">
-          <button class="cl-player__iconbtn" aria-label="Volume">🔊</button>
+          <button class="cl-player__iconbtn" aria-label="Couper le son"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-volume"/></svg></button>
           <input class="cl-range cl-range--volume" type="range" value="70" aria-label="Volume" />
         </div>
       </div>
@@ -372,7 +322,7 @@
   <h2>Playlist vidéo</h2>
   <p class="sg-note">Le pendant vidéo de la playlist audio. Trois briques : <code>.cl-vgallery</code> pour choisir une vidéo, <code>.cl-video</code> pour le lecteur 16:9, <code>.cl-vswitcher</code> pour changer d'épisode sans quitter la page. Comme la playlist audio, aucune couleur n'est écrite en dur : le thème seul décide.</p>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Galerie</h3>
+  <h3 class="sg-h3">Galerie</h3>
   <p class="sg-note">La vignette est en <code>aspect-ratio:16/9</code>, donc jamais déformée. Au survol, quatre signaux partent ensemble : la carte se soulève, la vignette grandit d'un cheveu, le voile noir s'éclaircit et le bouton play s'inverse. Sous 600px la carte passe en colonne et le CTA se range à droite.</p>
   <div class="sg-demo">
     <div class="cl-vgallery">
@@ -421,7 +371,7 @@
     </div>
   </div>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Lecteur</h3>
+  <h3 class="sg-h3">Lecteur</h3>
   <p class="sg-note"><code>.cl-video__frame</code> tient le ratio 16:9 ; l'<code>iframe</code> ou la <code>video</code> qu'on y glisse se colle aux quatre bords toute seule. Le fond est <code>--surface-invert</code> pour que le noir de la vidéo ne fasse pas de saut au chargement.</p>
   <div class="sg-demo sg-demo--light">
     <div class="cl-video">
@@ -431,7 +381,7 @@
     </div>
   </div>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin:1.5rem 0 .75rem">Sélecteur</h3>
+  <h3 class="sg-h3">Sélecteur</h3>
   <p class="sg-note">La grille se remplit toute seule (<code>auto-fill</code>, colonnes de 200px minimum) : une colonne sur mobile, quatre sur grand écran, sans media query. L'épisode en cours porte <code>.cl-vchip--active</code> : bordure accent et pastille pleine.</p>
   <div class="sg-demo">
     <div class="cl-vswitcher">
@@ -497,7 +447,7 @@
   <h2>Planches de BD &amp; Illustrations</h2>
   <p class="sg-note">Présentation de planches illustrées, planches de BD documentaire et illustrations de mots. Deux modes d'affichage au choix : en <strong>vignettes</strong> (<code>.cl-board-gallery</code>) ou en <strong>liste</strong> (<code>.cl-board-list</code>). Un clic sur une vignette, un titre ou une ligne ouvre instantanément le visuel en grand format et en surimpression dans la visionneuse (<code>.cl-lightbox</code>), avec navigation au clavier (&larr; / &rarr; / &Eacute;chap).</p>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:var(--text-1);margin-bottom:.75rem">Mode Vignettes (Grille)</h3>
+  <h3 class="sg-h3">Mode Vignettes (Grille)</h3>
   <p class="sg-note">Le ratio 3:4 portrait respecte le format d'une planche de BD standard. Au survol, la carte se soulève, un voile doux apparaît avec une icône loupe, et l'image s'anime d'un léger zoom. Clic pour agrandir.</p>
   <div class="sg-demo">
     <div class="cl-board-gallery">
@@ -557,7 +507,7 @@
     </div>
   </div>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:var(--text-1);margin:1.5rem 0 .75rem">Mode Liste (Titre &amp; élément cliquable)</h3>
+  <h3 class="sg-h3">Mode Liste (Titre &amp; élément cliquable)</h3>
   <p class="sg-note">Sommaire des planches documentaires et notes d'écoute du podcast. Chaque ligne est cliquable et ouvre la surimpression.</p>
   <div class="sg-demo">
     <div class="cl-board-list">
@@ -647,7 +597,7 @@
 [data-theme="conjugarium"]   { --divider-shape: var(--shape-clouds); }
 [data-theme="surhumains"]    { --divider-shape: var(--shape-flames); }
 [data-theme="observatoire"]  { --divider-shape: var(--shape-drips); }</div>
-  <p class="sg-note">La densité du motif est réglable par thème, via <code>--divider-repeat</code> : c'est la largeur d'<em>un</em> motif, donc <code>50%</code> en donne deux sur la largeur. L'Observatoire reprend la configuration par défaut du studio : coulures à <code>50%</code> (deux motifs).</p>
+  <p class="sg-note">La densité du motif est réglable par thème, via <code>--divider-repeat</code> : c'est la largeur d'<em>un</em> motif, en <strong>pixels fixes</strong> (et <code>--divider-repeat-mobile</code> sous 600 px), pour que l'espacement entre les vagues ne dépende pas de la largeur d'écran. Toutes les formes partagent la même convention : un SVG de 1920 unités de large, calé sur son bord bas.</p>
 </section>
 
 <!-- ══════════ PAGES ══════════ -->
@@ -655,7 +605,7 @@
   <h2>Deux gabarits de page</h2>
   <p class="sg-note">Le système couvre deux registres. La <strong>page publique</strong> alterne surface claire, surface sombre et accent, séparés par des <code>.cl-wave</code>, titres en <code>--font-heading</code>. La <strong>page protégée</strong> reste en surface sombre pleine du haut en bas, sans entête ni pied de page, titres en <code>--font-display</code> — c'est le registre « ressources pro ». Dans ce thème les deux registres partagent la même police : la distinction se fait par la mise en page seule.</p>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Page publique</h3>
+  <h3 class="sg-h3">Page publique</h3>
   <div class="sg-demo sg-demo--pad0 sg-demo--light">
     <header class="cl-header" style="padding-bottom:1rem;background:var(--surface)">
       <img src="./assets/clap-logo.png" alt="Clap !" width="72" height="72" />
@@ -689,7 +639,7 @@
   <div class="sg-code">&lt;div class="cl-page"&gt;
   &lt;header class="cl-header"&gt;…&lt;/header&gt;
   &lt;div class="cl-wave"&gt;&lt;/div&gt;                  &lt;!-- clair → violet profond --&gt;
-  &lt;main class="cl-section-dark"&gt;
+  &lt;main class="cl-section-invert"&gt;
     &lt;div class="cl-container"&gt;…&lt;/div&gt;
   &lt;/main&gt;
   &lt;div class="cl-wave"&gt;&lt;/div&gt;                  &lt;!-- violet profond → clair --&gt;
@@ -700,8 +650,8 @@
   &lt;div class="cl-player-spacer"&gt;&lt;/div&gt;
 &lt;/div&gt;</div>
 
-  <h3 style="font-family:'Avenir Heavy','Lexend',sans-serif;font-size:1rem;color:#0D1B2E;margin-bottom:.75rem">Page protégée</h3>
-  <div class="sg-code">&lt;div class="cl-page cl-section-dark"&gt;      &lt;!-- violet profond plein, pas de header/footer --&gt;
+  <h3 class="sg-h3">Page protégée</h3>
+  <div class="sg-code">&lt;div class="cl-page cl-section-invert"&gt;      &lt;!-- violet profond plein, pas de header/footer --&gt;
   &lt;div class="cl-container"&gt;
     &lt;div class="cl-hero"&gt;…&lt;/div&gt;           &lt;!-- titre en .cl-title-pro --&gt;
     &lt;div class="cl-card cl-card--accent cl-banner"&gt;…&lt;/div&gt;
@@ -722,13 +672,13 @@
     <h2 class="cl-title-pro" style="margin-bottom:.75rem">J'écoute tous les épisodes</h2>
     <p class="cl-desc" style="margin-bottom:1.5rem">Même <code>.cl-playlist</code>, mêmes <code>.cl-row</code>, mêmes boutons que sur fond clair.</p>
     <ul class="cl-playlist" style="margin-bottom:1.5rem">
-      <li class="cl-row cl-row--active">
-        <span class="cl-row__num cl-pulse">♫</span>
+      <li class="cl-row cl-row--active" data-playing="true">
+        <span class="cl-row__num"><span class="cl-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
         <div class="cl-row__info">
           <div class="cl-row__titleline"><span class="cl-row__title">Pourquoi dit-on « chouette » ?</span><span class="cl-row__tag">4:55</span></div>
           <span class="cl-row__desc">Du rapace nocturne à l'exclamation enthousiaste.</span>
         </div>
-        <div class="cl-row__actions"><button class="cl-icon-btn" aria-label="Pause">❚❚</button></div>
+        <div class="cl-row__actions"><button class="cl-icon-btn" aria-label="Pause" data-playing="true"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button></div>
       </li>
       <li class="cl-row">
         <span class="cl-row__num">2</span>
@@ -736,7 +686,7 @@
           <div class="cl-row__titleline"><span class="cl-row__title">Les mots voyageurs</span><span class="cl-row__tag">6:12</span></div>
           <span class="cl-row__desc">D'une langue à l'autre, les mots font le tour du monde.</span>
         </div>
-        <div class="cl-row__actions"><button class="cl-icon-btn" aria-label="Lecture">▶</button></div>
+        <div class="cl-row__actions"><button class="cl-icon-btn" aria-label="Lecture"><svg class="cl-ico cl-ico--play" aria-hidden="true"><use href="#cl-i-play"/></svg><svg class="cl-ico cl-ico--pause" aria-hidden="true"><use href="#cl-i-pause"/></svg></button></div>
       </li>
     </ul>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
@@ -751,116 +701,89 @@
   <p class="sg-note"><strong>Une seule par page.</strong> Deux bandes sombres et la rupture ne rompt plus rien : le fond clair redevient l'exception, ce que ce système refuse.</p>
 </section>
 
+<!-- ══════════ LAYOUTS ══════════ -->
+<section class="sg-sec" id="layouts">
+  <h2>Layouts</h2>
+  <p class="sg-note">Pages complètes, prêtes à dupliquer : chacune assemble les composants ci-dessus et les anime avec <code>components.js</code>, à partir d'un bloc de données JSON. Chaque layout s'ouvre dans le thème de son projet d'origine ; <code>?theme=…</code> le rejoue dans un autre. Pour un nouveau support, partir du layout le plus proche.</p>
+  <div class="sg-layouts">
+    <div class="cl-card">
+      <span class="cl-meta"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-headphones"/></svg> Audio</span>
+      <h3 class="cl-banner__title">Lecteur de podcast</h3>
+      <p class="cl-desc">Pochette, playlist, lecteur flottant, mode lecture des textes.</p>
+      <a class="cl-btn" href="./layouts/podcast.html?theme=observatoire">Ouvrir <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></a>
+    </div>
+    <div class="cl-card">
+      <span class="cl-meta"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-image"/></svg> Audio + image</span>
+      <h3 class="cl-banner__title">Parcours de musée</h3>
+      <p class="cl-desc">Chapitres illustrés, visionneuse média + récit, mode borne plein écran.</p>
+      <a class="cl-btn" href="./layouts/musee.html?theme=observatoire">Ouvrir <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></a>
+    </div>
+    <div class="cl-card">
+      <span class="cl-meta"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-music"/></svg> Vidéo</span>
+      <h3 class="cl-banner__title">Playlist vidéo</h3>
+      <p class="cl-desc">Catalogue, lecteur à contrôles intégrés, fiche mémo, QR code de partage.</p>
+      <a class="cl-btn" href="./layouts/video.html?theme=observatoire">Ouvrir <svg class="cl-ico" aria-hidden="true"><use href="#cl-i-arrow-right"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ THÈMES ══════════ -->
 <section class="sg-sec" id="themes">
   <h2>Thèmes</h2>
-  <p class="sg-note">Les tokens sont en deux couches. Les <strong>primitives</strong> (<code>--clap-*</code>, <code>--cjg-*</code>, <code>--shm-*</code>, <code>--obs-*</code>) portent les couleurs brutes et ne sont jamais lues par un composant. La couche <strong>sémantique</strong> (<code>--surface</code>, <code>--accent</code>, <code>--text-1</code>…) est la seule que lisent les composants — et donc la seule qu'un thème redéfinit. Basculer le sélecteur en haut de page rejoue toute la documentation dans l'autre thème : aucune classe ni aucun composant ne change.</p>
+  <p class="sg-note">Les tokens sont en deux couches. Les <strong>primitives</strong> (<code>--clap-*</code>, <code>--cjg-*</code>, <code>--shm-*</code>, <code>--obs-*</code>) portent les couleurs brutes et ne sont jamais lues par un composant. La couche <strong>sémantique</strong> (<code>--surface</code>, <code>--accent</code>, <code>--accent-ink</code>…) est la seule que lisent les composants — et donc la seule qu'un thème redéfinit. Le sélecteur en haut de page rejoue toute la documentation dans un autre thème : aucune classe ni aucun composant ne change.</p>
 
-  <div class="sg-demo sg-demo--light">
-    <table style="width:100%;border-collapse:collapse;font-size:.82rem">
-      <thead>
-        <tr style="text-align:left;border-bottom:2px solid #e3e6ea">
-          <th style="padding:.5rem .5rem .5rem 0">Token</th>
-          <th style="padding:.5rem">Clap ! Studio</th>
-          <th style="padding:.5rem">Observatoire</th>
-        </tr>
-      </thead>
+  <div class="sg-demo sg-demo--light" style="overflow-x:auto">
+    <table class="sg-table">
+      <thead><tr><th>Token</th><th>Clap ! Studio</th><th>Conjugarium</th><th>Surhumains</th><th>Observatoire</th></tr></thead>
       <tbody>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--primary</code></td><td style="padding:.45rem"><code>#0D1B2E</code> navy</td><td style="padding:.45rem"><code>#33236B</code> violet foncé</td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--surface</code></td><td style="padding:.45rem"><code>#FFFFFF</code> blanc</td><td style="padding:.45rem"><code>#FAF8FC</code> blanc violacé</td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--surface-raised</code></td><td style="padding:.45rem"><code>#F6F7F9</code></td><td style="padding:.45rem"><code>#FFFFFF</code></td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--surface-invert</code></td><td style="padding:.45rem"><code>#0D1B2E</code></td><td style="padding:.45rem"><code>#271A54</code> violet profond</td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--accent</code></td><td style="padding:.45rem"><code>#FFD100</code> jaune</td><td style="padding:.45rem"><code>#EA571B</code> orange vif</td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--accent-ink</code></td><td style="padding:.45rem"><code>#7A6000</code></td><td style="padding:.45rem"><code>#B53F0E</code></td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--on-accent</code></td><td style="padding:.45rem"><code>#1A1A1A</code></td><td style="padding:.45rem"><code>#FFFFFF</code></td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--font-heading</code></td><td style="padding:.45rem">Gaegu</td><td style="padding:.45rem">Avenir Heavy</td></tr>
-        <tr><td style="padding:.45rem .5rem .45rem 0"><code>--divider-shape</code></td><td style="padding:.45rem">coulures (×2)</td><td style="padding:.45rem">coulures (×2)</td></tr>
+        <tr><td><code>--primary</code></td><td><code>#0D1B2E</code> navy</td><td><code>#0E172A</code> nuit</td><td><code>#3333CB</code> bleu électrique</td><td><code>#33236B</code> violet</td></tr>
+        <tr><td><code>--surface</code></td><td><code>#FFFFFF</code></td><td><code>#EFEEFA</code> lavande</td><td><code>#F9F9F9</code></td><td><code>#FAF8FC</code></td></tr>
+        <tr><td><code>--surface-alt</code></td><td><code>#F2F4F7</code></td><td><code>#C9C8FB</code> pervenche</td><td><code>#9EEFDF</code> menthe</td><td><code>#F4B0CF</code> rose</td></tr>
+        <tr><td><code>--surface-invert</code></td><td><code>#0D1B2E</code></td><td><code>#0E172A</code></td><td><code>#2626A8</code></td><td><code>#271A54</code></td></tr>
+        <tr><td><code>--accent</code></td><td><code>#FFD100</code> jaune</td><td><code>#F4B0CF</code> rose</td><td><code>#F98FA5</code> corail</td><td><code>#EA571B</code> orange</td></tr>
+        <tr><td><code>--accent-ink</code></td><td><code>#7A6000</code></td><td><code>#A62A60</code></td><td><code>#B0234A</code></td><td><code>#B53F0E</code></td></tr>
+        <tr><td><code>--on-accent</code></td><td><code>#1A1A1A</code></td><td><code>#0E172A</code></td><td><code>#14144B</code></td><td><code>#FFFFFF</code></td></tr>
+        <tr><td><code>--font-heading</code></td><td>Gaegu</td><td>Simply Olive</td><td>Avenir Heavy</td><td>Avenir Heavy</td></tr>
+        <tr><td><code>--divider-shape</code></td><td>coulures</td><td>nuages</td><td>flammes</td><td>coulures</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p class="sg-note">L'Observatoire dispose d'un second fond clair, le rose <code>#F4B0CF</code>. Il n'a pas d'équivalent chez Clap ! Studio : il est donc exposé comme utilitaire, <code>.obs-section-pink</code>, plutôt que comme token.</p>
+  <p class="sg-note">Chaque thème a une <strong>seconde bande claire</strong>, <code>--surface-alt</code>, posée par <code>.cl-section-light--alt</code> : citation, encart, temps de respiration entre deux sections claires.</p>
   <div class="sg-demo sg-demo--pad0 sg-demo--light">
-    <div class="obs-section-pink" style="padding:2rem 1.5rem;text-align:center">
-      <span style="font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1E1340;opacity:.6">.obs-section-pink</span>
+    <div class="cl-section-light cl-section-light--alt" style="padding:2rem 1.5rem">
+      <figure class="cl-quote">
+        <span class="cl-quote__label"><svg class="cl-ico" aria-hidden="true"><use href="#cl-i-sparkles"/></svg> .cl-section-light--alt</span>
+        <blockquote class="cl-quote__text">« Une citation mise en avant. »</blockquote>
+        <figcaption class="cl-quote__source">.cl-quote</figcaption>
+      </figure>
     </div>
   </div>
 
-  <p class="sg-note">L'orange est assez foncé pour porter du texte blanc en surface, mais trop clair en texte sur fond clair : <code>--accent-ink</code> vaut <code>#B53F0E</code> (5.8:1 sur le blanc violacé). C'est lui que lisent les composants pour un accent <em>en texte</em>, jamais <code>--accent</code>.</p>
-
-  <div class="sg-code">&lt;!-- a) bascule à chaud --&gt;
-&lt;html data-theme="observatoire"&gt;
+  <div class="sg-code">&lt;!-- activer un thème : tokens, puis le thème, puis les composants --&gt;
+&lt;html data-theme="conjugarium"&gt;
 &lt;link rel="stylesheet" href="tokens.css"&gt;
+&lt;link rel="stylesheet" href="themes/conjugarium.css"&gt;
 &lt;link rel="stylesheet" href="components.css"&gt;
-&lt;link rel="stylesheet" href="themes/observatoire.css"&gt;
 
-&lt;!-- b) écrire un nouveau thème : déclarer 3 triplets RGB + les tokens nommés --&gt;
+&lt;!-- écrire un nouveau thème : 3 triplets RGB + les rôles nommés --&gt;
 [data-theme="mon-projet"] {
-  --_ink-rgb: R, G, B;       /* → text ramp, borders, chips */
-  --_accent-rgb: R, G, B;    /* → accent-soft/ring/glow/faint */
-  --_shadow-rgb: R, G, B;    /* → ombres (souvent = ink) */
-  --primary: #…;  --on-primary: #…;
-  --surface: #…;  --surface-raised: #…;  --surface-invert: #…;
-  --accent: #…;   --accent-hover: #…;    --accent-ink: #…;  --on-accent: #…;
-  --font-heading: '…';  --divider-shape: var(--shape-drips);  --divider-repeat: 50%;
+  --_ink-rgb: R, G, B;       /* → rampe de texte, bordures, voiles */
+  --_accent-rgb: R, G, B;    /* → accent-soft / ring / glow / faint */
+  --_shadow-rgb: R, G, B;    /* → ombres et voiles de média */
+  --primary: #…;  --primary-hover: #…;  --on-primary: #…;
+  --surface: #…;  --surface-raised: #…;  --surface-sunken: #…;  --surface-alt: #…;
+  --surface-invert: #…;  --surface-invert-raised: #…;
+  --accent: #…;   --accent-hover: #…;   --accent-ink: #…;  --on-accent: #…;
+  --font-heading: '…';  --font-display: '…';  --heading-weight: 800;
+  --divider-shape: var(--shape-clouds);  --divider-repeat: 640px;  --divider-repeat-mobile: 430px;
 }</div>
 </section>
 
 </div>
 
-<script>
-// ── Nuancier généré depuis les tokens ──
-const swatches = [
-  ['--primary', 'Principale'], ['--surface', 'Fond principal'],
-  ['--surface-raised', 'Surface remontée'], ['--surface-invert', 'Bande inversée'],
-  ['--accent', 'Accent'], ['--accent-hover', 'Accent survol'],
-  ['--accent-ink', 'Accent texte'], ['--on-accent', 'Sur accent'],
-  ['--danger', 'Erreur'], ['--success', 'Succès'],
-];
-function renderTokens() {
-const cs = getComputedStyle(document.documentElement);
-document.getElementById('sg-swatches').innerHTML = swatches.map(([v, name]) => `
-  <div class="sg-swatch">
-    <div class="sg-swatch__chip" style="background:var(${v});box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)"></div>
-    <div class="sg-swatch__body">
-      <div class="sg-swatch__name">${name}</div>
-      <div class="sg-swatch__val">${v}<br>${cs.getPropertyValue(v).trim()}</div>
-    </div>
-  </div>`).join('');
-
-document.querySelectorAll('[data-font-of]').forEach(el => {
-  const probe = document.querySelector(el.dataset.fontOf);
-  if (probe) el.textContent = getComputedStyle(probe).fontFamily.split(',')[0].replace(/["']/g, '');
-});
-
-const steps = ['--sp-1','--sp-2','--sp-3','--sp-4','--sp-5','--sp-6','--sp-8','--sp-10','--sp-12','--sp-14','--sp-16'];
-document.getElementById('sg-scale').innerHTML = steps.map(v => `
-  <div class="sg-scale-row">
-    <code>${v} · ${cs.getPropertyValue(v).trim()}</code>
-    <div class="sg-bar" style="width:${cs.getPropertyValue(v).trim()}"></div>
-  </div>`).join('');
-}
-renderTokens();
-
-// ── Page courante ──
-(function () {
-  var page = document.documentElement.dataset.page;
-  var link = document.querySelector('[data-page-link="' + page + '"]');
-  if (link) link.classList.add('sg-theme__btn--on');
-  if (location.protocol === 'file:') {
-    var files = { clap: 'index.html', conjugarium: 'conjugarium.html', surhumains: 'surhumains.html', observatoire: 'observatoire.html' };
-    document.querySelectorAll('[data-page-link]').forEach(function (a) {
-      a.setAttribute('href', files[a.dataset.pageLink]);
-    });
-  }
-  if (page === 'observatoire') {
-    document.title = 'Observatoire des Mots — Design System';
-    document.querySelector('.sg-nav strong').textContent = 'Observatoire Design System';
-  }
-})();
-
-</script>
 <script src="./components.js"></script>
+<script src="./styleguide/styleguide.js"></script>
 
 </body>
 </html>

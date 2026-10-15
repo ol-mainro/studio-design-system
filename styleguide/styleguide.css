@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Chrome des pages de styleguide — HORS design system.
+   Ne pas réutiliser dans un support : seules les classes .cl-* font foi.
+   ========================================================================== */
+body { background: #f6f7f9; }
+.sg-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: #0D1B2E; color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.sg-nav strong { font-family: 'Avenir Heavy','Lexend',sans-serif; letter-spacing: -0.02em; }
+.sg-nav a { color: rgba(255,255,255,.7); text-decoration: none; font-size: .8rem; }
+.sg-nav a:hover { color: #FFD100; }
+.sg-wrap { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+.sg-sec { margin-bottom: 3.5rem; }
+.sg-sec > h2 {
+  font-family: 'Avenir Heavy','Lexend',sans-serif; font-size: 1.4rem; color: #0D1B2E;
+  letter-spacing: -0.02em; margin-bottom: .35rem;
+}
+.sg-sec > p.sg-note { font-size: .875rem; color: #5b6472; margin-bottom: 1.25rem; line-height: 1.6; }
+.sg-demo {
+  background: var(--surface); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 2rem; margin-bottom: .75rem;
+}
+/* la bande sombre : .cl-invert pose ses propres tokens */
+.sg-demo--invert { border-color: transparent; }
+.sg-demo--light { background: var(--surface); border: 1px solid var(--border-subtle); }
+.sg-demo--yellow { background: var(--accent); }
+.sg-demo--flow { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.sg-demo--pad0 { padding: 0; overflow: hidden; }
+.sg-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .78rem; background: #10182a; color: #c9d4e6;
+  padding: .9rem 1.1rem; border-radius: 12px; overflow-x: auto;
+  white-space: pre; margin-bottom: 1.5rem;
+}
+.sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+.sg-swatch { border: 1px solid #e3e6ea; border-radius: 12px; overflow: hidden; background: #fff; }
+.sg-swatch__chip { height: 72px; }
+.sg-swatch__body { padding: .6rem .75rem; }
+.sg-swatch__name { font-size: .78rem; font-weight: 600; color: #0D1B2E; }
+.sg-swatch__val { font-size: .72rem; color: #7a8595; font-family: ui-monospace, monospace; }
+.sg-scale-row { display: flex; align-items: baseline; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid #e9ecf1; }
+.sg-scale-row code { font-size: .72rem; color: #7a8595; width: 170px; flex-shrink: 0; font-family: ui-monospace, monospace; }
+.sg-bar { height: 22px; background: var(--accent); border-radius: 4px; }
+.sg-theme { margin-left: auto; display: flex; gap: .35rem; background: rgba(255,255,255,.08); padding: 3px; border-radius: 50px; }
+.sg-theme__btn {
+  border: none; background: transparent; color: rgba(255,255,255,.65);
+  font: inherit; font-size: .75rem; padding: .3rem .8rem; border-radius: 50px;
+  cursor: pointer; text-decoration: none; display: inline-block;
+}
+.sg-nav .sg-theme__btn--on { background: #fff; color: #0D1B2E; font-weight: 600; }
+@media (max-width: 600px) { .sg-demo { padding: 1.25rem; } .sg-theme { margin-left: 0; } }
+.sg-h3 { font-family: 'Avenir Heavy','Lexend',sans-serif; font-size: 1rem; color: #0D1B2E; margin: 1.5rem 0 .75rem; }
+.sg-layouts { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.sg-layouts .cl-card { display: flex; flex-direction: column; gap: .6rem; padding: 1.5rem; }
+.sg-layouts .cl-card .cl-banner__title { margin: 0; }
+.sg-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.sg-table th { text-align: left; padding: .5rem; border-bottom: 2px solid #e3e6ea; }
+.sg-table td { padding: .45rem .5rem; border-bottom: 1px solid #f0f2f5; vertical-align: top; }
